@@ -16,7 +16,7 @@
       - GMaps
 
 
-### Venue Page
+### Venue Page (Booking)
 - App (div)
   - Header *
   - Main (div)

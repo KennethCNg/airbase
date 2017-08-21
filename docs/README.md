@@ -19,23 +19,34 @@
 
 #### Phase 1: Backend setup and Front End User Authentication (1 day)
 
-**Objective:** Functioning rails project with front-end Authentication
+**Objective:** 
+- Functioning rails project with front-end Authentication
 
 #### Phase 2: Venue (Spots) model, API, and components (1 day)
 
-**Objective:** CRUD for Venues through API. Plan for seeding data.
+**Objective:** 
+- CRUD for Venues through API. 
+- Plan for seeding data.
 
 #### Phase 3: Venue Search (2 days)
 
-**Objective:** Implement Venue search. Set up corresponding API endpoints, and frontend. 
+**Objective:** 
+- Implement Venue search. 
+- Set up corresponding API endpoints, and frontend. 
+- Implement Venue filter.
 
 #### Phase 4: Bookings (2 days)
 
-**Objective:**  Allow users to book Venues. Set up corresponding API endpoints, and frontend. Google maps for Venue search
+**Objective:**  
+- Allow users to book Venues. 
+- Set up corresponding API endpoints, and frontend. 
+- Google maps for Venue search
 
 #### Phase 5: Reviews (1 day)
 
-**Objective:** Implement User reviews for Venues. Set up corresponding API endpoints, and frontend.
+**Objective:** 
+- Implement User reviews for Venues. 
+- Set up corresponding API endpoints, and frontend.
 
 #### Bonus Features (time permitting)
 - [ ] Messaging / Chat
