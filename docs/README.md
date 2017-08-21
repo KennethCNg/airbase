@@ -1,6 +1,6 @@
-# Airbsd
+# Airbase Design Docs
 
-## Design Docs
+## Contents
 - [MVP Features](#mvp-features)
 - [Component Hierarchy](https://github.com/sksea/airbase-proposal/blob/master/components.md)
 - [Sample State](https://github.com/sksea/airbase-proposal/blob/master/sample-state.md)
@@ -17,11 +17,11 @@
 
 ## Implementation Timeline
 
-#### Phase 1: Backend setup and Front End User Authentication (2 days)
+#### Phase 1: Backend setup and Front End User Authentication (1 day)
 
 **Objective:** Functioning rails project with front-end Authentication
 
-#### Phase 2: Venue (Spots) model, API, and components (2 days)
+#### Phase 2: Venue (Spots) model, API, and components (1 day)
 
 **Objective:** CRUD for Venues through API. Plan for seeding data.
 
@@ -33,7 +33,7 @@
 
 **Objective:**  Allow users to book Venues. Set up corresponding API endpoints, and frontend. Google maps for Venue search
 
-#### Phase 5: Reviews (2 days)
+#### Phase 5: Reviews (1 day)
 
 **Objective:** Implement User reviews for Venues. Set up corresponding API endpoints, and frontend.
 
