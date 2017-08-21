@@ -11,15 +11,18 @@
 #### Users
 
 `GET /api/users`  
-`GET /api/users/:id` 
+`GET /api/users/:id`  
 `POST /api/users`  
-`PATCH /api/users/:id` 
+`PATCH /api/users/:id`  
 
+`GET /api/users/reviews`  
+`GET /api/users/bookings`  
+`GET /api/users/chats`  
 
 #### Session
 
-`POST /api/session`
-`DELETE /api/session`
+`POST /api/session`  
+`DELETE /api/session`  
 
 #### Venues
 
@@ -28,13 +31,14 @@
 `GET /api/venues/:id`  
 `PATCH /api/venues/:id`  
 `DELETE /api/venues/:id`  
+`GET /api/venues/:id/bookings`  
 
 #### Bookings
 
 `GET /api/bookings`  
 `POST /api/bookings`  
 `GET /api/bookings/:id`  
-`DELETE /api/bookings/:id`    
+`DELETE /api/bookings/:id`  
 
 #### Geolocations
 
@@ -48,7 +52,7 @@
 `GET /api/reviews`  
 `POST /api/reviews`  
 `GET /api/reviews/:id`  
-`DELETE /api/reviews/:id`
+`DELETE /api/reviews/:id`  
   
 #### Messages
 
@@ -63,3 +67,4 @@
 `POST /api/chats`  
 `GET /api/chats/:id`  
 `DELETE /api/chats/:id`  
+ 
