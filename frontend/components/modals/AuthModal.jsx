@@ -30,12 +30,25 @@ class AuthModal extends React.Component {
   
   render() {
     return (
-      <div id='auth-modal' className='contentBox'>
-        <form onSubmit={ this.handleSubmit }>
-          <input type="text" onChange={ this.handleChange('username') }/>
-          <input type="password" onChange={ this.handleChange('password') }/>
-          <button type="submit">{ this.props.buttonText }</button>
-        </form>
+      <div className='modal-container'>
+        <div id='login-modal' className='contentBox'>
+          <div>
+            <span className="title modal-title">{ this.props.titleText }</span>
+          </div>
+          <div>
+            <form onSubmit={ this.handleSubmit }>
+              <div className='input-container'>
+                <input type="text" onChange={ this.handleChange('username') }/>
+              </div>
+              <div className='input-container'>
+                <input type="password" onChange={ this.handleChange('password') }/>
+              </div>
+              <div className='button-container'>
+                <button className='submit-button' type="submit">{ this.props.buttonText }</button>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     );
   }

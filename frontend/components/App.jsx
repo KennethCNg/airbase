@@ -11,7 +11,7 @@ import { logout } from '../util/SessionApiUtil';
 
 const App = () => {
   return (
-    <div>
+    <div id='app'>
       <header>
         <h1>Airbase</h1>
       </header>
