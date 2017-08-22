@@ -5,6 +5,7 @@ import AuthModal from './AuthModal';
 const mapDispatchToProps = (dispatch) => {
   return {
     handleSubmit: (user) => dispatch(login(user)),
+    titleText: 'Log in to continue',
     buttonText: 'Log In',
   };
 };

@@ -1,6 +1,7 @@
 import React from 'react';
 import * as _ from 'lodash';
 
+// TODO: change this to login modal entirely, and make SignupModal a separate thing.
 class AuthModal extends React.Component {
   
   constructor(props) {
