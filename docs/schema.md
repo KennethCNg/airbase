@@ -22,8 +22,15 @@ column name     | data type | details
 id              | integer   | not null, primary key
 geolocation_id  | integer   | not null, indexed, unique
 owner_id        | integer   | not null, indexed, unique
-name            | string    | not null, indexed, unique
-phone_number    | string    | not null, indexed, unique
+name            | string    | not null, indexed
+phone_number    | string    | not null, indexed
+street          | string    | not null
+city            | string    | not null
+state           | string    | not null
+postal_code     | string    | not null
+lat             | float     | not null, indexed
+lng             | float     | not null, indexed
+
 
 ### bookings
 column name     | data type | details
@@ -33,16 +40,6 @@ user_id         | integer   | not null, indexed, unique
 venue_id        | integer   | not null, indexed, unique
 start_time      | timestamp | not null
 end_time        | timestamp | not null
-
-### geolocations
-column name     | data type | details
-----------------|-----------|-----------------------
-id              | integer   | not null, primary key
-venue_id        | integer   | not null, indexed, unique
-street          | string    | not null, indexed, unique
-city            | string    | not null, indexed, unique
-state           | string    | not null, indexed, unique
-postal_code     | string    | not null, indexed, unique
 
 ### reviews
 column name     | data type | details

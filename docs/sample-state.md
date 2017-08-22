@@ -10,7 +10,8 @@
         phone_number:                         // STRING
         school:                               // STRING
         work:                                 // STRING
-        languages: []                         // STRING ARRAY
+        languages: []                         // INTEGER ARRAY
+        owned_venues: []                      // INTEGER ARRAY
       }
     },
     venues: {
@@ -20,6 +21,11 @@
         phone_number:                         // STRING
         geolocation_id:                       // INTEGER
         owner_id:                             // INTEGER
+        street:                               // STRING
+        city:                                 // STRING
+        state:                                // STRING
+        lat:                                  // FLOAT
+        lng:                                  // FLOAT
       }
     },
     bookings: {
@@ -29,16 +35,6 @@
         end_time:                             // DATETIME
         venue_id:                             // INTEGER
         user_id:                              // INTEGER
-      }
-    },
-    geolocations: {
-      $id: {
-        id:                                   // INTEGER
-        street:                               // STRING
-        city:                                 // STRING
-        state:                                // STRING
-        postal_code:                          // STRING
-        venue_id:                             // INTEGER
       }
     },
     reviews: {
