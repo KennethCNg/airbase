@@ -1,5 +1,6 @@
 import React from 'react';
 import * as _ from 'lodash';
+import FA from 'react-fontawesome';
 
 // TODO: change this to login modal entirely, and make SignupModal a separate thing.
 class AuthModal extends React.Component {
@@ -38,10 +39,20 @@ class AuthModal extends React.Component {
           <div>
             <form onSubmit={ this.handleSubmit }>
               <div className='input-container'>
-                <input type="text" onChange={ this.handleChange('username') }/>
+                <div className='input-inner-container'>
+                  <input type="text" onChange={ this.handleChange('username') }/>
+                </div>
+                <div className='input-inner-icon'>
+                  <FA name='envelope-o' size='2x' />
+                </div>
               </div>
               <div className='input-container'>
-                <input type="password" onChange={ this.handleChange('password') }/>
+                <div className='input-inner-container'>
+                  <input type="password" onChange={ this.handleChange('password') }/>
+                </div>
+                <div className='input-inner-icon'>
+                  <FA name='lock' size='2x' />
+                </div>
               </div>
               <div className='button-container'>
                 <button className='submit-button' type="submit">{ this.props.buttonText }</button>

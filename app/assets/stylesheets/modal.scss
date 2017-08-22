@@ -32,6 +32,24 @@
 .input-container {
   border: 1px solid #DBDBDB;
   border-radius: 2px;
+  display: flex;
+  margin-bottom: 16px;
+}
+
+.input-inner-container {
+  width: 90%;
+}
+
+.input-inner-icon {
+  width: 10%;
+  color: #484848;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.input-inner-icon .fa {
+  font-size: 1.5em;
 }
 
 .button-container {
