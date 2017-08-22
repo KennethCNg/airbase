@@ -1,5 +1,4 @@
 <%# bootstrap currentUser %>
-
 <script type="text/javascript">
   <% if logged_in? %>
     window.currentUser = <%= render(
@@ -8,4 +7,5 @@
     ).html_safe %>
   <% end %>
 </script>
+
 <main id="root"></main>
