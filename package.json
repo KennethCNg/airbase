@@ -1,5 +1,6 @@
 {
   "name": "airbase",
+  "private": true,
   "version": "1.0.0",
   "description": "[Docs](docs/README.md)",
   "main": "index.js",
