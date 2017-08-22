@@ -28,7 +28,7 @@ export const signup = user => dispatch => {
   return SessionApiUtil.signup(user)
     .then(
       u => {
-        dispatch(clearErrors());
+        // dispatch(clearErrors());
         dispatch(receiveCurrentUser(u));
       }
     );

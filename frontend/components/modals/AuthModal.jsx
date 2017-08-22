@@ -1,4 +1,5 @@
 import React from 'react';
+import * as _ from 'lodash';
 
 class AuthModal extends React.Component {
   
@@ -13,7 +14,9 @@ class AuthModal extends React.Component {
   }
   
   handleSubmit(e) {
-    
+    e.preventDefault();
+    const user = _.merge({}, this.state);
+    this.props.handleSubmit(user);
   }
   
   handleChange(fieldName) {
@@ -27,12 +30,15 @@ class AuthModal extends React.Component {
   render() {
     return (
       <div id='auth-modal' className='contentBox'>
-        <form>
+        <form onSubmit={ this.handleSubmit }>
           <input type="text" onChange={ this.handleChange('username') }/>
           <input type="password" onChange={ this.handleChange('password') }/>
+          <button type="submit">{ this.props.buttonText }</button>
         </form>
       </div>
     );
   }
   
 }
+
+export default AuthModal;
