@@ -38,7 +38,7 @@ export const login = user => dispatch => {
   return SessionApiUtil.login(user)
     .then(
       u => { 
-        dispatch(clearErrors());
+        // dispatch(clearErrors());
         dispatch(receiveCurrentUser(u));
       },
       res => dispatch(receiveErrors(res.responseJSON))

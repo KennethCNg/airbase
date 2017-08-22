@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/Root';
-import { login } from './actions/sessionActions';
+import { login, logout } from './actions/sessionActions';
 
 document.addEventListener('DOMContentLoaded', () => {
   let store;
@@ -23,6 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
   window.store = store;
   window.dispatch = store.dispatch;
   window.login = login;
+  window.logout = logout; // EMERGENCY EJECT
+  
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={ store } />, root);
 });
