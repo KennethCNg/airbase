@@ -1,7 +1,7 @@
 # Airbase Design Docs
 
 [Project Management (Trello)](https://trello.com/b/gSYJeI9O/airbase)  
-[Live Site (Heroku)](airbase-sksea.herokuapp.com/#/)  
+[Live Site (Heroku)](https://airbase-sksea.herokuapp.com/#/)  
 
 
 ## Contents
