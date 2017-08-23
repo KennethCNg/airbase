@@ -40,6 +40,16 @@ class SignupModal extends React.Component {
               Find a better way to load assets. */}
             <img src={ window.staticImages.x } />
           </div>
+          <div className='signup-modal-g-fb-links'>
+            Sign up with Facebook or Google
+          </div>
+          <div className='divider-wrapper'>
+            <span className='divider-fill'></span>
+            <span className='divider-content'>
+              or
+            </span>
+            <span className='divider-fill'></span>
+          </div>
           <div className='title-wrapper'>
             <span className="title modal-title">{ this.props.titleText }</span>
           </div>
@@ -87,24 +97,6 @@ class SignupModal extends React.Component {
               </div>
               <div className='button-wrapper'>
                 <button className='modal-button submit-button' type="submit">{ this.props.buttonText }</button>
-              </div>
-              <div id='forgot-password'>
-                <span>Forgot Password?</span>
-              </div>
-              <div className='divider-wrapper'>
-                <span className='divider-fill'></span>
-                <span className='divider-content'>
-                  or continue with
-                </span>
-                <span className='divider-fill'></span>
-              </div>
-              <div className='omniauth-wrapper'>
-                <div className='omniauth-button-wrapper'>
-                  <button className='modal-button omniauth-button' type="submit">Facebook</button>
-                </div>
-                <div className='omniauth-button-wrapper'>
-                  <button className='modal-button omniauth-button' type="submit">Google</button>
-                </div>
               </div>
               <div className='divider-wrapper' id='footer-divider'>
                 <span className='divider-fill'></span>

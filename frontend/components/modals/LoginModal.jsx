@@ -36,7 +36,7 @@ class LoginModal extends React.Component {
         <div id='login-modal' className='modal'>
           <div id='modal-close'>
             {/* TODO:
-              Temporary. Loaded in application.html.erb.
+              Temporary. Loaded in root.html.erb.
               Find a better way to load assets. */}
             <img src={ window.staticImages.x } />
           </div>
@@ -80,10 +80,14 @@ class LoginModal extends React.Component {
               </div>
               <div className='omniauth-wrapper'>
                 <div className='omniauth-button-wrapper'>
-                  <button className='modal-button omniauth-button' type="submit">Facebook</button>
+                  <button className='modal-button omniauth-button' type="submit">
+                    <img src={ window.staticImages.modal_fb } />Facebook
+                  </button>
                 </div>
                 <div className='omniauth-button-wrapper'>
-                  <button className='modal-button omniauth-button' type="submit">Google</button>
+                  <button className='modal-button omniauth-button' type="submit">
+                    <img src={ window.staticImages.modal_g } />Google
+                  </button>
                 </div>
               </div>
               <div className='divider-wrapper' id='footer-divider'>
