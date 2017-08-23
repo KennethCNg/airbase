@@ -58,8 +58,9 @@
 
 .button-wrapper {
   background-color: #FF5A5F;
-  border-radius: 2px;
+  border-radius: 4px;
   display: flex;
+  margin-bottom: 16px;
 }
 
 #login-modal input {
@@ -68,7 +69,7 @@
 }
 
 #forgot-password {
-  
+  text-align: center;
 }
 
 .divider-wrapper {
@@ -90,12 +91,50 @@
   flex: 1;
 }
 
-
-.submit-button {
-  border-radius: 2px;
+.modal-button {
+  border-radius: 4px;
   width: 100%;
   padding: 12px 24px;
   font-weight: 700;
-  color: #fff;
   text-align: center;
 }
+
+.submit-button {
+  color: #fff;
+}
+
+.omniauth-button {
+  color: #484848;
+}
+
+.omniauth-wrapper {
+  display: flex;
+  margin-bottom: 24px;
+}
+
+.omniauth-wrapper:first-child {
+  margin-right: 15px;
+}
+
+.omniauth-button-wrapper {
+  box-sizing: border-box;
+  border: 2px solid #000;
+  border-radius: 4px;
+  width: 50%;
+}
+
+.omniauth-button-wrapper:first-child {
+  margin-right: 16px;
+}
+
+#login-signup {
+  text-align: center;
+}
+
+#footer-divider {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+
+

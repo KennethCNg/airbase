@@ -54,6 +54,9 @@ class AuthModal extends React.Component {
                   <FA name='lock' size='2x' />
                 </div>
               </div>
+              <div className='button-wrapper'>
+                <button className='modal-button submit-button' type="submit">{ this.props.buttonText }</button>
+              </div>
               <div id='forgot-password'>
                 <span>Forgot Password?</span>
               </div>
@@ -64,8 +67,20 @@ class AuthModal extends React.Component {
                 </span>
                 <span className='divider-fill'></span>
               </div>
-              <div className='button-wrapper'>
-                <button className='submit-button' type="submit">{ this.props.buttonText }</button>
+              <div className='omniauth-wrapper'>
+                <div className='omniauth-button-wrapper'>
+                  <button className='modal-button omniauth-button' type="submit">Facebook</button>
+                </div>
+                <div className='omniauth-button-wrapper'>
+                  <button className='modal-button omniauth-button' type="submit">Google</button>
+                </div>
+              </div>
+              <div className='divider-wrapper' id='footer-divider'>
+                <span className='divider-fill'></span>
+              </div>
+              <div id='login-signup'>
+                <span>Don't have an account? </span>
+                Sign Up
               </div>
             </form>
           </div>
