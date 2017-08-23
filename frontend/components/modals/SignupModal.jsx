@@ -30,9 +30,9 @@ class SignupModal extends React.Component {
   }
   
   render() {
+    const display = this.props.display ? '' : 'none';
     return (
-      
-      <div className='modal-wrapper'>
+      <div display={ display } className='modal-wrapper'>
         <div id='signup-modal' className='modal'>
           <div id='modal-close'>
             {/* TODO:

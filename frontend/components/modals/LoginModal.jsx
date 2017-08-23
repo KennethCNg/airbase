@@ -30,78 +30,83 @@ class LoginModal extends React.Component {
   }
   
   render() {
-    return (
-      
-      <div className='modal-wrapper'>
-        <div id='login-modal' className='modal'>
-          <div id='modal-close'>
-            {/* TODO:
-              Temporary. Loaded in root.html.erb.
-              Find a better way to load assets. */}
-            <img src={ window.staticImages.x } />
-          </div>
-          <div className='title-wrapper'>
-            <span className="title modal-title">{ this.props.titleText }</span>
-          </div>
-          <div>
-            <form onSubmit={ this.handleSubmit }>
-              <div className='input-wrapper'>
-                <div className='input-inner-wrapper'>
-                  <input type="text"
-                    placeholder='Email Address'
-                    onChange={ this.handleChange('username') }/>
+    if (this.props.display) {
+      return (
+        <div className='modal-wrapper'>
+          <div id='login-modal' className='modal'>
+            <div id='modal-close'>
+              {/* TODO:
+                Temporary. Loaded in root.html.erb.
+                Find a better way to load assets. */}
+              <img src={ window.staticImages.x } />
+            </div>
+            <div className='title-wrapper'>
+              <span className="title modal-title">{ this.props.titleText }</span>
+            </div>
+            <div>
+              <form onSubmit={ this.handleSubmit }>
+                <div className='input-wrapper'>
+                  <div className='input-inner-wrapper'>
+                    <input type="text"
+                      placeholder='Email Address'
+                      onChange={ this.handleChange('username') }/>
+                  </div>
+                  <div className='input-inner-icon'>
+                    <FA name='envelope-o' size='2x' />
+                  </div>
                 </div>
-                <div className='input-inner-icon'>
-                  <FA name='envelope-o' size='2x' />
+                <div className='input-wrapper'>
+                  <div className='input-inner-wrapper'>
+                    <input type="password"
+                      placeholder='Password'
+                      onChange={ this.handleChange('password') }/>
+                  </div>
+                  <div className='input-inner-icon'>
+                    <FA name='lock' size='2x' />
+                  </div>
                 </div>
-              </div>
-              <div className='input-wrapper'>
-                <div className='input-inner-wrapper'>
-                  <input type="password"
-                    placeholder='Password'
-                    onChange={ this.handleChange('password') }/>
+                <div className='button-wrapper'>
+                  <button className='modal-button submit-button' type="submit">{ this.props.buttonText }</button>
                 </div>
-                <div className='input-inner-icon'>
-                  <FA name='lock' size='2x' />
+                <div id='forgot-password'>
+                  <span>Forgot Password?</span>
                 </div>
-              </div>
-              <div className='button-wrapper'>
-                <button className='modal-button submit-button' type="submit">{ this.props.buttonText }</button>
-              </div>
-              <div id='forgot-password'>
-                <span>Forgot Password?</span>
-              </div>
-              <div className='divider-wrapper'>
-                <span className='divider-fill'></span>
-                <span className='divider-content'>
-                  or continue with
-                </span>
-                <span className='divider-fill'></span>
-              </div>
-              <div className='omniauth-wrapper'>
-                <div className='omniauth-button-wrapper'>
-                  <button className='modal-button omniauth-button' type="submit">
-                    <img src={ window.staticImages.modal_fb } />Facebook
-                  </button>
+                <div className='divider-wrapper'>
+                  <span className='divider-fill'></span>
+                  <span className='divider-content'>
+                    or continue with
+                  </span>
+                  <span className='divider-fill'></span>
                 </div>
-                <div className='omniauth-button-wrapper'>
-                  <button className='modal-button omniauth-button' type="submit">
-                    <img src={ window.staticImages.modal_g } />Google
-                  </button>
+                <div className='omniauth-wrapper'>
+                  <div className='omniauth-button-wrapper'>
+                    <button className='modal-button omniauth-button' type="submit">
+                      <img src={ window.staticImages.modal_fb } />Facebook
+                    </button>
+                  </div>
+                  <div className='omniauth-button-wrapper'>
+                    <button className='modal-button omniauth-button' type="submit">
+                      <img src={ window.staticImages.modal_g } />Google
+                    </button>
+                  </div>
                 </div>
-              </div>
-              <div className='divider-wrapper' id='footer-divider'>
-                <span className='divider-fill'></span>
-              </div>
-              <div id='login-signup'>
-                <span>Don't have an account? </span>
-                Sign Up
-              </div>
-            </form>
+                <div className='divider-wrapper' id='footer-divider'>
+                  <span className='divider-fill'></span>
+                </div>
+                <div id='login-signup'>
+                  <span>Don't have an account? </span>
+                  Sign Up
+                </div>
+              </form>
+            </div>
           </div>
         </div>
-      </div>
-    );
+      ); 
+    } else {
+      return (
+        <div></div>
+      );
+    }
   }
   
 }
