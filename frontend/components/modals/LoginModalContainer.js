@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { login } from '../../actions/sessionActions';
-import AuthModal from './AuthModal';
+import LoginModal from './LoginModal';
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -10,4 +10,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(AuthModal);
+export default connect(null, mapDispatchToProps)(LoginModal);

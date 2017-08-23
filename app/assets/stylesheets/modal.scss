@@ -15,12 +15,19 @@
   justify-content: center;
 }
 
-.contentBox {
+#login-modal {
+  height: 595px;
+}
+
+#signup-modal {
+  height: 595px;
+}
+
+.modal {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
   width: 568px;
-  height: 595px;
   padding: 32px;
   background-color: rgb(255, 255, 255);
 }
@@ -63,7 +70,7 @@
 }
 
 .input-inner-icon .fa {
-  font-size: 1.5em;
+  font-size: 1.2em;
 }
 
 .button-wrapper {
@@ -73,7 +80,7 @@
   margin-bottom: 16px;
 }
 
-#login-modal input {
+.modal input {
   padding: 11px;
   width: 100%;
 }

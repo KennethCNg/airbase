@@ -2,8 +2,8 @@ import React from 'react';
 import SessionFormContainer from './SessionFormContainer';
 import { Route } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/RouteUtil';
-import SignupModal from './modals/SignupModal';
-import LoginModal from './modals/LoginModal';
+import SignupModalContainer from './modals/SignupModalContainer';
+import LoginModalContainer from './modals/LoginModalContainer';
 import Main from './Main';
 // We need a header toolbar
 
@@ -16,8 +16,8 @@ const App = () => {
         <h1>Airbase</h1>
       </header>
       
-      <AuthRoute path='/signup' component={SignupModal} />
-      <AuthRoute path='/login' component={LoginModal} />
+      <AuthRoute path='/signup' component={SignupModalContainer} />
+      <AuthRoute path='/login' component={LoginModalContainer} />
       <ProtectedRoute path='/' component={ Main } />
     </div>
   );

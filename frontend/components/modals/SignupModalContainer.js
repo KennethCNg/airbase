@@ -1,12 +1,6 @@
 import { connect } from 'react-redux';
 import { signup } from '../../actions/sessionActions';
-import AuthModal from './AuthModal';
-
-// const mapStateToProps = (state) => {
-//   return {
-//     
-//   };
-// };
+import SignupModal from './SignupModal';
 
 const mapDispatchToProps = (dispatch) => {
   return {
@@ -15,4 +9,4 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(AuthModal);
+export default connect(null, mapDispatchToProps)(SignupModal);

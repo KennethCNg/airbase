@@ -3,7 +3,7 @@ import * as _ from 'lodash';
 import FA from 'react-fontawesome';
 
 // TODO: change this to login modal entirely, and make SignupModal a separate thing.
-class AuthModal extends React.Component {
+class LoginModal extends React.Component {
   
   constructor(props) {
     super(props);
@@ -33,7 +33,7 @@ class AuthModal extends React.Component {
     return (
       
       <div className='modal-wrapper'>
-        <div id='login-modal' className='contentBox'>
+        <div id='login-modal' className='modal'>
           <div id='modal-close'>
             {/* TODO:
               Temporary. Loaded in application.html.erb.
@@ -47,7 +47,9 @@ class AuthModal extends React.Component {
             <form onSubmit={ this.handleSubmit }>
               <div className='input-wrapper'>
                 <div className='input-inner-wrapper'>
-                  <input type="text" onChange={ this.handleChange('username') }/>
+                  <input type="text"
+                    placeholder='Email Address'
+                    onChange={ this.handleChange('username') }/>
                 </div>
                 <div className='input-inner-icon'>
                   <FA name='envelope-o' size='2x' />
@@ -55,7 +57,9 @@ class AuthModal extends React.Component {
               </div>
               <div className='input-wrapper'>
                 <div className='input-inner-wrapper'>
-                  <input type="password" onChange={ this.handleChange('password') }/>
+                  <input type="password"
+                    placeholder='Password'
+                    onChange={ this.handleChange('password') }/>
                 </div>
                 <div className='input-inner-icon'>
                   <FA name='lock' size='2x' />
@@ -98,4 +102,4 @@ class AuthModal extends React.Component {
   
 }
 
-export default AuthModal;
+export default LoginModal;
