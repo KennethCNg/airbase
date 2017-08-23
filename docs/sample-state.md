@@ -70,15 +70,18 @@
   },
 
   ui: {
-    ...
+    auth_modals: {
+      display_login:                          // BOOLEAN
+      display_signup:                         // BOOLEAN
+    }
   },
   
   errors: {
-    ...
+    [ ]                                       // STRING ARRAY
   },
   
   session: {
-    ...
+    currentUser_id:                           // INTEGER
   }
 }
 ```
