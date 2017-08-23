@@ -3,7 +3,6 @@ import {
   RECEIVE_CURRENT_USER,
   CLEAR_ERRORS,
 } from '../actions/sessionActions';
-import merge from 'lodash/merge';
 
 const initialState = {
     currentUser: null,
@@ -13,9 +12,9 @@ const initialState = {
 const sessionReducer = (state = initialState, action) => {
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
-      return merge({}, state, { currentUser: action.currentUser });
+      return Object.assign({}, state, { currentUser: action.currentUser.data });
     case RECEIVE_ERRORS:
-      return merge({}, state, { errors: action.errors });
+      return Object.assign({}, state, { errors: action.errors });
     case CLEAR_ERRORS:
       // use assign instead of _.merge because we want a shallow merge.
       // deep merge will cause errors to concatenate.
