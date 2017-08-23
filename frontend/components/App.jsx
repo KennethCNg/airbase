@@ -16,8 +16,8 @@ const App = () => {
         <h1>Airbase</h1>
       </header>
       
-      <Route exact path='/signup' component={SignupModalContainer} />
-      <Route exact path='/login' component={LoginModalContainer} />
+      <Route exact path='/' component={SignupModalContainer} />
+      <Route exact path='/' component={LoginModalContainer} />
       <Route exact path='/' component={ Main } />
     </div>
   );

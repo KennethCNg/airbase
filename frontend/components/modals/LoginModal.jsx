@@ -31,8 +31,10 @@ class LoginModal extends React.Component {
   }
   
   handleCloseModal(e) {
-    e.stopPropagation();
-    this.props.toggleModal();
+    if (e.currentTarget === e.target) {  
+      e.stopPropagation();
+      this.props.toggleModal();
+    }
   }
   
   render() {
@@ -44,8 +46,8 @@ class LoginModal extends React.Component {
               {/* TODO:
                 Temporary. Loaded in root.html.erb.
                 Find a better way to load assets. */}
-              <button onClick={ this.handleCloseModal } >
-                <img src={ window.staticImages.x } />
+              <button>
+                <img onClick={ this.handleCloseModal } src={ window.staticImages.x } />
               </button>
             </div>
             <div className='title-wrapper'>
