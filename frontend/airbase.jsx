@@ -24,10 +24,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // DEBUG
   window.store = store;
   window.dispatch = store.dispatch;
-  window.login = login;
   window.logout = logout; // EMERGENCY EJECT
-  window.toggleLogin = toggleLogin;
-  window.toggleSignup = toggleSignup;
   
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={ store } />, root);
