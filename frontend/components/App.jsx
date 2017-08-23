@@ -16,9 +16,9 @@ const App = () => {
         <h1>Airbase</h1>
       </header>
       
-      <AuthRoute path='/signup' component={SignupModalContainer} />
-      <AuthRoute path='/login' component={LoginModalContainer} />
-      <ProtectedRoute path='/' component={ Main } />
+      <Route exact path='/signup' component={SignupModalContainer} />
+      <Route exact path='/login' component={LoginModalContainer} />
+      <Route exact path='/' component={ Main } />
     </div>
   );
 };

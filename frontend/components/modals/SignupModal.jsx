@@ -95,6 +95,20 @@ class SignupModal extends React.Component {
                   <FA name='lock' size='2x' />
                 </div>
               </div>
+              {/* <div>
+                <span>Birthday</span>
+              </div>
+              <div>
+                <select>
+                  <option disabled value>Month</option>
+                </select>
+                <select>
+                  <option disabled value>Day</option>
+                </select>
+                <select>
+                  <option disabled value>Year</option>
+                </select>
+              </div> */}
               <div className='button-wrapper'>
                 <button className='modal-button submit-button' type="submit">{ this.props.buttonText }</button>
               </div>
