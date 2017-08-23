@@ -15,7 +15,6 @@ const initialState = {
 const uiReducer = (state = initialState, action) => {
   switch (action.type) {
     case TOGGLE_LOGIN:
-      console.log(`Original display state was ${state.login}`);
       return _.merge({}, state, { login: !state.login });
     case TOGGLE_SIGNUP:
       return _.merge({}, state, { login: !state.signup });

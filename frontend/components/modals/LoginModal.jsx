@@ -13,6 +13,7 @@ class LoginModal extends React.Component {
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleCloseModal = this.handleCloseModal.bind(this);
   }
   
   handleSubmit(e) {
@@ -29,16 +30,23 @@ class LoginModal extends React.Component {
     }
   }
   
+  handleCloseModal(e) {
+    e.stopPropagation();
+    this.props.toggleModal();
+  }
+  
   render() {
     if (this.props.display) {
       return (
-        <div className='modal-wrapper'>
+        <div onClick={ this.handleCloseModal } className='modal-wrapper'>
           <div id='login-modal' className='modal'>
             <div id='modal-close'>
               {/* TODO:
                 Temporary. Loaded in root.html.erb.
                 Find a better way to load assets. */}
-              <img src={ window.staticImages.x } />
+              <button onClick={ this.handleCloseModal } >
+                <img src={ window.staticImages.x } />
+              </button>
             </div>
             <div className='title-wrapper'>
               <span className="title modal-title">{ this.props.titleText }</span>
