@@ -1,5 +1,9 @@
 # Airbase Design Docs
 
+[Project Management (Trello)](https://trello.com/b/gSYJeI9O/airbase)
+[Live Site (Heroku)](airbase-sksea.herokuapp.com/#/)
+
+
 ## Contents
 - [MVP Features](#mvp-features)
 - [Component Hierarchy](https://github.com/sksea/airbase-proposal/blob/master/components.md)
