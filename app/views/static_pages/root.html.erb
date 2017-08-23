@@ -8,4 +8,10 @@
   <% end %>
 </script>
 
+<%# adhoc load image assets %>
+<script type="text/javascript">
+  window.staticImages = {};
+  window.staticImages.x = "<%= image_path('x.svg') %>"
+</script>
+
 <main id="root"></main>

@@ -31,8 +31,15 @@ class AuthModal extends React.Component {
   
   render() {
     return (
+      
       <div className='modal-wrapper'>
         <div id='login-modal' className='contentBox'>
+          <div id='modal-close'>
+            {/* TODO:
+              Temporary. Loaded in application.html.erb.
+              Find a better way to load assets. */}
+            <img src={ window.staticImages.x } />
+          </div>
           <div className='title-wrapper'>
             <span className="title modal-title">{ this.props.titleText }</span>
           </div>
