@@ -31,30 +31,40 @@ class AuthModal extends React.Component {
   
   render() {
     return (
-      <div className='modal-container'>
+      <div className='modal-wrapper'>
         <div id='login-modal' className='contentBox'>
-          <div>
+          <div className='title-wrapper'>
             <span className="title modal-title">{ this.props.titleText }</span>
           </div>
           <div>
             <form onSubmit={ this.handleSubmit }>
-              <div className='input-container'>
-                <div className='input-inner-container'>
+              <div className='input-wrapper'>
+                <div className='input-inner-wrapper'>
                   <input type="text" onChange={ this.handleChange('username') }/>
                 </div>
                 <div className='input-inner-icon'>
                   <FA name='envelope-o' size='2x' />
                 </div>
               </div>
-              <div className='input-container'>
-                <div className='input-inner-container'>
+              <div className='input-wrapper'>
+                <div className='input-inner-wrapper'>
                   <input type="password" onChange={ this.handleChange('password') }/>
                 </div>
                 <div className='input-inner-icon'>
                   <FA name='lock' size='2x' />
                 </div>
               </div>
-              <div className='button-container'>
+              <div id='forgot-password'>
+                <span>Forgot Password?</span>
+              </div>
+              <div className='divider-wrapper'>
+                <span className='divider-fill'></span>
+                <span className='divider-content'>
+                  or continue with
+                </span>
+                <span className='divider-fill'></span>
+              </div>
+              <div className='button-wrapper'>
                 <button className='submit-button' type="submit">{ this.props.buttonText }</button>
               </div>
             </form>
