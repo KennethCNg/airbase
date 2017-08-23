@@ -1,5 +1,4 @@
 import React from 'react';
-import SessionFormContainer from './SessionFormContainer';
 import { Route } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/RouteUtil';
 import SignupModalContainer from './modals/SignupModalContainer';
