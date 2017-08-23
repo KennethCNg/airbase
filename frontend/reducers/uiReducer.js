@@ -1,8 +1,7 @@
 import * as _ from 'lodash';
 
 import {
-  SHOW_LOGIN,
-  HIDE_LOGIN,
+  HIDE_AUTH_MODALS,
   TOGGLE_LOGIN,
   TOGGLE_SIGNUP,
 } from '../actions/uiActions';
@@ -18,6 +17,8 @@ const uiReducer = (state = initialState, action) => {
       return _.merge({}, state, { login: !state.login });
     case TOGGLE_SIGNUP:
       return _.merge({}, state, { signup: !state.signup });
+    case HIDE_AUTH_MODALS:
+      return _.merge({}, state, { signup: false, login: false });
     default:
       return state;
   }
