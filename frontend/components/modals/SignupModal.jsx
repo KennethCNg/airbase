@@ -8,7 +8,7 @@ class SignupModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
+      email: '',
       password: ''
     };
     this.handleChange = this.handleChange.bind(this);
@@ -23,8 +23,8 @@ class SignupModal extends React.Component {
   }
   
   handleChange(fieldName) {
-    if (fieldName === 'username') {
-      return e => this.setState({ username: e.target.value });
+    if (fieldName === 'email') {
+      return e => this.setState({ email: e.target.value });
     } else if (fieldName === 'password') {
       return e => this.setState({ password: e.target.value });
     }
@@ -69,7 +69,7 @@ class SignupModal extends React.Component {
                   <div className='input-inner-wrapper'>
                     <input type="text"
                       placeholder='Email Address'
-                      onChange={ this.handleChange('username') }/>
+                      onChange={ this.handleChange('email') }/>
                   </div>
                   <div className='input-inner-icon'>
                     <FA name='envelope-o' size='2x' />
@@ -79,7 +79,7 @@ class SignupModal extends React.Component {
                   <div className='input-inner-wrapper'>
                     <input type="text" 
                       placeholder='First name'
-                      onChange={ this.handleChange('f_name') }/>
+                      onChange={ this.handleChange('firstname') }/>
                   </div>
                   <div className='input-inner-icon'>
                     <FA name='user-o' size='2x' />
@@ -89,7 +89,7 @@ class SignupModal extends React.Component {
                   <div className='input-inner-wrapper'>
                     <input type="text" 
                       placeholder='Last name'
-                      onChange={ this.handleChange('l_name') }/>
+                      onChange={ this.handleChange('lastname') }/>
                   </div>
                   <div className='input-inner-icon'>
                     {/* <FA name='' size='2x' /> */}

@@ -19,7 +19,6 @@ const mapDispatchToProps = (dispatch) => {
 };
 
 const MainNavMenu = (props) => {
-  
   return (
     <div>
       {/* Become a Host */}

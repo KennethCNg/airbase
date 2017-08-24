@@ -1,18 +1,25 @@
 class User < ApplicationRecord
-  validates :username, :session_token, presence: true, uniqueness: true
+  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+  
+  validates :firstname, :lastname, presence: true
+  validates :email, :session_token, presence: true, uniqueness: true
+  validates :email, format: { 
+    with: VALID_EMAIL_REGEX, 
+    on: :create, 
+    message: 'must have valid format' 
+  }
   validates :password_digest, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
   after_initialize :ensure_session_token
   attr_reader :password
 
-  def self.find_user_by_credentials(username, password)
-    user = User.find_by(username: username)
+  def self.find_user_by_credentials(email, password)
+    user = User.find_by(email: email)
     if user && user.is_password?(password)
       return user
     end
     nil
   end
-
 
   def reset_session_token!
     self.session_token = User.generate_session_token
