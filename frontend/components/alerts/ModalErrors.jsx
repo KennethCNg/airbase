@@ -7,7 +7,13 @@ const ModalErrors = (props) => {
         <img src={ window.staticImages.bang } />
       </div>
       <div className='modal-errors'>
-        { props.errors }
+        <ul>
+          { 
+            props.errors.map( (err, idx) => {
+              return <li key={ idx }>{ err }</li>;
+            })
+          }
+        </ul>
       </div>
     </div>
   );

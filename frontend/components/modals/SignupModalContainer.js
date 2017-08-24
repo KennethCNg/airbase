@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { signup } from '../../actions/sessionActions';
+import { signup, clearErrors } from '../../actions/sessionActions';
 import { toggleSignupModal, toggleLoginModal } from '../../actions/uiActions';
 import SignupModal from './SignupModal';
 
@@ -13,8 +13,14 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     handleSubmit: (user) => dispatch(signup(user)),
-    toggleSignupModal: () => dispatch(toggleSignupModal),
-    toggleLoginModal: () => dispatch(toggleLoginModal),
+    toggleSignupModal: () => {
+      dispatch(clearErrors());
+      dispatch(toggleSignupModal());
+    },
+    toggleLoginModal: () => {
+      dispatch(clearErrors());
+      dispatch(toggleLoginModal());
+    },
     titleText: 'Register a new account',
     buttonText: 'Sign Up',
   };

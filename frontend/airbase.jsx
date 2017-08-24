@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/Root';
-import { login, logout } from './actions/sessionActions';
 import { toggleLoginModal, toggleSignupModal } from './actions/uiActions';
 
 
@@ -24,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
   // DEBUG
   window.store = store;
   window.dispatch = store.dispatch;
-  window.logout = logout; // EMERGENCY EJECT
   
   const root = document.getElementById('root');
   ReactDOM.render(<Root store={ store } />, root);
