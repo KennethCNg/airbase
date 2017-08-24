@@ -15,6 +15,7 @@ class LoginModal extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
+    this.clickSignup = this.clickSignup.bind(this);
   }
   
   handleSubmit(e) {
@@ -38,7 +39,7 @@ class LoginModal extends React.Component {
     }
   }
 
-  clickLogin(e) {
+  clickSignup(e) {
     e.preventDefault();
     this.props.toggleSignupModal();
   }
@@ -114,7 +115,7 @@ class LoginModal extends React.Component {
                 </div>
                 <div id='login-signup'>
                   <span>Don't have an account? </span>
-                  Sign Up
+                  <a href="" onClick={ this.clickSignup }>Sign up</a>
                 </div>
               </form>
             </div>
