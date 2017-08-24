@@ -64,15 +64,18 @@ class SignupModal extends React.Component {
                 <img onClick={ this.handleCloseModal } src={ window.staticImages.x } />
               </button>
             </div>
-            <div className='signup-modal-g-fb-links'>
+            {/* <div className='signup-modal-g-fb-links'>
               Sign up with Facebook or Google
-            </div>
-            <div className='divider-wrapper'>
+            </div> */}
+            {/* <div className='divider-wrapper'>
               <span className='divider-fill'></span>
               <span className='divider-content'>
                 or
               </span>
               <span className='divider-fill'></span>
+            </div> */}
+            <div className='title-wrapper'>
+              <span className="title modal-title">{ this.props.titleText }</span>
             </div>
             { this.props.errors.length > 0 &&
               <ModalErrors errors={ this.props.errors } />

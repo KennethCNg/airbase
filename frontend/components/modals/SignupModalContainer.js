@@ -15,6 +15,7 @@ const mapDispatchToProps = (dispatch) => {
     handleSubmit: (user) => dispatch(signup(user)),
     toggleSignupModal: () => dispatch(toggleSignupModal),
     toggleLoginModal: () => dispatch(toggleLoginModal),
+    titleText: 'Register a new account',
     buttonText: 'Sign Up',
   };
 };
