@@ -1,10 +1,10 @@
 export const TOGGLE_LOGIN = 'TOGGLE_LOGIN';
 export const TOGGLE_SIGNUP = 'TOGGLE_SIGNUP';
 
-export const toggleLogin = {
+export const toggleLoginModal = {
   type: TOGGLE_LOGIN
 };
 
-export const toggleSignup = {
+export const toggleSignupModal = {
   type: TOGGLE_SIGNUP
 };

@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/Root';
 import { login, logout } from './actions/sessionActions';
-import { toggleLogin, toggleSignup } from './actions/uiActions';
+import { toggleLoginModal, toggleSignupModal } from './actions/uiActions';
 
 
 document.addEventListener('DOMContentLoaded', () => {

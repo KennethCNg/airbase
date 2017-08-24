@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { loggedIn } from '../../reducers/sessionSelectors';
 import { logout } from '../../actions/sessionActions';
-import { toggleLogin, toggleSignup } from '../../actions/uiActions';
+import { toggleLoginModal, toggleSignupModal } from '../../actions/uiActions';
 
 const mapStateToProps = (state) => {
   return {
@@ -13,8 +13,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     logout: () => dispatch(logout()),
-    toggleLogin: () => dispatch(toggleLogin),
-    toggleSignup: () => dispatch(toggleSignup),
+    toggleLoginModal: () => dispatch(toggleLoginModal),
+    toggleSignupModal: () => dispatch(toggleSignupModal),
   };
 };
 
@@ -27,12 +27,12 @@ const MainNavMenu = (props) => {
       { !props.loggedIn && 
         <button 
           className='main-nav-menu-button' 
-          onClick={ props.toggleSignup }>Sign Up</button> 
+          onClick={ props.toggleSignupModal }>Sign Up</button> 
       }
       { !props.loggedIn && 
         <button 
           className='main-nav-menu-button' 
-          onClick={ props.toggleLogin }>Log In</button> 
+          onClick={ props.toggleLoginModal }>Log In</button> 
       }
       { props.loggedIn && 
         <button 

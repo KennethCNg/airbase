@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { signup } from '../../actions/sessionActions';
-import { toggleSignup } from '../../actions/uiActions';
+import { toggleSignupModal } from '../../actions/uiActions';
 import SignupModal from './SignupModal';
 
 const mapStateToProps = (state) => {
@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     handleSubmit: (user) => dispatch(signup(user)),
-    toggleModal: () => dispatch(toggleSignup),
+    toggleModal: () => dispatch(toggleSignupModal),
     buttonText: 'Sign Up',
   };
 };
