@@ -27,6 +27,10 @@ class SignupModal extends React.Component {
       return e => this.setState({ email: e.target.value });
     } else if (fieldName === 'password') {
       return e => this.setState({ password: e.target.value });
+    } else if (fieldName === 'firstname') {
+      return e => this.setState({ firstname: e.target.value });
+    } else if (fieldName === 'lastname') {
+      return e => this.setState({ lastname: e.target.value });
     }
   }
   

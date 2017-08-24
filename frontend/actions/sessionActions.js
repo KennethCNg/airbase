@@ -1,5 +1,5 @@
 import * as SessionApiUtil from '../util/SessionApiUtil';
-import { toggleLoginModal } from './uiActions';
+import { toggleLoginModal, toggleSignupModal } from './uiActions';
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
@@ -26,34 +26,39 @@ export const clearErrors = () => {
 };
 
 export const signup = user => dispatch => {
+  dispatch(clearErrors());
+  let currentUser;
   return SessionApiUtil.signup(user)
     .then(
       u => {
-        // dispatch(clearErrors());
+        currentUser = u;
+        dispatch(toggleSignupModal);
         dispatch(receiveCurrentUser(u));
+      },
+      error => {
+        dispatch(receiveErrors(error.response.data));
       }
     );
 };
 
 export const login = user => dispatch => {
+  dispatch(clearErrors());
   let currentUser;
   return SessionApiUtil.login(user)
     .then(
-      (u) => { 
-        currentUser = u; 
+      u => { 
+        currentUser = u;
         dispatch(toggleLoginModal);
-      }
-    )
-    .then(
-      () => { 
-        // dispatch(clearErrors());
         dispatch(receiveCurrentUser(currentUser));
       },
-      res => dispatch(receiveErrors(res.responseJSON))
+      error => {
+        dispatch(receiveErrors(error.response.data));
+      }
     );
 };
 
 export const logout = () => dispatch => {
+  dispatch(clearErrors());
   return SessionApiUtil.logout()
     .then(() => dispatch(receiveCurrentUser(null)));
 };

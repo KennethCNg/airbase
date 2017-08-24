@@ -20,8 +20,6 @@ const sessionReducer = (state = initialState, action) => {
     case RECEIVE_ERRORS:
       return Object.assign({}, state, { errors: action.errors });
     case CLEAR_ERRORS:
-      // use assign instead of _.merge because we want a shallow merge.
-      // deep merge will cause errors to concatenate.
       return Object.assign({}, state, { errors: [] });
     default:
       return state;
