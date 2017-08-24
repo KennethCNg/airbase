@@ -1,20 +1,4 @@
-<%# bootstrap currentUser %>
-<script type="text/javascript">
-  <% if logged_in? %>
-    window.currentUser = <%= render(
-      "api/users/user.json.jbuilder",
-      user: current_user
-    ).html_safe %>
-  <% end %>
-</script>
-
-<%# adhoc load image assets %>
-<script type="text/javascript">
-  window.staticImages = {};
-  window.staticImages.x = "<%= image_path('modals/x.svg') %>"
-  window.staticImages.modal_g = "<%= image_path('modals/modal-icon-google.svg') %>"
-  window.staticImages.modal_fb = "<%= image_path('modals/modal-icon-facebook.svg') %>"
-  
-</script>
+<%= render "bootstrap_user" %>
+<%= render "root_static_images" %>
 
 <main id="root"></main>

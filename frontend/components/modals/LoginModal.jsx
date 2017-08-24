@@ -1,6 +1,7 @@
 import React from 'react';
 import * as _ from 'lodash';
 import FA from 'react-fontawesome';
+import ModalErrors from '../alerts/ModalErrors';
 
 // TODO: change this to login modal entirely, and make SignupModal a separate thing.
 class LoginModal extends React.Component {
@@ -14,6 +15,7 @@ class LoginModal extends React.Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
+    this.clickSignup = this.clickSignup.bind(this);
   }
   
   handleSubmit(e) {
@@ -33,10 +35,15 @@ class LoginModal extends React.Component {
   handleCloseModal(e) {
     if (e.currentTarget === e.target) {  
       e.stopPropagation();
-      this.props.toggleModal();
+      this.props.toggleLoginModal();
     }
   }
-  
+
+  clickSignup(e) {
+    e.preventDefault();
+    this.props.toggleSignupModal();
+  }
+    
   render() {
     if (this.props.display) {
       return (
@@ -53,11 +60,14 @@ class LoginModal extends React.Component {
             <div className='title-wrapper'>
               <span className="title modal-title">{ this.props.titleText }</span>
             </div>
+            { this.props.errors.length > 0 &&
+              <ModalErrors errors={ this.props.errors } />
+            }
             <div>
               <form onSubmit={ this.handleSubmit }>
                 <div className='input-wrapper'>
                   <div className='input-inner-wrapper'>
-                    <input type="text"
+                    <input type="email"
                       placeholder='Email Address'
                       onChange={ this.handleChange('email') }/>
                   </div>
@@ -105,7 +115,7 @@ class LoginModal extends React.Component {
                 </div>
                 <div id='login-signup'>
                   <span>Don't have an account? </span>
-                  Sign Up
+                  <a href="" onClick={ this.clickSignup }>Sign up</a>
                 </div>
               </form>
             </div>
