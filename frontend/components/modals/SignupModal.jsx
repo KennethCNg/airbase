@@ -3,17 +3,19 @@ import * as _ from 'lodash';
 import FA from 'react-fontawesome';
 import ModalErrors from '../alerts/ModalErrors';
 
+const initialState = {
+  email: '',
+  password: '',
+  firstname: '',
+  lastname: '',
+};
+
 // TODO: change this to login modal entirely, and make SignupModal a separate thing.
 class SignupModal extends React.Component {
   
   constructor(props) {
     super(props);
-    this.state = {
-      email: '',
-      password: '',
-      firstname: '',
-      lastname: '',
-    };
+    this.state = initialState;
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);

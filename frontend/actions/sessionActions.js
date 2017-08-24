@@ -32,7 +32,7 @@ export const signup = user => dispatch => {
     .then(
       u => {
         currentUser = u;
-        dispatch(toggleSignupModal);
+        dispatch(toggleSignupModal());
         dispatch(receiveCurrentUser(u));
       },
       error => {
@@ -48,7 +48,7 @@ export const login = user => dispatch => {
     .then(
       u => { 
         currentUser = u;
-        dispatch(toggleLoginModal);
+        dispatch(toggleLoginModal());
         dispatch(receiveCurrentUser(currentUser));
       },
       error => {
