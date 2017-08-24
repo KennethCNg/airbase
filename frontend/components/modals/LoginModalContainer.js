@@ -1,18 +1,20 @@
 import { connect } from 'react-redux';
 import { login } from '../../actions/sessionActions';
-import { toggleLoginModal } from '../../actions/uiActions';
+import { toggleSignupModal, toggleLoginModal } from '../../actions/uiActions';
 import LoginModal from './LoginModal';
 
 const mapStateToProps = (state) => {
   return {
-    display: state.ui.login
+    display: state.ui.login,
+    errors: state.session.errors,
   };
 };
 
 const mapDispatchToProps = (dispatch) => {
   return {
     handleSubmit: (user) => dispatch(login(user)),
-    toggleModal: () => dispatch(toggleLoginModal),
+    toggleSignupModal: () => dispatch(toggleSignupModal),
+    toggleLoginModal: () => dispatch(toggleLoginModal),
     titleText: 'Log in to continue',
     buttonText: 'Log In',
   };

@@ -4,13 +4,10 @@
   font-family: 'Open Sans', sans-serif;
 }
 
-.flex {
-  display: flex;
+#app a {
+  color: #008489;
 }
 
-// FOR DEBUG ONLY
-.debug {
-  color: rgba(0,0,0,.4);
-  top: -4px;
-  position: absolute;
+.flex {
+  display: flex;
 }

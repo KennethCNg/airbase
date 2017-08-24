@@ -1,6 +1,7 @@
 import React from 'react';
 import * as _ from 'lodash';
 import FA from 'react-fontawesome';
+import ModalErrors from '../alerts/ModalErrors';
 
 // TODO: change this to login modal entirely, and make SignupModal a separate thing.
 class SignupModal extends React.Component {
@@ -9,16 +10,21 @@ class SignupModal extends React.Component {
     super(props);
     this.state = {
       email: '',
-      password: ''
+      password: '',
+      firstname: '',
+      lastname: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
+    
+    this.clickLogin = this.clickLogin.bind(this);
   }
   
   handleSubmit(e) {
     e.preventDefault();
     const user = _.merge({}, this.state);
+    // check if fields are empty here.
     this.props.handleSubmit(user);
   }
   
@@ -37,8 +43,13 @@ class SignupModal extends React.Component {
   handleCloseModal(e) {
     if (e.currentTarget === e.target) {  
       e.stopPropagation();
-      this.props.toggleModal();
+      this.props.toggleSignupModal();
     }
+  }
+  
+  clickLogin(e) {
+    e.preventDefault();
+    this.props.toggleLoginModal();
   }
   
   render() {
@@ -64,14 +75,14 @@ class SignupModal extends React.Component {
               </span>
               <span className='divider-fill'></span>
             </div>
-            <div className='title-wrapper'>
-              <span className="title modal-title">{ this.props.titleText }</span>
-            </div>
+            { this.props.errors.length > 0 &&
+              <ModalErrors errors={ this.props.errors } />
+            }
             <div>
               <form onSubmit={ this.handleSubmit }>
                 <div className='input-wrapper'>
                   <div className='input-inner-wrapper'>
-                    <input type="text"
+                    <input type="email"
                       placeholder='Email Address'
                       onChange={ this.handleChange('email') }/>
                   </div>
@@ -130,8 +141,8 @@ class SignupModal extends React.Component {
                   <span className='divider-fill'></span>
                 </div>
                 <div id='login-signup'>
-                  <span>Don't have an account? </span>
-                  Sign Up
+                  <span>Already have an account? </span>
+                  <a href="" onClick={ this.clickLogin }>Log in</a>
                 </div>
               </form>
             </div>
