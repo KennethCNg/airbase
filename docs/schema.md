@@ -20,10 +20,8 @@ government_ID   | string    | not null, unique
 column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
-geolocation_id  | integer   | not null, indexed, unique
 owner_id        | integer   | not null, indexed, unique
 name            | string    | not null, indexed
-phone_number    | string    | not null, indexed
 street          | string    | not null
 city            | string    | not null
 state           | string    | not null
