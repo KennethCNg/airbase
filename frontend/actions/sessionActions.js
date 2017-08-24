@@ -1,4 +1,5 @@
 import * as SessionApiUtil from '../util/SessionApiUtil';
+import { toggleLoginModal } from './uiActions';
 
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
@@ -35,11 +36,18 @@ export const signup = user => dispatch => {
 };
 
 export const login = user => dispatch => {
+  let currentUser;
   return SessionApiUtil.login(user)
     .then(
-      u => { 
+      (u) => { 
+        currentUser = u; 
+        dispatch(toggleLoginModal);
+      }
+    )
+    .then(
+      () => { 
         // dispatch(clearErrors());
-        dispatch(receiveCurrentUser(u));
+        dispatch(receiveCurrentUser(currentUser));
       },
       res => dispatch(receiveErrors(res.responseJSON))
     );
