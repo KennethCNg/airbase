@@ -91,14 +91,14 @@ class LoginModal extends React.Component {
                 <div id='forgot-password'>
                   <span>Forgot Password?</span>
                 </div>
-                <div className='divider-wrapper'>
+                {/* <div className='divider-wrapper'>
                   <span className='divider-fill'></span>
                   <span className='divider-content'>
                     or continue with
                   </span>
                   <span className='divider-fill'></span>
-                </div>
-                <div className='omniauth-wrapper'>
+                </div> */}
+                {/* <div className='omniauth-wrapper'>
                   <div className='omniauth-button-wrapper'>
                     <button className='modal-button omniauth-button' type="submit">
                       <img src={ window.staticImages.modal_fb } />Facebook
@@ -109,7 +109,7 @@ class LoginModal extends React.Component {
                       <img src={ window.staticImages.modal_g } />Google
                     </button>
                   </div>
-                </div>
+                </div> */}
                 <div className='divider-wrapper' id='footer-divider'>
                   <span className='divider-fill'></span>
                 </div>

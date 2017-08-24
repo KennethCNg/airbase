@@ -7,7 +7,7 @@
 }
 
 .modal-errors-icon {
-  background-color: #ff8b36;
+  background-color: #ff994d;
   display: flex;
   flex-direction: column;
   align-content: center;
@@ -24,3 +24,7 @@
   font-size: 13px;
   padding: 16px 10px;
 } 
+
+.modal-errors li {
+  margin-bottom: 5px;
+}

@@ -13,8 +13,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     logout: () => dispatch(logout()),
-    toggleLoginModal: () => dispatch(toggleLoginModal),
-    toggleSignupModal: () => dispatch(toggleSignupModal),
+    toggleLoginModal: () => dispatch(toggleLoginModal()),
+    toggleSignupModal: () => dispatch(toggleSignupModal()),
   };
 };
 
