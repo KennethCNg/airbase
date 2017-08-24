@@ -1,11 +1,11 @@
 import React from 'react';
 
-const MainNav = () => {
+const Search = () => {
   return (
-    <div>
+    <div id='search'>
       this be the main nav
     </div>
   );
 };
 
-export default MainNav;
+export default Search;

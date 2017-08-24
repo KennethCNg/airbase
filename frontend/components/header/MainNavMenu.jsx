@@ -20,7 +20,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const MainNavMenu = (props) => {
   return (
-    <div>
+    <div id='main-nav-menu'>
       {/* Become a Host */}
       {/* Help */}
       { !props.loggedIn && 
