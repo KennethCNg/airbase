@@ -4,11 +4,11 @@
 column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
-username        | string    | not null, indexed, unique
 email           | string    | not null, indexed, unique
+firstname       | string    | not null, indexed
+lastname        | string    | not null, indexed
 password_digest | string    | not null
 session_token   | string    | not null, indexed, unique
-name            | string    | not null
 phone_number    | string    | not null
 school          | string    | not null
 work            | string    | not null
