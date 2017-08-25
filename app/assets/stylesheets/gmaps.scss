@@ -1,0 +1,11 @@
+#map-wrapper {
+  bottom: 0px;
+  top: 65px;
+  z-index: -1;
+  position: fixed;
+}
+
+#map-container {
+  width: 500px;
+  height: 100%;
+}
