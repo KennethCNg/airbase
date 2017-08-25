@@ -20,7 +20,7 @@ government_ID   | string    | not null, unique
 column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
-owner_id        | integer   | not null, indexed, unique
+host_id         | integer   | not null, indexed, unique
 name            | string    | not null, indexed
 street          | string    | not null
 city            | string    | not null
@@ -83,3 +83,16 @@ id              | integer   | not null, primary key
 user_id         | integer   | not null, indexed, unique
 chat_id         | integer   | not null, indexed, unique
 
+### venue_amenities (JOIN)
+column name     | data type | details
+----------------|-----------|-----------------------
+id              | integer   | not null, primary key
+venue_id        | integer   | not null, indexed, unique
+amenity_id      | integer   | not null, indexed, unique
+
+### venue_house_rules (JOIN)
+column name     | data type | details
+----------------|-----------|-----------------------
+id              | integer   | not null, primary key
+venue_id        | integer   | not null, indexed, unique
+house           | integer   | not null, indexed, unique

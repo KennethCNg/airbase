@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170824234420) do
+ActiveRecord::Schema.define(version: 20170825134928) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,8 +37,17 @@ ActiveRecord::Schema.define(version: 20170824234420) do
     t.index ["lastname"], name: "index_users_on_lastname"
   end
 
+  create_table "venue_amenities", force: :cascade do |t|
+    t.integer "venue_id", null: false
+    t.integer "amenity_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["amenity_id"], name: "index_venue_amenities_on_amenity_id"
+    t.index ["venue_id"], name: "index_venue_amenities_on_venue_id"
+  end
+
   create_table "venues", force: :cascade do |t|
-    t.integer "owner_id", null: false
+    t.integer "host_id", null: false
     t.integer "accommodates", null: false
     t.integer "bathrooms", null: false
     t.integer "bedrooms", null: false
@@ -77,7 +86,7 @@ ActiveRecord::Schema.define(version: 20170824234420) do
     t.index ["bathrooms"], name: "index_venues_on_bathrooms"
     t.index ["bedrooms"], name: "index_venues_on_bedrooms"
     t.index ["beds"], name: "index_venues_on_beds"
-    t.index ["owner_id"], name: "index_venues_on_owner_id"
+    t.index ["host_id"], name: "index_venues_on_host_id"
     t.index ["price"], name: "index_venues_on_price"
   end
 
