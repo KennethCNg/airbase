@@ -24,6 +24,7 @@ class CreateVenues < ActiveRecord::Migration[5.1]
       t.time :check_in
       t.time :check_out
       
+      t.integer :price, null: false
       t.integer :extra_person_cost
       t.integer :extra_person_threshold
       t.integer :cleaning_fee
@@ -40,7 +41,15 @@ class CreateVenues < ActiveRecord::Migration[5.1]
       t.text :description_guest_interaction
       t.text :description_other_notes
       
+      t.index :owner_id
+      t.index :accommodates
+      t.index :bathrooms
+      t.index :bedrooms
+      t.index :beds
+      t.index :price
+      
       t.timestamps
     end
+    
   end
 end
