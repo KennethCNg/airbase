@@ -5,8 +5,8 @@ class CreateAmenities < ActiveRecord::Migration[5.1]
       t.string :name, null: false
       t.string :type, null: false
       
-      t.index :amenities, :name
-      t.index :amenities, :type
+      t.index :name
+      t.index :type      
       
       t.timestamps
     end
