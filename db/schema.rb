@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170825134928) do
+ActiveRecord::Schema.define(version: 20170825160858) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,18 +54,18 @@ ActiveRecord::Schema.define(version: 20170825134928) do
     t.integer "beds", null: false
     t.string "property_type", null: false
     t.string "room_type", null: false
-    t.integer "visit_count"
-    t.string "name"
-    t.string "street"
-    t.string "city"
-    t.string "state"
-    t.string "postal_code"
+    t.integer "visit_count", default: 0
+    t.string "name", null: false
+    t.string "street", null: false
+    t.string "city", null: false
+    t.string "state", null: false
+    t.string "postal_code", null: false
     t.float "lat", null: false
     t.float "lon", null: false
     t.integer "minimum_stay"
     t.string "check_in_type"
-    t.time "check_in"
-    t.time "check_out"
+    t.time "check_in", null: false
+    t.time "check_out", null: false
     t.integer "price", null: false
     t.integer "extra_person_cost"
     t.integer "extra_person_threshold"
@@ -86,8 +86,12 @@ ActiveRecord::Schema.define(version: 20170825134928) do
     t.index ["bathrooms"], name: "index_venues_on_bathrooms"
     t.index ["bedrooms"], name: "index_venues_on_bedrooms"
     t.index ["beds"], name: "index_venues_on_beds"
+    t.index ["city"], name: "index_venues_on_city"
     t.index ["host_id"], name: "index_venues_on_host_id"
+    t.index ["name"], name: "index_venues_on_name"
     t.index ["price"], name: "index_venues_on_price"
+    t.index ["state"], name: "index_venues_on_state"
+    t.index ["street"], name: "index_venues_on_street"
   end
 
 end
