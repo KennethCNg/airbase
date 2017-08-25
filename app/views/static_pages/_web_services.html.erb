@@ -1,0 +1,9 @@
+<%= javascript_include_tag "https://maps.googleapis.com/maps/api/js?key=#{ENV['GOOGLE_API_KEY']}" %>
+<%= puts ENV['GOOGLE_API_KEY'] %>   
+<style type="text/css">
+  /*setting the width and height of your map element is CRUCIAL*/
+  #map-container {
+    width: 500px;
+    height: 500px;
+  };
+</style>
