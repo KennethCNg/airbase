@@ -11,10 +11,10 @@ import { logout } from '../util/SessionApiUtil';
 const App = () => {
   return (
     <div id='app'>
-      <Route exact path='/' component={SignupModalContainer} />
-      <Route exact path='/' component={LoginModalContainer} />
-      <Route exact path='/' component={ Header } />
-      <Route exact path='/' component={ Main } />
+      <Route path='/' component={SignupModalContainer} />
+      <Route path='/' component={LoginModalContainer} />
+      <Route path='/' component={ Header } />
+      <Route path='/' component={ Main } />
     </div>
   );
 };

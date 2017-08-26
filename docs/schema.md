@@ -4,11 +4,11 @@
 column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
-username        | string    | not null, indexed, unique
 email           | string    | not null, indexed, unique
+firstname       | string    | not null, indexed
+lastname        | string    | not null, indexed
 password_digest | string    | not null
 session_token   | string    | not null, indexed, unique
-name            | string    | not null
 phone_number    | string    | not null
 school          | string    | not null
 work            | string    | not null
@@ -20,10 +20,8 @@ government_ID   | string    | not null, unique
 column name     | data type | details
 ----------------|-----------|-----------------------
 id              | integer   | not null, primary key
-geolocation_id  | integer   | not null, indexed, unique
-owner_id        | integer   | not null, indexed, unique
+host_id         | integer   | not null, indexed, unique
 name            | string    | not null, indexed
-phone_number    | string    | not null, indexed
 street          | string    | not null
 city            | string    | not null
 state           | string    | not null
@@ -85,3 +83,16 @@ id              | integer   | not null, primary key
 user_id         | integer   | not null, indexed, unique
 chat_id         | integer   | not null, indexed, unique
 
+### venue_amenities (JOIN)
+column name     | data type | details
+----------------|-----------|-----------------------
+id              | integer   | not null, primary key
+venue_id        | integer   | not null, indexed, unique
+amenity_id      | integer   | not null, indexed, unique
+
+### venue_house_rules (JOIN)
+column name     | data type | details
+----------------|-----------|-----------------------
+id              | integer   | not null, primary key
+venue_id        | integer   | not null, indexed, unique
+house           | integer   | not null, indexed, unique
