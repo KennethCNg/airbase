@@ -14,7 +14,7 @@ span, article, footer, time, small {
   text-decoration: inherit;
   vertical-align: baseline;
   box-sizing: inherit;
-  background: inherit;
+  // background: inherit; // screws up gmaps
 }
 
 ol, ul {
@@ -40,6 +40,7 @@ button {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+  background: none;
 }
 
 button,

@@ -5,11 +5,11 @@ class GMap extends React.Component {
 
   componentDidMount() {
     const mapOptions = {
-      center: { lat: 37.7758, lng: -122.435 }, // this is SF
-      zoom: 13
+      center: {lat: -34.397, lng: 150.644},
+      zoom: 8,
     };
     // wrap the mapDOMNode in a Google Map
-    this.map = new window.google.maps.Map(this.mapContainer, mapOptions);
+    this.map = new google.maps.Map(this.mapContainer, mapOptions);
   }
 
   render() {
