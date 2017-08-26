@@ -1,11 +1,11 @@
 #map-wrapper {
   bottom: 0px;
   top: 65px;
-  z-index: -1;
+  left: 66%;
+  width: 34%;
   position: fixed;
 }
 
 #map-container {
-  width: 500px;
   height: 100%;
 }

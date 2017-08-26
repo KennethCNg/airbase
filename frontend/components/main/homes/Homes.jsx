@@ -7,11 +7,9 @@ const Homes = (props) => {
   // it exists outside the component lifecycle.
   // const mapContainer = document.getElementById('map-container');
   return (
-    <div id='homes-wrapper'>
-      <div id='homes'>
-        {/* Homes List */}
-        <GMap />
-      </div>
+    <div id='homes'>
+      <HomesList />
+      <GMap />
     </div>
   );
 };

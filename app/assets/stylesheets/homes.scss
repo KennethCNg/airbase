@@ -1,13 +1,11 @@
-// #homes-wrapper {
-//   width: 100%;
-//   height: 100%;
-//   background-color: blue;
-//   display: flex;
-// }
+#homes {
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
 
-// #homes {
-//   flex: auto;
-//   width: 100%;
-//   height: 100%;
-//   background-color: red;
-// }
+#homes-list {
+  width: 66%;
+  height: 1000px;
+  background-color: #e4c0c7;
+}
