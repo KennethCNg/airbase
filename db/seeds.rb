@@ -2,18 +2,10 @@ class SeedHelper
   extend GoogleMapsHelper
 end
 
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
+# Create Users
 User.destroy_all
 
 USER_PASSWORD = 'password'
-
 now_i = Time.now.to_i
 r = Random.new(now_i)
 
@@ -28,15 +20,15 @@ r = Random.new(now_i)
   user.save!
 end
 
+
+# Create Venues
 Venue.destroy_all
 
 places = SeedHelper::get_places
-
 places.each do |place|
   details = SeedHelper::get_place_detail(place["place_id"])
   addr_comps = details['address_components']
   street = "#{addr_comps[0]["long_name"]} #{addr_comps[1]["long_name"]}"
-  
   venue = Venue.new(
     host_id: User.all.sample.id,
     accommodates: r.rand(10) + 1,
