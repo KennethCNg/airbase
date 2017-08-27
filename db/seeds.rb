@@ -29,7 +29,8 @@ places.each do |place|
   details = SeedHelper::get_place_detail(place["place_id"])
   addr_comps = details['address_components']
   street = "#{addr_comps[0]["long_name"]} #{addr_comps[1]["long_name"]}"
-  
+  check_in = Time.zone.now + (r.rand(5) + 1).days
+  check_out = check_in + (r.rand(10) + 1).days
   venue = Venue.new(
     host_id: User.all.sample.id,
     accommodates: r.rand(10) + 1,
@@ -45,8 +46,8 @@ places.each do |place|
     city: "#{addr_comps[2]["long_name"]}",
     state: "#{addr_comps[3]["long_name"]}",
     postal_code: "#{addr_comps[7]["long_name"]}",
-    check_in: Time.zone.now,
-    check_out: Time.zone.now + (r.rand(5) + 1).days,
+    check_in: check_in,
+    check_out: check_out,
     price: r.rand(1000) + 1
 
   )
