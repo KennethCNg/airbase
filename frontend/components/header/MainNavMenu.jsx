@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { loggedIn } from '../../reducers/sessionSelectors';
+import { loggedIn } from '../../selectors/sessionSelectors';
 import { logout } from '../../actions/sessionActions';
 import { toggleLoginModal, toggleSignupModal } from '../../actions/uiActions';
 
