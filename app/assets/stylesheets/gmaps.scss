@@ -8,4 +8,9 @@
 
 #map-container {
   height: 100%;
+  background-color: #C6E2FF;
+}
+
+#map-container > div {
+  background-color: rgba(0, 0, 0, 0) !important;
 }
