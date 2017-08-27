@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170825160858) do
+ActiveRecord::Schema.define(version: 20170827135449) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,11 +61,9 @@ ActiveRecord::Schema.define(version: 20170825160858) do
     t.string "state", null: false
     t.string "postal_code", null: false
     t.float "lat", null: false
-    t.float "lon", null: false
+    t.float "lng", null: false
     t.integer "minimum_stay"
     t.string "check_in_type"
-    t.time "check_in", null: false
-    t.time "check_out", null: false
     t.integer "price", null: false
     t.integer "extra_person_cost"
     t.integer "extra_person_threshold"
@@ -82,6 +80,8 @@ ActiveRecord::Schema.define(version: 20170825160858) do
     t.text "description_other_notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "check_in", null: false
+    t.datetime "check_out", null: false
     t.index ["accommodates"], name: "index_venues_on_accommodates"
     t.index ["bathrooms"], name: "index_venues_on_bathrooms"
     t.index ["bedrooms"], name: "index_venues_on_bedrooms"
