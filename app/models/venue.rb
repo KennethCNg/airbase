@@ -12,6 +12,17 @@ class Venue < ApplicationRecord
     VACATION_HOME
   ].freeze
   
+  
+  ENTIRE = 'entire place/apt'.freeze
+  PRIVATE = 'private room'.freeze
+  SHARED = 'shared room'.freeze
+  
+  ROOM_TYPES = [
+    ENTIRE,
+    PRIVATE,
+    SHARED
+  ]
+  
   validates :host_id, presence: true
   validates :accommodates, presence: true
   validates :bathrooms,  presence: true
@@ -21,12 +32,15 @@ class Venue < ApplicationRecord
   validates :room_type,  presence: true
   validates :visit_count,  presence: true
   validates :lat, presence: true
-  validates :lon, presence: true
+  validates :lng, presence: true
   validates :name, presence: true
   validates :street, presence: true
   validates :city, presence: true
   validates :state, presence: true
   validates :postal_code, presence: true
+  validates :check_in, presence: true
+  validates :check_out, presence: true
+  validates :price, presence: true
   
   belongs_to :host, class_name: 'User'
   has_many :venue_amenities
