@@ -1,5 +1,9 @@
 # Database Schema
 
+**🚨 This will not be maintained during development. 🚨**  
+**🚨 Look at `schema.rb` instead. 🚨**
+
+
 ### users
 column name     | data type | details
 ----------------|-----------|-----------------------
