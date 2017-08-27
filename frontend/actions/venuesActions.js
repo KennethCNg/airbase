@@ -8,8 +8,8 @@ export const receiveVenues = venues => {
   };
 };
 
-export const getVenues = () => dispatch => {
-  return VenueUtil.getVenues()
+export const fetchVenues = () => dispatch => {
+  return VenueUtil.fetchVenues()
   .then(
     res => {
       dispatch(receiveVenues(res.data));
