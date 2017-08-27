@@ -8,7 +8,7 @@
       - Search
     - Navigation
   - Main (div)
-    - **VenueContainer**
+    - **VenuesContainer**
       - VenueFilter
       - VenueList
         - VenueItem
@@ -43,5 +43,5 @@
 - App (div)
   - Header *
   - Main (div)
-    - **VenueContainer** *
+    - **VenuesContainer** *
     - **GMapsContainer** *

@@ -1,16 +1,17 @@
 import { connect } from 'react-redux';
 import Venues from './Venues';
-import { getVenues } from '../../../actions/venueActions';
+import { fetchVenues } from '../../../actions/venuesActions';
+import { selectVenues } from '../../../selectors/venuesSelectors';
 
 const mapStateToProps = state => {
   return {
-    venues: state.venues,
+    venues: selectVenues(state),
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    getVenues: () => { dispatch(getVenues()); }
+    fetchVenues: () => { dispatch(fetchVenues()); }
   };
 };
 
