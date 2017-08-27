@@ -6,8 +6,8 @@ class VenueList extends React.Component {
   // might need state later on to keep track of activity on each venue
   
   // componentWillReceiveProps(nextProps) {
-  //   debugger;
   // }
+  
   renderVenueCells(venues) {
     const venueIds = Object.keys(venues);
     return (

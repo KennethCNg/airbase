@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export const getVenues = () => {
+export const fetchVenues = () => {
   return axios({
     method: 'GET',
     url: '/api/venues',

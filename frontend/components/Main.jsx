@@ -1,12 +1,12 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import VenueContainer from './main/venues/VenueContainer';
+import VenuesContainer from './main/venues/VenuesContainer';
 
 
 const Main = (props) => {    
   return (
     <section id='main'>
-      <Route exact path='/homes' component={ VenueContainer } />
+      <Route exact path='/homes' component={ VenuesContainer } />
     </section>
   );
 };
