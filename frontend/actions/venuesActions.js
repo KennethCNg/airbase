@@ -1,4 +1,4 @@
-import * as VenueUtil from '../util/VenueUtil';
+import * as VenuesUtil from '../util/VenuesUtil';
 export const RECEIVE_VENUES = 'RECEIVE_VENUES';
 
 export const receiveVenues = venues => {
@@ -9,7 +9,7 @@ export const receiveVenues = venues => {
 };
 
 export const fetchVenues = () => dispatch => {
-  return VenueUtil.fetchVenues()
+  return VenuesUtil.fetchVenues()
   .then(
     res => {
       dispatch(receiveVenues(res.data));
