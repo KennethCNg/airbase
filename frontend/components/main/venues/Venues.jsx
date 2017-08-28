@@ -21,7 +21,9 @@ class Venues extends React.Component {
         <VenueList 
           venues={ this.props.venues }
         />
-        <GMap />
+        <GMap 
+          venueCoords={ this.props.venueCoords }
+        />
       </div>
     );
     

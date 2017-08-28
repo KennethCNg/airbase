@@ -1,17 +1,19 @@
 import React from 'react';
 import GMapStyles from './GMapStyles';
+import GMapController from './GMapController';
 
 class GMap extends React.Component {
 
   componentDidMount() {
+    const coords = this.props.venueCoords;
     const CENTER = {lat: 30.1301514, lng: -8.2019344};
     const mapOptions = {
       center: CENTER,
       zoom: 2,
       styles: GMapStyles,
     };
-    // wrap the mapDOMNode in a Google Map
-    this.map = new google.maps.Map(this.mapContainer, mapOptions);
+    this.map = new window.google.maps.Map(this.mapContainer, mapOptions);
+    this.controller = new GMapController(this.map);
   }
 
   render() {

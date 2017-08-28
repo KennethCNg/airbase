@@ -20,7 +20,7 @@ class VenueList extends React.Component {
   render() {
     return (
       <div id='venue-list'>
-        {
+        { this.props.venues &&
           this.renderVenueCells(this.props.venues) 
         }
       </div>
