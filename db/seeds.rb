@@ -66,19 +66,20 @@ places.each do |place|
   photo_ref = details['photos'][0]['photo_reference']
   image_resp = SeedHelper::fetch_place_photo(photo_ref)
   
-  venue_image = StringIO.new(image_resp.body)
-  venue_image.class.class_eval { attr_accessor :original_filename, :content_type }
-  venue_image.original_filename = 'image.jpg'
-  venue_image.content_type = image_resp.content_type
-
-  debugger
+  # test with local image
+  image = File.open(File.join(Rails.root,'app/assets/images/venues/building.jpg'))
+  # venue_image = StringIO.new(image_resp.body)
+  # venue_image.class.class_eval { attr_accessor :original_filename, :content_type }
+  # venue_image.original_filename = 'image.jpg'
+  # venue_image.content_type = image_resp.content_type
 
   pic = Picture.new(
-    image: venue_image,
-    imageable_id: venue.id
+    # image: venue_image,
+    # imageable_id: venue.id
+    image: image,
+    imageable: venue
   )
   
-  debugger
   pic.save!
   
 end
