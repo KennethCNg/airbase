@@ -56,7 +56,6 @@ class LoginModal extends React.Component {
   loginAsGuest(e) {
     e.preventDefault();
     const user = _.merge({}, demoUser);
-    debugger;
     this.props.handleSubmit(user);
     this.setState(initialState);
   }

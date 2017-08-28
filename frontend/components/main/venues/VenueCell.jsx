@@ -1,7 +1,7 @@
 import React from 'react';
 import { capitalize } from '../../../helpers/helpers';
 
-const VenueCell = ({ id, venue }) => {
+const VenueCell = ({ id, venue, pictureUrl }) => {
   if (venue) {
     return (
       <div className='venue-cell'>
@@ -9,6 +9,7 @@ const VenueCell = ({ id, venue }) => {
         <span>{ venue.name }</span>
         <span>{ venue.beds }</span>
         <span>{ capitalize(venue.room_type) }</span>
+        <img src={ pictureUrl } />
       </div>
     );
   }
