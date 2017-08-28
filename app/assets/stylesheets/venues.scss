@@ -8,13 +8,13 @@
   position: relative;
   top: 98px;
   width: 66%;
-  height: 2000px;
-  background: linear-gradient(45deg, #1f30fb, #4effab);
+  // background: linear-gradient(45deg, #1f30fb, #4effab);
+  display: flex;
+  flex-wrap: wrap;
 }
 
-// #homes-list-inner {
-//   position: relative;
-//   width: 100%;
-//   height: 2000px;
-//   // background-color: #fff;
-// }
+.venue-cell {
+  background-color: #fff;
+  width: 33.3333%;
+  flex-shrink: 0
+}

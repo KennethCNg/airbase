@@ -3,16 +3,16 @@ import VenueCell from './VenueCell';
 
 class VenueList extends React.Component {
   
-  // might need state later on to keep track of activity on each venue
-  
-  // componentWillReceiveProps(nextProps) {
-  // }
-  
   renderVenueCells(venues) {
     const venueIds = Object.keys(venues);
     return (
       venueIds.map( (id, idx) => { 
-        return <VenueCell key={ idx } id={ id } venue={ venues[id] } />;
+        return <VenueCell 
+          key={ idx }
+          id={ id }
+          venue={ venues[id] }
+          pictureUrl={ this.props.venuePictureUrls[idx] }
+        />;
       } )
     );
   }
