@@ -18,3 +18,10 @@ export const selectVenueCoordinates = state => {
     return venues.map( v => [v.lat, v.lng] );
   }
 };
+
+export const selectVenuePictureUrls = state => {
+  const venues = selectVenuesAsArray(state);
+  if (venues) {
+    return venues.map( v => v.picture_url );
+  }
+};

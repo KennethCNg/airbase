@@ -33,3 +33,4 @@ json.extract!( venue,
   :description_guest_interaction,
   :description_other_notes
 )
+json.picture_url venue.pictures.first.image.url

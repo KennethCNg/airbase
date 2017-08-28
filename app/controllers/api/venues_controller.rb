@@ -10,7 +10,7 @@ class Api::VenuesController < ApplicationController
   end
   
   def index
-    @venues = Venue.all
+    @venues = Venue.all.includes(:pictures)
     render :index
   end
   
