@@ -20,6 +20,14 @@ r = Random.new(now_i)
   user.save!
 end
 
+demoUser = User.new(
+  firstname: 'guest',
+  lastname: 'user',
+  email: 'd@d.com',
+  password: USER_PASSWORD
+)
+demoUser.save!
+
 
 # Create Venues
 Venue.destroy_all

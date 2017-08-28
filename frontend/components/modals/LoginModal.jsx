@@ -8,6 +8,11 @@ const initialState = {
   password: ''
 };
 
+const demoUser = {
+  email: 'd@d.com',
+  password: 'password',
+};
+
 // TODO: change this to login modal entirely, and make SignupModal a separate thing.
 class LoginModal extends React.Component {
   
@@ -18,6 +23,7 @@ class LoginModal extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
     this.clickSignup = this.clickSignup.bind(this);
+    this.loginAsGuest = this.loginAsGuest.bind(this);
   }
   
   handleSubmit(e) {
@@ -45,6 +51,14 @@ class LoginModal extends React.Component {
   clickSignup(e) {
     e.preventDefault();
     this.props.toggleSignupModal();
+  }
+  
+  loginAsGuest(e) {
+    e.preventDefault();
+    const user = _.merge({}, demoUser);
+    debugger;
+    this.props.handleSubmit(user);
+    this.setState(initialState);
   }
     
   render() {
@@ -119,6 +133,10 @@ class LoginModal extends React.Component {
                 <div id='login-signup'>
                   <span>Don't have an account? </span>
                   <a href="" onClick={ this.clickSignup }>Sign up</a>
+                </div>
+                <div id='demo-user'>
+                  <span>Here for a demo? </span>
+                  <a href="" onClick={ this.loginAsGuest }>Login as guest</a>
                 </div>
               </form>
             </div>
