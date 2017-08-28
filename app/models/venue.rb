@@ -45,5 +45,6 @@ class Venue < ApplicationRecord
   belongs_to :host, class_name: 'User'
   has_many :venue_amenities
   has_many :amenities, through: :venue_amenities
+  has_many :pictures, as: :imageable, dependent: :destroy
   
 end
