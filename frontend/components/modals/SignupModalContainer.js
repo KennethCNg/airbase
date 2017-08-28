@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { loggedIn } from '../../selectors/sessionSelectors';
 import { signup, clearErrors } from '../../actions/sessionActions';
 import { toggleSignupModal, toggleLoginModal } from '../../actions/uiActions';
 import SignupModal from './SignupModal';
@@ -7,6 +8,7 @@ const mapStateToProps = (state) => {
   return {
     display: state.ui.signup,
     errors: state.session.errors,
+    loggedIn: loggedIn(state),
   };
 };
 

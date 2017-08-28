@@ -25,8 +25,10 @@ class SignupModal extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = _.merge({}, this.state);
-    // check if fields are empty here.
     this.props.handleSubmit(user);
+    if (this.props.loggedIn) {
+      this.setState(initialState);
+    }
   }
   
   handleChange(fieldName) {

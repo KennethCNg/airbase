@@ -30,7 +30,9 @@ class LoginModal extends React.Component {
     e.preventDefault();
     const user = _.merge({}, this.state);
     this.props.handleSubmit(user);
-    this.setState(initialState);
+    if (this.props.loggedIn) {
+      this.setState(initialState);
+    }
   }
   
   handleChange(fieldName) {
