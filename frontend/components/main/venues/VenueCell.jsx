@@ -1,7 +1,7 @@
 import React from 'react';
 import { capitalize } from '../../../helpers/helpers';
 
-const VenueCell = ({ id, venue, pictureUrl }) => {
+const VenueCell = ({ venueId, venue, pictureUrl }) => {
   if (venue) {
     return (
       <div className='venue-cell'>
