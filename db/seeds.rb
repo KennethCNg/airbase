@@ -67,16 +67,17 @@ places.each do |place|
   image_resp = SeedHelper::fetch_place_photo(photo_ref)
   
   # test with local image
-  image = File.open(File.join(Rails.root,'app/assets/images/venues/building.jpg'))
-  # venue_image = StringIO.new(image_resp.body)
-  # venue_image.class.class_eval { attr_accessor :original_filename, :content_type }
-  # venue_image.original_filename = 'image.jpg'
-  # venue_image.content_type = image_resp.content_type
+  # image = File.open(File.join(Rails.root,'app/assets/images/venues/building.jpg'))
+  
+  # fetch images from google maps
+  venue_image = StringIO.new(image_resp.body)
+  venue_image.class.class_eval { attr_accessor :original_filename, :content_type }
+  venue_image.original_filename = 'image.jpg'
+  venue_image.content_type = image_resp.content_type
 
   pic = Picture.new(
-    # image: venue_image,
-    # imageable_id: venue.id
-    image: image,
+    # image: image,
+    image: venue_image,
     imageable: venue
   )
   
