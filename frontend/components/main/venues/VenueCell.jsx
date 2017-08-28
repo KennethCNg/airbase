@@ -5,11 +5,17 @@ const VenueCell = ({ id, venue, pictureUrl }) => {
   if (venue) {
     return (
       <div className='venue-cell'>
-        <span>${ venue.price }</span>
-        <span>{ venue.name }</span>
-        <span>{ venue.beds }</span>
-        <span>{ capitalize(venue.room_type) }</span>
         <img src={ pictureUrl } />
+        <div>
+          <span>From ${ venue.price }</span>
+          <span> · </span>
+          <span>{ venue.name }</span>
+        </div>
+        <div>
+          <span>{ capitalize(venue.room_type) }</span>
+          <span> · </span>
+          <span>{ venue.beds } beds</span>
+        </div>
       </div>
     );
   }
