@@ -12,5 +12,8 @@
 !/log/.keep
 /tmp
 
+# Ignore paperclip files
+public/system/pictures/*
+
 # Ignore application configuration
 /config/application.yml
