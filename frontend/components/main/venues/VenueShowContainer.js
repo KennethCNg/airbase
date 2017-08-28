@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
-import Venues from './Venues';
-import { fetchVenues } from '../../../actions/venuesActions';
+import VenueShow from './VenueShow';
+import { fetchVenue } from '../../../actions/venuesActions';
 import { selectVenues, selectVenueCoordinates, selectVenuePictureUrls }
   from '../../../selectors/venuesSelectors';
 
@@ -14,8 +14,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchVenues: id => { dispatch(fetchVenues(id)); }
+    fetchVenue: (id) => { dispatch(fetchVenue(id)); }
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Venues);
+export default connect(mapStateToProps, mapDispatchToProps)(VenueShow);

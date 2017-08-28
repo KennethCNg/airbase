@@ -76,7 +76,6 @@ places.each do |place|
   venue_image.content_type = image_resp.content_type
 
   pic = Picture.new(
-    # image: image,
     image: venue_image,
     imageable: venue
   )

@@ -9,7 +9,7 @@ class VenueList extends React.Component {
       venueIds.map( (id, idx) => { 
         return <VenueCell 
           key={ idx }
-          id={ id }
+          venueId={ id }
           venue={ venues[id] }
           pictureUrl={ this.props.venuePictureUrls[idx] }
         />;

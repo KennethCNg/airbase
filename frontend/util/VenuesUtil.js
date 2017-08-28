@@ -7,3 +7,10 @@ export const fetchVenues = () => {
   });
 };
 
+export const fetchVenue = (id) => {
+  return axios({
+    method: 'GET',
+    url: `/api/venues/${id}`,
+  });
+};
+
