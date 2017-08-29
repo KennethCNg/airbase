@@ -35,7 +35,6 @@ Venue.destroy_all
 places = SeedHelper::fetch_places
 places.each do |place|
   details = SeedHelper::fetch_place_details(place["place_id"])
-  
   addr_comps = details['address_components']
   street = "#{addr_comps[0]["long_name"]} #{addr_comps[1]["long_name"]}"
   check_in = Time.zone.now + (r.rand(5) + 1).days
@@ -54,33 +53,28 @@ places.each do |place|
     street: street,
     city: "#{addr_comps[2]["long_name"]}",
     state: "#{addr_comps[3]["long_name"]}",
+    country: "#{addr_comps[6]["long_name"]}",
     postal_code: "#{addr_comps[7]["long_name"]}",
     check_in: check_in,
     check_out: check_out,
     price: r.rand(1000) + 1
-
   )
   venue.save!
   
   # Attach image from google webservice to venue via paperclip.
   photo_ref = details['photos'][0]['photo_reference']
   image_resp = SeedHelper::fetch_place_photo(photo_ref)
-  
   # test with local image
   # image = File.open(File.join(Rails.root,'app/assets/images/venues/building.jpg'))
-  
-  # fetch images from google maps
+  # create image from stream
   venue_image = StringIO.new(image_resp.body)
   venue_image.class.class_eval { attr_accessor :original_filename, :content_type }
   venue_image.original_filename = 'image.jpg'
   venue_image.content_type = image_resp.content_type
-
   pic = Picture.new(
     image: venue_image,
     imageable: venue
   )
-  
   pic.save!
-  
 end
 
