@@ -33,6 +33,8 @@ demoUser.save!
 Venue.destroy_all
 
 places = SeedHelper::fetch_places
+puts "Fetched places"
+
 places.each do |place|
   details = SeedHelper::fetch_place_details(place["place_id"])
   addr_comps = details['address_components']
@@ -58,9 +60,9 @@ places.each do |place|
     minimum_stay: r.rand(2),
     check_in: check_in,
     check_out: check_out,
-    description_about: Faker::Lorem.paragraph(r.rand(3) + 2, true),
-    description_space: Faker::Lorem.paragraphs(r.rand(2) + 1, true),
-    description_guest_access: Faker::Lorem.paragraph(r.rand(2) + 1, true),
+    description_about: Faker::Lorem.paragraph(r.rand(3) + 4, true),
+    description_space: Faker::Lorem.paragraphs(r.rand(2) + 4, true).join,
+    description_guest_access: Faker::Lorem.paragraphs(r.rand(2) + 1, true).join,
     description_guest_interaction: Faker::Lorem.paragraph(r.rand(2) + 1, true),
     description_other_notes: Faker::Lorem.paragraph(r.rand(2) + 1, true),
     price: r.rand(300) + 200,
@@ -90,6 +92,6 @@ places.each do |place|
     imageable: venue
   )
   pic.save!
-  puts "Seeding completed"
 end
+puts "Seeding completed"
 

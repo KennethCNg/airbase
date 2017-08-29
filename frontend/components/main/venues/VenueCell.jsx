@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const VenueCell = ({ venueId, venue, pictureUrl }) => {
   const style = { 
-    'background-image': `url(${ pictureUrl })`,
+    'backgroundImage': `url(${ pictureUrl })`,
   };
   if (venue) {
     return (
