@@ -19,7 +19,7 @@ const GMapStyles = [
         "visibility": "on"
       },
       {
-        "color": "#C6E2FF"
+        "color": "#A4DDF5"
       }
     ]
   },
