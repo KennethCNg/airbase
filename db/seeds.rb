@@ -47,19 +47,33 @@ places.each do |place|
     beds: r.rand(6) + 1,
     property_type: Venue::PROPERTY_TYPES.sample,
     room_type: Venue::ROOM_TYPES.sample,
-    lat: place["geometry"]["location"]["lat"],
-    lng: place["geometry"]["location"]["lng"],
     name: place["name"],
     street: street,
     city: "#{addr_comps[2]["long_name"]}",
     state: "#{addr_comps[3]["long_name"]}",
     country: "#{addr_comps[6]["long_name"]}",
     postal_code: "#{addr_comps[7]["long_name"]}",
+    lat: place["geometry"]["location"]["lat"],
+    lng: place["geometry"]["location"]["lng"],
+    minimum_stay: r.rand(2),
     check_in: check_in,
     check_out: check_out,
-    price: r.rand(1000) + 1
+    description_about: Faker::Lorem.paragraph(r.rand(3) + 2, true),
+    description_space: Faker::Lorem.paragraphs(r.rand(2) + 1, true),
+    description_guest_access: Faker::Lorem.paragraph(r.rand(2) + 1, true),
+    description_guest_interaction: Faker::Lorem.paragraph(r.rand(2) + 1, true),
+    description_other_notes: Faker::Lorem.paragraph(r.rand(2) + 1, true),
+    price: r.rand(300) + 200,
+    cleaning_fee: r.rand(20) + 20,
+    security_deposit: r.rand(100) + 100,
+    weekend_price: r.rand(20) + 20,
+    weekly_discount: r.rand(20) + 20,
+    monthly_discount: r.rand(20) + 20,
+    extra_person_cost: r.rand(20) + 20,
+    extra_person_threshold: r.rand(4) + 4
   )
   venue.save!
+  puts "Created venue #{venue.id}"
   
   # Attach image from google webservice to venue via paperclip.
   photo_ref = details['photos'][0]['photo_reference']
@@ -76,5 +90,6 @@ places.each do |place|
     imageable: venue
   )
   pic.save!
+  puts "Seeding completed"
 end
 
