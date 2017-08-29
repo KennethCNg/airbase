@@ -1,12 +1,13 @@
 import { connect } from 'react-redux';
 import VenueShow from './VenueShow';
 import { fetchVenue } from '../../../actions/venuesActions';
-import { selectVenues, selectVenueCoordinates, selectVenuePictureUrls }
+import { selectVenue, selectVenueCoordinates, selectVenuePictureUrls }
   from '../../../selectors/venuesSelectors';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
+  const id = ownProps.match.params.id;
   return {
-    venues: selectVenues(state),
+    venue: selectVenue(state, id),
     venueCoords: selectVenueCoordinates(state),
     venuePictureUrls: selectVenuePictureUrls(state),
   };

@@ -1,5 +1,7 @@
 import React from 'react';
 import { propContains } from '../../../helpers/helpers';
+import VenueShowSecNav from './VenueShowSecNav';
+import VenueDescription from './VenueDescription';
 
 class VenueShow extends React.Component {
   
@@ -9,17 +11,25 @@ class VenueShow extends React.Component {
   }
   
   componentDidMount() {
-    if (!propContains(this.props.venues, this.id)) {
+    if (!this.props.venue) {
       this.props.fetchVenue(this.id);
     }
   }
   
   render() {
-    return (
-      <div>
-        <h1>This is venue show</h1>
-      </div>
-    );
+    if (this.props.venue) {
+      return (
+        <div id='venue-show'>
+          <VenueShowSecNav />
+          <VenueDescription venue={ this.props.venue } />
+          {/* Bookings */}
+        </div>
+      );
+    } else {
+      return (
+        <div id='venue-show'></div>
+      );
+    }
   }
   
 }

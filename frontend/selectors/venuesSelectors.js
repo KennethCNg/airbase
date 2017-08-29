@@ -2,6 +2,13 @@ export const selectVenues = state => {
   return state.entities.venues;
 };
 
+export const selectVenue = (state, id) => {
+  const venues = selectVenues(state);
+  if (venues) {
+    return state.entities.venues[id];
+  }
+};
+
 export const selectVenuesAsArray = state => {
   const venues = selectVenues(state);
   if (venues) {
