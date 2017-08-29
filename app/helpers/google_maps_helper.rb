@@ -41,7 +41,7 @@ module GoogleMapsHelper
       query: {
         key: API_KEY,
         photo_reference: photo_reference,
-        maxheight: 800
+        maxheight: 1600
       }
     }
     resp = HTTParty.get(GOOGLE_PLACE_PHOTOS_BASE_URI, options)
