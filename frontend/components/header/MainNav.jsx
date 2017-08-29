@@ -8,7 +8,6 @@ const MainNav = () => {
     <div>
       <div id='main-nav'>
         <img id='abnb-logo' src={ window.staticImages.abnb } />
-        {/* <S */}
         <MainNavMenu />
       </div>
       <SubNav />
