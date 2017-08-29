@@ -1,4 +1,13 @@
 class Venue < ApplicationRecord
+  include PgSearch
+  pg_search_scope :search_by_address, against: [
+    :name, 
+    :street,
+    :city,
+    :state,
+    :country,
+    :postal_code
+  ]
   
   APARTMENT = 'apartment'.freeze
   CONDOMINIUM = 'condominium'.freeze

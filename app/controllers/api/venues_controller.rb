@@ -10,7 +10,12 @@ class Api::VenuesController < ApplicationController
   end
   
   def index
-    @venues = Venue.all.includes(:pictures)
+    query = present_params.values.join(' ')
+    if !query.empty?
+      @venues = Venue.search_by_address(query).includes(:pictures)
+    else
+      @venues = Venue.all.includes(:pictures)
+    end
     render :index
   end
   
@@ -55,6 +60,20 @@ class Api::VenuesController < ApplicationController
       :description_guest_access,
       :description_guest_interaction,
       :description_other_notes
+    )
+  end
+  
+  def venue_search_params
+    params.require(:venue).permit(
+      :name,
+      :street,
+      :city,
+      :state,
+      :postal_code,
+      :lat,
+      :lon,
+      :room_type,
+      :price
     )
   end
   

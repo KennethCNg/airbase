@@ -24,5 +24,9 @@ class ApplicationController < ActionController::Base
   def user_params
     params.require(:user).permit(:email, :password, :firstname, :lastname)
   end
+  
+  def present_params
+    params.reject{ |k, v| v.blank? || ["controller", "action", "format"].include?(k) }
+  end
 
 end
