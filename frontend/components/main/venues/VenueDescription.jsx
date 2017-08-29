@@ -1,6 +1,8 @@
 import React from 'react';
 
 const VenueDescription = ({ venue }) => {
+  
+  // pseudo selector before with the code as content
   const style = { 
     'backgroundImage': `url(${ venue.picture_url })`,
   };
@@ -19,11 +21,22 @@ const VenueDescription = ({ venue }) => {
           </div>
         </div>
         <div className='ven-desc-sec ven-desc-summary-icons'>
-          <i className="icon icon-entire-place icon-size" aria-hidden="true"></i>
-          <span>{ venue.room_type }</span>
-          <span>{ venue.accommodates }</span>
-          <span>{ venue.beds }</span>
-          <span>{ venue.bedrooms }</span>
+          <div className='ven-desc-icon-group'>
+            <i className="icon icon-entire-place icon-size" aria-hidden="true"></i>
+            <span>{ venue.room_type }</span>
+          </div>
+          <div className='ven-desc-icon-group'>
+            <i className="icon icon-group icon-size" aria-hidden="true"></i>
+            <span>{ venue.accommodates } guests</span>
+          </div>
+          <div className='ven-desc-icon-group'>
+            <i className="icon icon-double-bed icon-size" aria-hidden="true"></i>
+            <span>{ venue.bedrooms } bedrooms</span>
+          </div>
+          <div className='ven-desc-icon-group'>
+            <i className="icon icon-rooms icon-size" aria-hidden="true"></i>
+            <span>{ venue.beds } beds</span>
+          </div>
         </div>
         <div className='ven-desc-sec ven-desc-about'>
           <div className='ven-desc-about-main-header'>About this listing</div>

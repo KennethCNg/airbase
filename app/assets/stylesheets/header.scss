@@ -1,7 +1,7 @@
 #abnb-logo {
   height: 34px;
   width: 34px;
-  padding: 0 24px;
+  padding-left: 24px;
 }
 
 #header {
@@ -27,6 +27,10 @@
 
 #main-nav-menu button {
   padding: 0 18px;
+}
+
+#main-nav-left-group {
+  display: flex;
 }
 
 .subnav-link {

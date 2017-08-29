@@ -49,6 +49,25 @@
   float: left;
 }
 
+.ven-desc-summary-icons {
+  display: flex;
+  font-weight: 300;
+  justify-content: space-around;
+  color: #767676;
+}
+
+.ven-desc-summary-icons span {
+  font-size: 14px;
+  padding-bottom: 24px;
+}
+
+.ven-desc-icon-group {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+  text-align: center;
+}
+
 .ven-desc-body {
   margin: auto;
   max-width: 1080px;
@@ -81,4 +100,25 @@
 .ven-desc-about span {
   font-weight: 300;  
   font-size: 16px;
+}
+
+i.icon:before {
+  font-family: 'Airglyphs';  
+  font-size: 32px;
+}
+
+i.icon.icon-entire-place.icon-size:before {
+  content: '\f166';
+}
+
+i.icon.icon-group.icon-size:before {
+  content: '\f181';
+}
+
+i.icon.icon-rooms.icon-size:before {
+  content: '\f1cf';
+}
+
+i.icon.icon-double-bed.icon-size:before {
+  content: '\f160';
 }
