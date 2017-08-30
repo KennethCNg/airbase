@@ -34,7 +34,6 @@ class SearchAddress extends React.Component {
   }
   
   handleChange(e) {
-    console.log(e.target.value);
     this.setState({ street: e.target.value });
   }
   
