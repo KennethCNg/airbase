@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170829030337) do
+ActiveRecord::Schema.define(version: 20170830133609) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(version: 20170829030337) do
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_amenities_on_name"
     t.index ["type"], name: "index_amenities_on_type"
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.integer "venue_id", null: false
+    t.integer "user_id", null: false
+    t.datetime "check_in"
+    t.datetime "check_out"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+    t.index ["venue_id"], name: "index_bookings_on_venue_id"
   end
 
   create_table "pictures", force: :cascade do |t|
@@ -71,7 +82,6 @@ ActiveRecord::Schema.define(version: 20170829030337) do
     t.string "street", null: false
     t.string "city", null: false
     t.string "state", null: false
-    t.string "country", null: false
     t.string "postal_code", null: false
     t.float "lat", null: false
     t.float "lng", null: false
@@ -93,8 +103,9 @@ ActiveRecord::Schema.define(version: 20170829030337) do
     t.text "description_other_notes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "check_in", null: false
-    t.datetime "check_out", null: false
+    t.datetime "listing_start", null: false
+    t.datetime "listing_stop", null: false
+    t.string "country", null: false
     t.index ["accommodates"], name: "index_venues_on_accommodates"
     t.index ["bathrooms"], name: "index_venues_on_bathrooms"
     t.index ["bedrooms"], name: "index_venues_on_bedrooms"

@@ -40,8 +40,8 @@ column name     | data type | details
 id              | integer   | not null, primary key
 user_id         | integer   | not null, indexed, unique
 venue_id        | integer   | not null, indexed, unique
-start_time      | timestamp | not null
-end_time        | timestamp | not null
+check_in        | timestamp | not null
+check_out       | timestamp | not null
 
 ### reviews
 column name     | data type | details

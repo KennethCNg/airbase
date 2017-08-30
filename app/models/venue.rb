@@ -56,6 +56,7 @@ class Venue < ApplicationRecord
   has_many :venue_amenities
   has_many :amenities, through: :venue_amenities
   has_many :pictures, as: :imageable, dependent: :destroy
+  has_many :bookings
   
   # returns activerecord relation
   def self.search_by_params(params)

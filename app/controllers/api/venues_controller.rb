@@ -16,7 +16,7 @@ class Api::VenuesController < ApplicationController
       @venues = Venue.search_by_address(search_params).includes(:pictures)
       # @venues = Venue.search_by_params(search_params).includes(:pictures)
     end
-    render :index
+    # render :index
   end
   
   def show
@@ -44,8 +44,8 @@ class Api::VenuesController < ApplicationController
       :lon,
       :minimum_stay,
       :check_in_type,
-      :check_in,
-      :check_out,
+      :listing_start,
+      :listing_stop,
       :price,
       :extra_person_cost,
       :extra_person_threshold,
