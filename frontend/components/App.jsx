@@ -15,7 +15,7 @@ const App = () => {
       <Route path='/' component={LoginModalContainer} />
       <Route path='/' component={ Header } />
       <Route path='/' component={ Main } />
-      <Redirect to='/homes' />
+      <Route exact path='/' render={ () => <Redirect to='/homes' /> } />
     </div>
   );
 };

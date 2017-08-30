@@ -2,7 +2,6 @@ import React from 'react';
 import { propContains } from '../../../helpers/helpers';
 import VenueShowSecNav from './VenueShowSecNav';
 import VenueDescription from './VenueDescription';
-import VenueBooking from './VenueBooking';
 
 class VenueShow extends React.Component {
   
@@ -18,13 +17,17 @@ class VenueShow extends React.Component {
     }
   }
   
+  componentWillReceiveProps(nextProps) {
+    console.log('navigated to new page');
+    //TODO: need to fetch here if venue doesn't exist
+  }
+  
   render() {
     if (this.props.venue) {
       return (
         <div id='venue-show'>
           <VenueShowSecNav />
           <VenueDescription venue={ this.props.venue } />
-          <VenueBooking />
         </div>
       );
     } else {

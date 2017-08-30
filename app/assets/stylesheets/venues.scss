@@ -47,8 +47,6 @@
 .ven-desc-sec {
   margin-bottom: 32px;
   border-bottom: 1px solid rgb(219, 219, 219);
-  width: 60%;
-  float: left;
 }
 
 .ven-desc-summary-icons {
@@ -74,6 +72,15 @@
 .ven-desc-body {
   margin: auto;
   max-width: 1080px;
+  display: flex;
+}
+
+.ven-desc-body-left {
+  width: 60%;
+}
+
+.ven-desc-body-right {
+  width: 40%;
 }
 
 .ven-desc-title {
@@ -125,3 +132,9 @@ i.icon.icon-rooms.icon-size:before {
 i.icon.icon-double-bed.icon-size:before {
   content: '\f160';
 }
+
+#venue-booking {
+  background-color: rgb(187, 187, 187);
+}
+
+
