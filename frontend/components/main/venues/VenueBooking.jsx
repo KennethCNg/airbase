@@ -40,14 +40,23 @@ class VenueBooking extends React.Component {
   }
   
   render() {
-    return (
-      <div id='venue-booking'>
-        <form onSubmit={ this.handleSubmit }>
-          <input name='booking[check_in]' type='text' />
-          <input name='booking[check_out]' type='text' />
-        </form>
-      </div>
-    );
+    if (this.props.venue) {
+      return (
+        <div id='venue-booking'>
+          <div className='ven-book-price'>
+            { this.props.venue.price }
+          </div>
+          <form onSubmit={ this.handleSubmit }>
+            <input name='booking[check_in]' type='text' />
+            <input name='booking[check_out]' type='text' />
+          </form>
+        </div>
+      );
+    } else {
+      return (
+        <div id='venue-booking'></div>
+      );
+    }
   }
 }
 
