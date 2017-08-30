@@ -1,9 +1,10 @@
 import axios from 'axios';
+import { queryStringFrom } from '../helpers/helpers';
 
-export const fetchVenues = () => {
+export const fetchVenues = (params) => {
   return axios({
     method: 'GET',
-    url: '/api/venues',
+    url: `/api/venues?${queryStringFrom(params)}`,
   });
 };
 
