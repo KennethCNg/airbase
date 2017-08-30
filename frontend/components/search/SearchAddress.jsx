@@ -51,7 +51,7 @@ class SearchAddress extends React.Component {
             onChange={ this.handleChange }
             value={ this.state.street }
             type='text'
-            placeholder='Address'/>
+            placeholder='Search anywhere' />
         </form>
       </div>
     );
