@@ -1,7 +1,7 @@
 import { RECEIVE_VENUES, RECEIVE_VENUE } 
   from '../actions/venuesActions';
 
-const initState = null;
+const initState = {};
 
 const venuesReducer = (state = initState, action) => {
   switch (action.type) {

@@ -4,7 +4,6 @@ import { fetchVenue } from '../../../actions/venuesActions';
 import { fetchBookings } from '../../../actions/bookingsActions';
 import { selectVenue, selectVenueCoordinates, selectVenuePictureUrls }
   from '../../../selectors/venuesSelectors';
-import { selectBookings } from '../../../selectors/bookingsSelectors';
 
 const mapStateToProps = (state, ownProps) => {
   const id = ownProps.match.params.id;
@@ -12,7 +11,6 @@ const mapStateToProps = (state, ownProps) => {
     venue: selectVenue(state, id),
     venueCoords: selectVenueCoordinates(state),
     venuePictureUrls: selectVenuePictureUrls(state),
-    bookings: selectBookings(state),
   };
 };
 

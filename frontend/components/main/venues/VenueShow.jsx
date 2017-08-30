@@ -1,5 +1,4 @@
 import React from 'react';
-import { propContains } from '../../../helpers/helpers';
 import VenueShowSecNav from './VenueShowSecNav';
 import VenueDescription from './VenueDescription';
 

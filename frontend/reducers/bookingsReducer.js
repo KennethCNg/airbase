@@ -1,5 +1,5 @@
 import { RECEIVE_BOOKINGS } from '../actions/bookingsActions';
-const initState = null;
+const initState = {};
 
 const bookingsReducer = (state = initState, action) => {
   switch (action.type) {

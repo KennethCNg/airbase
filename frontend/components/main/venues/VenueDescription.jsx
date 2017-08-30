@@ -1,4 +1,5 @@
 import React from 'react';
+import VenueBooking from './VenueBooking';
 
 const VenueDescription = ({ venue }) => {
   
@@ -53,9 +54,10 @@ const VenueDescription = ({ venue }) => {
           </div>
           <div className='ven-desc-sec ven-desc-summary-table'>
           </div>
-          <div className=''></div>  
+          {/* <div className=''> TODO: reviews </div>   */}
         </div>
         <div className='ven-desc-body-right'>
+          <VenueBooking />
         </div>
       </div>
     </div>

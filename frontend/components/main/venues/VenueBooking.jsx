@@ -1,9 +1,21 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router';
+import { selectVenue } from '../../../selectors/venuesSelectors';
+import { selectBookings } from '../../../selectors/bookingsSelectors';
+import { fetchBookings } from '../../../actions/bookingsActions';
+
+const mapStateToProps = (state, ownProps) => {
+  const id = ownProps.match.params.id;
+  return {
+    venue: selectVenue(state, id),  
+    bookings: selectBookings(state),
+  };
+};
 
 const mapDispatchToProps = dispatch => {
   return {
-    
+    fetchBookings: id => { dispatch(fetchBookings(id)); },
   };
 };
 
@@ -15,7 +27,7 @@ class VenueBooking extends React.Component {
   }
   
   componentDidMount() {
-    
+    this.props.fetchBookings(this.props.venueId);
   }
   
   handleSubmit(e) {
@@ -39,4 +51,4 @@ class VenueBooking extends React.Component {
   }
 }
 
-export default connect(null, mapDispatchToProps)(VenueBooking);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(VenueBooking));
