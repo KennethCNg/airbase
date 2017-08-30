@@ -1,4 +1,13 @@
 class Venue < ApplicationRecord
+  include PgSearch
+  pg_search_scope :search_by_address, against: [
+    :name, 
+    :street,
+    :city,
+    :state,
+    :country,
+    :postal_code
+  ]
   
   APARTMENT = 'apartment'.freeze
   CONDOMINIUM = 'condominium'.freeze
@@ -48,4 +57,18 @@ class Venue < ApplicationRecord
   has_many :amenities, through: :venue_amenities
   has_many :pictures, as: :imageable, dependent: :destroy
   
+  # returns activerecord relation
+  def self.search_by_params(params)
+    query = self
+    query = query.where("name like ?", "%#{params[:name]}%") if params[:name]
+    query = query.where("street like ?", "%#{params[:street]}%") if params[:street]
+    query = query.where("city like ?", "%#{params[:city]}%") if params[:city]
+    query = query.where("state like ?", "%#{params[:state]}%") if params[:state]
+    query = query.where("country like ?", "%#{params[:country]}%") if params[:country]
+    query = query.where("postal_code = ?", "%#{params[:postal_code]}%") if params[:postal_code]
+    query = query.where("room_type = ?", "%#{params[:room_type]}%") if params[:room_type]
+    query = query.where("price <= ?", "%#{params[:price]}%") if params[:price]
+    return query
+  end
+    
 end

@@ -17,8 +17,8 @@ export const receiveVenue = (id, venue) => {
   };
 };
 
-export const fetchVenues = () => dispatch => {
-  return VenuesUtil.fetchVenues()
+export const fetchVenues = (params) => dispatch => {
+  return VenuesUtil.fetchVenues(params)
   .then(
     res => {
       dispatch(receiveVenues(res.data));

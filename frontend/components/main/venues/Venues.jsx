@@ -23,7 +23,7 @@ class Venues extends React.Component {
           venuePictureUrls ={ this.props.venuePictureUrls }
         />
         <GMap 
-          venueCoords={ this.props.venueCoords }
+          // venueCoords={ this.props.venueCoords }
         />
       </div>
     );
