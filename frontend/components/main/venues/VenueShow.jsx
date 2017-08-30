@@ -2,6 +2,7 @@ import React from 'react';
 import { propContains } from '../../../helpers/helpers';
 import VenueShowSecNav from './VenueShowSecNav';
 import VenueDescription from './VenueDescription';
+import VenueBooking from './VenueBooking';
 
 class VenueShow extends React.Component {
   
@@ -13,6 +14,7 @@ class VenueShow extends React.Component {
   componentDidMount() {
     if (!this.props.venue) {
       this.props.fetchVenue(this.id);
+      this.props.fetchBookings(this.id);
     }
   }
   
@@ -22,7 +24,7 @@ class VenueShow extends React.Component {
         <div id='venue-show'>
           <VenueShowSecNav />
           <VenueDescription venue={ this.props.venue } />
-          {/* Bookings */}
+          <VenueBooking />
         </div>
       );
     } else {

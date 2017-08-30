@@ -26,7 +26,7 @@ class GMapController {
   }
   
   resizeBounds(positions) {
-    // debugger;
+    
   }
   
   posArrayToLatLngs(positions) {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import { AuthRoute, ProtectedRoute } from '../util/RouteUtil';
 import SignupModalContainer from './modals/SignupModalContainer';
 import LoginModalContainer from './modals/LoginModalContainer';
@@ -15,6 +15,7 @@ const App = () => {
       <Route path='/' component={LoginModalContainer} />
       <Route path='/' component={ Header } />
       <Route path='/' component={ Main } />
+      <Redirect to='/homes' />
     </div>
   );
 };
