@@ -16,7 +16,7 @@ class Api::VenuesController < ApplicationController
       @venues = Venue.search_by_address(search_params).includes(:pictures)
       # @venues = Venue.search_by_params(search_params).includes(:pictures)
     end
-    # render :index
+    render :index
   end
   
   def show

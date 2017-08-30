@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     resources :users, only: [:create]
     
-    get 'venues/:id/bookings', to: 'bookings#index'
+    get 'venues/:venue_id/bookings', to: 'bookings#index'
     resources :venues, only: [:create, :index, :show]
     
     resources :bookings, only: [:create]

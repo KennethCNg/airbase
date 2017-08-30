@@ -2,6 +2,8 @@ class Api::BookingsController < ApplicationController
   
   def index
     # for searching bookings by venue only.
+    @bookings = Booking.where(venue_id: params[:venue_id])
+    render :index
   end
   
   def create
