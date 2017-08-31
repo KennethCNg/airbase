@@ -41,10 +41,8 @@ cities.each do |city|
   places.each do |place|
     details = SeedHelper::fetch_place_details(place["place_id"])
     addr_comps = details['address_components']
-    street = "#{addr_comps[0]["long_name"]} #{addr_comps[1]["long_name"]}"
-    state = "#{addr_comps[3]["long_name"]}" if addr_comps[3]
-    country = "#{addr_comps[6]["long_name"]}" if addr_comps[6]
-    postal_code = "#{addr_comps[7]["long_name"]}" if addr_comps[7]
+    parsed_addr_comps = SeedHelper::parse_addr_comps(city, addr_comps)
+    next if parsed_addr_comps.nil?
     listing_start = Time.zone.now + (r.rand(5) + 1).days
     listing_stop = listing_start + 3.months + (r.rand(10) + 1).days
     venue = Venue.new(
@@ -56,11 +54,11 @@ cities.each do |city|
       property_type: Venue::PROPERTY_TYPES.sample,
       room_type: Venue::ROOM_TYPES.sample,
       name: place["name"],
-      street: street,
-      city: "#{addr_comps[2]["long_name"]}",
-      state: state,
-      country: country,
-      postal_code: postal_code,
+      street: parsed_addr_comps[0],
+      city: parsed_addr_comps[1],
+      state: parsed_addr_comps[2],
+      country: parsed_addr_comps[3],
+      postal_code: parsed_addr_comps[4],
       lat: place["geometry"]["location"]["lat"],
       lng: place["geometry"]["location"]["lng"],
       minimum_stay: r.rand(2),
@@ -104,7 +102,7 @@ cities.each do |city|
         pic.save!
       end
     end
-    puts "Pictures for #{venue.id} saved to AWS"
+    puts "Pictures for venue #{venue.id} saved to AWS"
   end
   
 end

@@ -11,9 +11,9 @@ class Api::VenuesController < ApplicationController
   
   def index
     if search_params.empty?
-      @venues = Venue.all.includes(:pictures)
+      @venues = Venue.all.includes(:pictures).limit(24)
     else
-      @venues = Venue.search_by_address(search_params).includes(:pictures)
+      @venues = Venue.search_by_address(search_params).limit(24).includes(:pictures)
       # @venues = Venue.search_by_params(search_params).includes(:pictures)
     end
     render :index
@@ -65,6 +65,7 @@ class Api::VenuesController < ApplicationController
   
   def search_params
     params.permit(
+      :address,
       :name,
       :street,
       :city,

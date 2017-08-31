@@ -71,5 +71,9 @@ class Venue < ApplicationRecord
     query = query.where("price <= ?", "%#{params[:price]}%") if params[:price]
     return query
   end
+  
+  def self.search_by_availability(params)
+    
+  end
     
 end

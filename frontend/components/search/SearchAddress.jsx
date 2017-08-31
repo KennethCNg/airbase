@@ -44,13 +44,12 @@ class SearchAddress extends React.Component {
     
   }
   
-  handleChange(e) {
-    this.setState({ street: e.target.value });
-  }
-  
   handleSubmit(e) {
     e.preventDefault();
-    this.props.fetchVenues(this.state);
+    // this.props.fetchVenues(this.state);
+    this.props.fetchVenues({
+      street: this.state.address,
+    });
   }
   
   render() {
@@ -73,6 +72,7 @@ class SearchAddress extends React.Component {
               // onChange={ this.handleDateChange('checkOut') }
               placeholder='mm/dd/yyyy'
             />
+            <button display='none' type='submit'></button>
           </div>
         </form>
       </div>
