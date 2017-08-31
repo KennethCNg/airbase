@@ -1,5 +1,7 @@
 export const TOGGLE_LOGIN = 'TOGGLE_LOGIN';
 export const TOGGLE_SIGNUP = 'TOGGLE_SIGNUP';
+export const TOGGLE_SELECT_GUESTS = 'TOGGLE_SELECT_GUESTS';
+export const CLOSE_SELECT_GUESTS = 'CLOSE_SELECT_GUESTS';
 
 export const toggleLoginModal = () => {
   return {
@@ -10,5 +12,17 @@ export const toggleLoginModal = () => {
 export const toggleSignupModal = () => {
   return {
     type: TOGGLE_SIGNUP
+  };
+};
+
+export const toggleSelectGuests = () => {
+  return {
+    type: TOGGLE_SELECT_GUESTS  
+  };
+};
+
+export const closeSelectGuests = () => {
+  return {
+    type: CLOSE_SELECT_GUESTS  
   };
 };

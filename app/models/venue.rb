@@ -48,8 +48,8 @@ class Venue < ApplicationRecord
   validates :state, presence: true
   validates :country, presence: true
   validates :postal_code, presence: true
-  validates :check_in, presence: true
-  validates :check_out, presence: true
+  validates :listing_start, presence: true
+  validates :listing_stop, presence: true
   validates :price, presence: true
   
   belongs_to :host, class_name: 'User'

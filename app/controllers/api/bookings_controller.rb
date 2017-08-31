@@ -7,7 +7,10 @@ class Api::BookingsController < ApplicationController
   end
   
   def create
-    @booking = Booking.new(booking_params)
+    params = booking_params.dup
+    params[:check_in] = Time.strptime(booking_params[:check_in], "%m/%d/%Y") if booking_params[:check_in]
+    params[:check_out] = Time.strptime(booking_params[:check_out], "%m/%d/%Y") if booking_params[:check_out]
+    @booking = Booking.new(params)
     if @booking.save
       render :show
     else

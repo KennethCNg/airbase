@@ -6,13 +6,11 @@ import LoginModalContainer from './modals/LoginModalContainer';
 import Main from './Main';
 import Header from './Header';
 
-import { logout } from '../util/SessionApiUtil';
-
 const App = () => {
   return (
     <div id='app'>
-      <Route path='/' component={SignupModalContainer} />
-      <Route path='/' component={LoginModalContainer} />
+      <Route path='/' component={ SignupModalContainer } />
+      <Route path='/' component={ LoginModalContainer } />
       <Route path='/' component={ Header } />
       <Route path='/' component={ Main } />
       <Route exact path='/' render={ () => <Redirect to='/homes' /> } />
