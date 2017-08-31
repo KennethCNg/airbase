@@ -26,7 +26,7 @@ class Booking < ApplicationRecord
   end
   
   def booking_duration_valid
-    errors.add(:check_in, 'booking must be at least 1 day') unless self.check_in < (self.check_out - 1.day)
+    errors.add(:check_in, 'booking must be at least 1 day') unless self.check_out - self.check_in >= 1.day
   end
   
   
