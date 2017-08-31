@@ -2,9 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { selectVenue } from '../../../selectors/venuesSelectors';
-import { selectBookings } from '../../../selectors/bookingsSelectors';
+import { selectBookings, selectBookingsErrors } from '../../../selectors/bookingsSelectors';
 import { selectGuestsDisplayed } from '../../../selectors/uiSelectors';
-import { fetchBookings } from '../../../actions/bookingsActions';
+import { currentUser } from '../../../selectors/sessionSelectors';
+import { fetchBookings, postBooking } from '../../../actions/bookingsActions';
 import { toggleSelectGuests, closeSelectGuests } from '../../../actions/uiActions';
 import Dropdown from '../../modals/Dropdown';
 import * as _ from 'lodash';
@@ -15,12 +16,15 @@ const mapStateToProps = (state, ownProps) => {
     venue: selectVenue(state, id),  
     bookings: selectBookings(state),
     selectGuestsDisplayed: selectGuestsDisplayed(state),
+    errors: selectBookingsErrors(state),
+    currentUser: currentUser(state),
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     fetchBookings: id => { dispatch(fetchBookings(id)); },
+    postBooking: id => { dispatch(postBooking(id)); },
     toggleSelectGuests: () => { dispatch(toggleSelectGuests()); },
     closeSelectGuests: () => { dispatch(closeSelectGuests()); },
   };
@@ -32,6 +36,7 @@ class VenueBooking extends React.Component {
   
   constructor(props) {
     super(props);
+    this.id = this.props.match.params.id;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
     this.selectGuestsClickHandler = this.selectGuestsClickHandler.bind(this);
@@ -56,7 +61,13 @@ class VenueBooking extends React.Component {
   
   handleSubmit(e) {
     e.preventDefault();
-    console.log(this.state);
+    const params = {
+      check_in: this.state.checkIn,
+      check_out: this.state.checkOut,
+      user_id: this.props.currentUser.id,
+      venue_id: this.id,
+    };
+    this.props.postBooking(params);
   }
   
   selectGuestsClickHandler(e) {
@@ -119,7 +130,15 @@ class VenueBooking extends React.Component {
                   /> 
                 }
               </div>
-              {/* some errors block */}
+              { !!this.props.errors &&
+                <ul className='errors'>
+                  { 
+                    this.props.errors.map( (err, idx) => {
+                      return <li key={ idx }>{ err }</li>;
+                    })
+                  }
+                </ul>
+              }
               <div className='button-wrapper'>
                 <button className='button ven-book-book' type='submit'>Book</button>
               </div>

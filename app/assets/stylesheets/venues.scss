@@ -191,6 +191,11 @@ i.icon.icon-double-bed.icon-size:before {
   padding: 10px 16px;
 }
 
+.ven-book-date-group ::-webkit-input-placeholder {
+  font-weight: 300;
+  color: #c9c9c9;
+}
+
 .ven-book-check-in {
   border-radius: 4px 0 0 4px;
   border-left: 1px solid #dce0e0;

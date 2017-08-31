@@ -6,3 +6,13 @@ export const fetchBookings = venueId => {
     url: `/api/venues/${venueId}/bookings`,
   });
 };
+
+export const postBooking = bookingParams => {
+  return axios({
+    method: 'POST',
+    url: `/api/bookings`,
+    data: {
+      booking: bookingParams,
+    }
+  });
+};
