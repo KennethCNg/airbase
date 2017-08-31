@@ -27,14 +27,17 @@ class Dropdown extends React.Component {
   render() {
     const { domClass, opts, vals, handleClick } = this.props;
     return (
-      <div className={ domClass } >
-        { opts.map( (opt, idx) => {
-          return <div
-            key={ idx }
-            data-val={ vals[idx] } 
-            onClick={ handleClick }
-            >{ opt }</div>;
-        } ) }
+      <div className='dropdown-wrapper'>
+        <div className='dropdown'>
+          { opts.map( (opt, idx) => {
+            return <div
+              className='dropdown-option'
+              key={ idx }
+              data-val={ vals[idx] } 
+              onClick={ handleClick }
+              >{ opt }</div>;
+          } ) }
+        </div>
       </div>
     );
   }

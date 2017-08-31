@@ -4,6 +4,7 @@ import {
   TOGGLE_LOGIN,
   TOGGLE_SIGNUP,
   TOGGLE_SELECT_GUESTS,
+  CLOSE_SELECT_GUESTS,
 } from '../actions/uiActions';
 
 const initialState = {
@@ -20,6 +21,8 @@ const uiReducer = (state = initialState, action) => {
       return _.merge({}, state, { signup: !state.signup, login: false });
     case TOGGLE_SELECT_GUESTS:
       return _.merge({}, state, { selectGuests: !state.selectGuests });
+    case CLOSE_SELECT_GUESTS:
+      return _.merge({}, state, { selectGuests: false });
     default:
       return state;
   }

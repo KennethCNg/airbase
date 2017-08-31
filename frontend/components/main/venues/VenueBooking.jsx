@@ -5,7 +5,7 @@ import { selectVenue } from '../../../selectors/venuesSelectors';
 import { selectBookings } from '../../../selectors/bookingsSelectors';
 import { selectGuestsDisplayed } from '../../../selectors/uiSelectors';
 import { fetchBookings } from '../../../actions/bookingsActions';
-import { toggleSelectGuests } from '../../../actions/uiActions';
+import { toggleSelectGuests, closeSelectGuests } from '../../../actions/uiActions';
 import Dropdown from '../../modals/Dropdown';
 import * as _ from 'lodash';
 
@@ -22,17 +22,23 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchBookings: id => { dispatch(fetchBookings(id)); },
     toggleSelectGuests: () => { dispatch(toggleSelectGuests()); },
+    closeSelectGuests: () => { dispatch(closeSelectGuests()); },
   };
 };
+
+const WHITE_LISTED_CHARS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '/'];
 
 class VenueBooking extends React.Component {
   
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleDateChange = this.handleDateChange.bind(this);
     this.selectGuestsClickHandler = this.selectGuestsClickHandler.bind(this);
     this.state = {
       guestCount: '1',
+      checkIn: '',
+      checkOut: '',
     };
   }
   
@@ -40,13 +46,17 @@ class VenueBooking extends React.Component {
     this.props.fetchBookings(this.props.venueId);
   }
   
+  handleDateChange(field) {
+    return e => {
+      if (e.target.value.split('').every( char => WHITE_LISTED_CHARS.includes(char) )) {
+        this.setState(Object.assign({}, this.state, { [field]: e.target.value } ));
+      }
+    };
+  }
+  
   handleSubmit(e) {
     e.preventDefault();
-    // const user = _.merge({}, this.state);
-    // this.props.handleSubmit(user);
-    // if (this.props.loggedIn) {
-    //   this.setState(initialState);
-    // }
+    console.log(this.state);
   }
   
   selectGuestsClickHandler(e) {
@@ -71,11 +81,25 @@ class VenueBooking extends React.Component {
               <div className='ven-book-sec ven-book-date-wrapper'>
                 <div className='ven-book-date-group'>
                   <label>Check In</label>
-                  <input className='ven-book-check-in' name='booking[check_in]' type='text' />
+                  <input 
+                    className='ven-book-check-in' 
+                    name='booking[check_in]'
+                    type='text' 
+                    value={ this.state.checkIn }
+                    onChange={ this.handleDateChange('checkIn') }
+                    placeholder='mm/dd/yyyy'
+                  />
                 </div>
                 <div className='ven-book-date-group'>
                   <label>Check Out</label>
-                  <input className='ven-book-check-out' name='booking[check_out]' type='text' />
+                  <input 
+                    className='ven-book-check-out' 
+                    name='booking[check_out]' 
+                    type='text' 
+                    value={ this.state.checkOut }
+                    onChange={ this.handleDateChange('checkOut') }
+                    placeholder='mm/dd/yyyy'
+                  />
                 </div>
               </div>
               <div className='ven-book-sec ven-book-guests'>
@@ -92,10 +116,9 @@ class VenueBooking extends React.Component {
                     opts={ opts }
                     vals={ vals }
                     handleClick={ this.selectGuestsClickHandler }
-                    handleClickAway={ this.props.toggleSelectGuests }
+                    // handleClickAway={ this.props.closeSelectGuests }
                   /> 
                 }
-                {/* Modal select guests */}
               </div>
               {/* some errors block */}
               <div className='button-wrapper'>
