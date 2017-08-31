@@ -45,9 +45,9 @@ class Venue < ApplicationRecord
   validates :name, presence: true
   validates :street, presence: true
   validates :city, presence: true
-  validates :state, presence: true
-  validates :country, presence: true
-  validates :postal_code, presence: true
+  # validates :state, presence: true
+  # validates :country, presence: true
+  # validates :postal_code, presence: true
   validates :listing_start, presence: true
   validates :listing_stop, presence: true
   validates :price, presence: true

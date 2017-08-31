@@ -17,7 +17,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 const initialState = {
-  street: '',
+  address: '',
 };
 
 class SearchAddress extends React.Component {
@@ -25,11 +25,22 @@ class SearchAddress extends React.Component {
   constructor(props) {
     super(props);
     this.state = initialState;
-    this.handleChange = this.handleChange.bind(this);
+    this.handleAddressChange = this.handleAddressChange.bind(this);
+    this.handleDateChange = this.handleDateChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   
   componentDidMount() {
+    
+  }
+  
+  handleAddressChange(e) {
+    this.setState({
+      address: e.target.value,
+    });
+  }
+  
+  handleDateChange(e) {
     
   }
   
@@ -46,11 +57,23 @@ class SearchAddress extends React.Component {
     return (
       <div id='search-address'>
         <form onSubmit={ this.handleSubmit }>
-          <input 
-            onChange={ this.handleChange }
-            value={ this.state.street }
-            type='text'
-            placeholder='Search anywhere' />
+          <div className='ven-book-sec ven-book-date-wrapper'>
+            <input  
+              name='search_address'
+              type='text' 
+              value={ this.state.address }
+              onChange={ this.handleAddressChange }
+              placeholder='search anywhere'
+            />
+            <input 
+              className='ven-book-check-out' 
+              name='search_date'
+              type='text' 
+              // value={ this.state.checkOut }
+              // onChange={ this.handleDateChange('checkOut') }
+              placeholder='mm/dd/yyyy'
+            />
+          </div>
         </form>
       </div>
     );

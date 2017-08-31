@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170830133609) do
+ActiveRecord::Schema.define(version: 20170831184336) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,8 +81,8 @@ ActiveRecord::Schema.define(version: 20170830133609) do
     t.string "name", null: false
     t.string "street", null: false
     t.string "city", null: false
-    t.string "state", null: false
-    t.string "postal_code", null: false
+    t.string "state"
+    t.string "postal_code"
     t.float "lat", null: false
     t.float "lng", null: false
     t.integer "minimum_stay"
@@ -105,7 +105,7 @@ ActiveRecord::Schema.define(version: 20170830133609) do
     t.datetime "updated_at", null: false
     t.datetime "listing_start", null: false
     t.datetime "listing_stop", null: false
-    t.string "country", null: false
+    t.string "country"
     t.index ["accommodates"], name: "index_venues_on_accommodates"
     t.index ["bathrooms"], name: "index_venues_on_bathrooms"
     t.index ["bedrooms"], name: "index_venues_on_bedrooms"
