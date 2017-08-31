@@ -3,12 +3,13 @@ import * as _ from 'lodash';
 import {
   TOGGLE_LOGIN,
   TOGGLE_SIGNUP,
+  TOGGLE_SELECT_GUESTS,
 } from '../actions/uiActions';
 
 const initialState = {
   login: false,
   signup: false,
-  selectGuests: true,
+  selectGuests: false,
 };
 
 const uiReducer = (state = initialState, action) => {
@@ -17,6 +18,8 @@ const uiReducer = (state = initialState, action) => {
       return _.merge({}, state, { login: !state.login, signup: false });
     case TOGGLE_SIGNUP:
       return _.merge({}, state, { signup: !state.signup, login: false });
+    case TOGGLE_SELECT_GUESTS:
+      return _.merge({}, state, { selectGuests: !state.selectGuests });
     default:
       return state;
   }

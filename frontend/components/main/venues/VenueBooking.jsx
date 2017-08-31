@@ -5,6 +5,7 @@ import { selectVenue } from '../../../selectors/venuesSelectors';
 import { selectBookings } from '../../../selectors/bookingsSelectors';
 import { selectGuestsDisplayed } from '../../../selectors/uiSelectors';
 import { fetchBookings } from '../../../actions/bookingsActions';
+import { toggleSelectGuests } from '../../../actions/uiActions';
 import Dropdown from '../../modals/Dropdown';
 import * as _ from 'lodash';
 
@@ -20,6 +21,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchBookings: id => { dispatch(fetchBookings(id)); },
+    toggleSelectGuests: () => { dispatch(toggleSelectGuests()); },
   };
 };
 
@@ -48,14 +50,17 @@ class VenueBooking extends React.Component {
   }
   
   selectGuestsClickHandler(e) {
+    // console.log(e.target.getAttribute('data-val'));
     this.setState({
       guestCount: e.target.getAttribute('data-val'),
     });
+    this.props.toggleSelectGuests();
   }
   
   render() {
     if (this.props.venue) {
-      const opts = _.range(1, this.props.venue.accommodates + 1);
+      const vals = _.range(1, this.props.venue.accommodates + 1);
+      const opts = vals.map( val => `${val} guests`);
       return (
         <div id='venue-booking'>
           <div className='ven-book-price'>
@@ -77,12 +82,18 @@ class VenueBooking extends React.Component {
                 <label>Guests</label>
                 <div className='button-wrapper select-guests-wrapper'>
                   <button className='button ven-book-select-guests'
+                    onClick={ this.props.toggleSelectGuests }
                     >{ this.state.guestCount } guests
                     <img src={ window.staticImages.select_guest_arrow } />
                   </button>
                 </div>
                 { !!this.props.selectGuestsDisplayed &&
-                  <Dropdown domClass='select-guests-dropdown' opts={ opts } handleClick={ this.selectGuestsClickHandler } /> 
+                  <Dropdown domClass='select-guests-dropdown' 
+                    opts={ opts }
+                    vals={ vals }
+                    handleClick={ this.selectGuestsClickHandler }
+                    handleClickAway={ this.props.toggleSelectGuests }
+                  /> 
                 }
                 {/* Modal select guests */}
               </div>
