@@ -60,11 +60,10 @@ class VenueBooking extends React.Component {
   }
   
   selectGuestsClickHandler(e) {
-    // console.log(e.target.getAttribute('data-val'));
     this.setState({
       guestCount: e.target.getAttribute('data-val'),
     });
-    this.props.toggleSelectGuests();
+    this.props.closeSelectGuests();
   }
   
   render() {
@@ -105,7 +104,7 @@ class VenueBooking extends React.Component {
               <div className='ven-book-sec ven-book-guests'>
                 <label>Guests</label>
                 <div className='button-wrapper select-guests-wrapper'>
-                  <button className='button ven-book-select-guests'
+                  <button className='button ven-book-select-guests' type='button'
                     onClick={ this.props.toggleSelectGuests }
                     >{ this.state.guestCount } guests
                     <img src={ window.staticImages.select_guest_arrow } />
@@ -116,7 +115,7 @@ class VenueBooking extends React.Component {
                     opts={ opts }
                     vals={ vals }
                     handleClick={ this.selectGuestsClickHandler }
-                    // handleClickAway={ this.props.closeSelectGuests }
+                    handleClickAway={ this.props.closeSelectGuests }
                   /> 
                 }
               </div>
