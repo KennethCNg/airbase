@@ -44,7 +44,7 @@ class VenueBooking extends React.Component {
       return (
         <div id='venue-booking'>
           <div className='ven-book-price'>
-            <span className='ven-book-price-value'>${ this.props.venue.price }</span> per night
+            From <span className='ven-book-price-value'>${ this.props.venue.price }</span> per night
           </div>
           <form onSubmit={ this.handleSubmit }>
             <div className='ven-book-form-inner'>
