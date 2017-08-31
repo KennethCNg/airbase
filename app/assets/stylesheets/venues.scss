@@ -146,7 +146,7 @@ i.icon.icon-double-bed.icon-size:before {
   width: 100%;
   background-color: rgba(60,63,64,0.9);
   position: relative;
-  padding: 13px 20px 5px;
+  padding: 11px 20px 8px;
   box-sizing: border-box;
   color: #fff;
   font-size: 15px;
@@ -216,8 +216,26 @@ i.icon.icon-double-bed.icon-size:before {
 .ven-book-view-other-listings {
   background-color: #fff;
   margin: 0 3px;
-  margin-bottom: 5px;
   border: 1px solid #dce0e0;
+}
+
+.select-guests-wrapper {
+  margin-bottom: 40px;
+}
+
+.ven-book-select-guests {
+  font-weight: 300 !important;
+  border: 1px solid #dce0e0;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ven-book-select-guests img {
+  display: inline-block;
+  height: 14px;
+  width: 14px;
+  margin-top: 5px;
 }
 
 .ven-book-sec {

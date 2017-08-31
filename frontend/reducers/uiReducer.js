@@ -8,6 +8,7 @@ import {
 const initialState = {
   login: false,
   signup: false,
+  selectGuests: true,
 };
 
 const uiReducer = (state = initialState, action) => {

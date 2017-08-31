@@ -3,13 +3,17 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { selectVenue } from '../../../selectors/venuesSelectors';
 import { selectBookings } from '../../../selectors/bookingsSelectors';
+import { selectGuestsDisplayed } from '../../../selectors/uiSelectors';
 import { fetchBookings } from '../../../actions/bookingsActions';
+import Dropdown from '../../modals/Dropdown';
+import * as _ from 'lodash';
 
 const mapStateToProps = (state, ownProps) => {
   const id = ownProps.match.params.id;
   return {
     venue: selectVenue(state, id),  
     bookings: selectBookings(state),
+    selectGuestsDisplayed: selectGuestsDisplayed(state),
   };
 };
 
@@ -24,6 +28,10 @@ class VenueBooking extends React.Component {
   constructor(props) {
     super(props);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.selectGuestsClickHandler = this.selectGuestsClickHandler.bind(this);
+    this.state = {
+      guestCount: '1',
+    };
   }
   
   componentDidMount() {
@@ -39,8 +47,15 @@ class VenueBooking extends React.Component {
     // }
   }
   
+  selectGuestsClickHandler(e) {
+    this.setState({
+      guestCount: e.target.getAttribute('data-val'),
+    });
+  }
+  
   render() {
     if (this.props.venue) {
+      const opts = _.range(1, this.props.venue.accommodates + 1);
       return (
         <div id='venue-booking'>
           <div className='ven-book-price'>
@@ -60,18 +75,24 @@ class VenueBooking extends React.Component {
               </div>
               <div className='ven-book-sec ven-book-guests'>
                 <label>Guests</label>
-                <select name="select">
-                  {/* { generate options here } */}
-                </select>
+                <div className='button-wrapper select-guests-wrapper'>
+                  <button className='button ven-book-select-guests'
+                    >{ this.state.guestCount } guests
+                    <img src={ window.staticImages.select_guest_arrow } />
+                  </button>
+                </div>
+                { !!this.props.selectGuestsDisplayed &&
+                  <Dropdown domClass='select-guests-dropdown' opts={ opts } handleClick={ this.selectGuestsClickHandler } /> 
+                }
+                {/* Modal select guests */}
               </div>
               {/* some errors block */}
               <div className='button-wrapper'>
-                {/* modal-button submit-button */}
-                <button className='button ven-book-book'>Book</button>
+                <button className='button ven-book-book' type='submit'>Book</button>
               </div>
               <div className='button-wrapper'>
-                {/* modal-button submit-button */}
-                <button className='button ven-book-view-other-listings'>View Other Listings</button>
+                <button className='button ven-book-view-other-listings'
+                  >View Other Listings</button>
               </div>
             </div>
           </form>
