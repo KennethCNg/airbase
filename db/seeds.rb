@@ -82,8 +82,7 @@ cities.each do |city|
     )
     venue.save!
     puts "Created venue #{venue.id}"
-    
-    if details['photos']
+    if !details['photos'].nil?
       photo_ref = details['photos'][0]['photo_reference']
       images = [
         SeedHelper::fetch_place_photo(photo_ref, 1600),
