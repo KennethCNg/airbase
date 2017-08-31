@@ -103,7 +103,7 @@ class LoginModal extends React.Component {
                     <FA name='lock' size='2x' />
                   </div>
                 </div>
-                <div className='button-wrapper'>
+                <div className='button-wrapper modal-button-wrapper'>
                   <button className='modal-button submit-button' type="submit">{ this.props.buttonText }</button>
                 </div>
                 <div id='forgot-password'>

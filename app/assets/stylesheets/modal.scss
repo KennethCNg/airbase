@@ -74,13 +74,6 @@
   font-size: 1.2em;
 }
 
-.button-wrapper {
-  background-color: #FF5A5F;
-  border-radius: 4px;
-  display: flex;
-  margin-bottom: 16px;
-}
-
 .modal input {
   padding: 11px;
   width: 100%;
@@ -114,6 +107,11 @@
   padding: 12px 24px;
   font-weight: 700;
   text-align: center;
+  background-color: #FF5A5F;
+}
+
+.modal-button-wrapper {
+  width: inherit !important;
 }
 
 .submit-button {

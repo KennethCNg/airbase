@@ -44,11 +44,36 @@ class VenueBooking extends React.Component {
       return (
         <div id='venue-booking'>
           <div className='ven-book-price'>
-            { this.props.venue.price }
+            <span className='ven-book-price-value'>${ this.props.venue.price }</span> per night
           </div>
           <form onSubmit={ this.handleSubmit }>
-            <input name='booking[check_in]' type='text' />
-            <input name='booking[check_out]' type='text' />
+            <div className='ven-book-form-inner'>
+              <div className='ven-book-sec ven-book-date-wrapper'>
+                <div className='ven-book-date-group'>
+                  <label>Check In</label>
+                  <input className='ven-book-check-in' name='booking[check_in]' type='text' />
+                </div>
+                <div className='ven-book-date-group'>
+                  <label>Check Out</label>
+                  <input className='ven-book-check-out' name='booking[check_out]' type='text' />
+                </div>
+              </div>
+              <div className='ven-book-sec ven-book-guests'>
+                <label>Guests</label>
+                <select name="select">
+                  {/* { generate options here } */}
+                </select>
+              </div>
+              {/* some errors block */}
+              <div className='button-wrapper'>
+                {/* modal-button submit-button */}
+                <button className='button ven-book-book'>Book</button>
+              </div>
+              <div className='button-wrapper'>
+                {/* modal-button submit-button */}
+                <button className='button ven-book-view-other-listings'>View Other Listings</button>
+              </div>
+            </div>
           </form>
         </div>
       );

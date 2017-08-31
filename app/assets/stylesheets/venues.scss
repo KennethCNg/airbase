@@ -76,11 +76,13 @@
 }
 
 .ven-desc-body-left {
-  width: 80%;
+  width: 68%;
+  padding-right: 16px;
 }
 
 .ven-desc-body-right {
-  width: 40%;
+  width: 32%;
+  margin-right: 14px;
 }
 
 .ven-desc-title {
@@ -142,8 +144,72 @@ i.icon.icon-double-bed.icon-size:before {
   top: -50px;
   margin-bottom: -50px;
   width: 100%;
-  background: linear-gradient(45deg, #1f30fb, #4effab);
+  background-color: rgba(60,63,64,0.9);
   position: relative;
 }
 
+.ven-book-form-inner {
+  // display: flex;
+  flex-wrap: wrap;
+  background-color: #fff;
+  border: 1px solid #dce0e0;
+  padding: 0 16px;
+  padding-top: 16px;
+}
+
+.ven-book-form-inner label {
+  font-weight: 400;
+  font-size: 15px;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.ven-book-date-wrapper {
+  display: flex;
+}
+
+.ven-book-date-group {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.ven-book-date-group input {
+  border-top: 1px solid #dce0e0;
+  border-bottom: 1px solid #dce0e0;
+  padding: 10px 16px;
+}
+
+.ven-book-check-in {
+  border-radius: 4px 0 0 4px;
+  border-left: 1px solid #dce0e0;
+  border-right: 1px solid #dce0e0;
+  
+}
+
+.ven-book-check-out {
+  border-radius: 0 4px 4px 0;
+  border-right: 1px solid #dce0e0;
+}
+
+.ven-book-date-input-wrapper {
+  border: 1px solid #dce0e0;
+}
+
+.ven-book-book {
+  background-color: #FF5A5F;
+  color: #fff;
+  margin: 0 3px;
+}
+
+.ven-book-view-other-listings {
+  background-color: #fff;
+  margin: 0 3px;
+  margin-bottom: 5px;
+  border: 1px solid #dce0e0;
+}
+
+.ven-book-sec {
+  margin-bottom: 16px;
+}
 
