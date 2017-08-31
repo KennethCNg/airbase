@@ -29,6 +29,6 @@ export const selectVenueCoordinates = state => {
 export const selectVenuePictureUrls = state => {
   const venues = selectVenuesAsArray(state);
   if (venues) {
-    return venues.map( v => v.picture_url );
+    return venues.map( v => v.picture_url_small );
   }
 };

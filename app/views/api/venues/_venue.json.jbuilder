@@ -34,4 +34,5 @@ json.extract!( venue,
   :description_guest_interaction,
   :description_other_notes
 )
-json.picture_url venue.pictures.first.image.url unless venue.pictures.first.nil?
+json.picture_url_large venue.pictures.first.image.url unless venue.pictures.first.nil?
+json.picture_url_small venue.pictures.last.image.url unless venue.pictures.last.nil?
