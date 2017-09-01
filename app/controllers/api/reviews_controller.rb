@@ -1,7 +1,8 @@
 class Api::ReviewsController < ApplicationController
     
   def index
-    @review = Review.where(venue_id: params[:venue_id])
+    # debugger
+    @reviews = Review.where(venue_id: params[:venue_id])
     render :index
   end
   

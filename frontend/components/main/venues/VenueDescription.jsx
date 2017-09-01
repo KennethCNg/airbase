@@ -1,5 +1,7 @@
 import React from 'react';
 import VenueBooking from './VenueBooking';
+import VenueReviews from './VenueReviews';
+
 import { parseDate } from '../../../helpers/helpers';
 
 const VenueDescription = ({ venue }) => {
@@ -10,7 +12,6 @@ const VenueDescription = ({ venue }) => {
   };
   const listingStart = parseDate(venue.listing_start);
   const listingStop = parseDate(venue.listing_stop);
-  
   return (
     <div id='venue-description'>
       <div className='ven-desc-landing-img' 
@@ -55,8 +56,8 @@ const VenueDescription = ({ venue }) => {
             <div className='ven-desc-about-header'>Other things to note</div>
             <span>{ venue.description_other_notes }</span>
           </div>
-          <div className='ven-desc-sec ven-desc-summary-table'>
-          </div>
+          {/* <div className='ven-desc-sec ven-desc-summary-table'>
+          </div> */}
           <VenueReviews />
         </div>
         <div className='ven-desc-body-right'>

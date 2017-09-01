@@ -52,7 +52,7 @@ class VenueBooking extends React.Component {
   }
   
   componentDidMount() {
-    this.props.fetchBookings(this.props.venueId);
+    this.props.fetchBookings(this.props.match.params.id);
   }
   
   handleDateChange(field) {
@@ -140,7 +140,7 @@ class VenueBooking extends React.Component {
                   /> 
                 }
               </div>
-              { !!this.props.errors &&
+              { !!this.props.errors && this.props.errors.length > 0 &&
                 <ul className='errors'>
                   { 
                     this.props.errors.map( (err, idx) => {
@@ -166,7 +166,6 @@ class VenueBooking extends React.Component {
               <div>Your bookings</div>
               {
                 this.props.currentUserBookings.filter( b => b.venue_id.toString() === this.id ).map( booking => { 
-                  // debugger
                     return (
                       <div className='ven-book-bookings-book'>
                         { parseDate(booking.check_in) } - { parseDate(booking.check_out) } 

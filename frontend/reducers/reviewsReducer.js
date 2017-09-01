@@ -1,15 +1,15 @@
-import { RECEIVE_BOOKINGS, RECEIVE_BOOKINGS_ERRORS } from '../actions/bookingsActions';
+import { RECEIVE_REVIEWS, RECEIVE_REVIEWS_ERRORS } from '../actions/reviewsActions';
 const initState = {};
 
-const bookingsReducer = (state = initState, action) => {
+const reviewsReducer = (state = initState, action) => {
   switch (action.type) {
-    case RECEIVE_BOOKINGS:
-      return action.bookings;
-    case RECEIVE_BOOKINGS_ERRORS:
+    case RECEIVE_REVIEWS:
+      return action.reviews;
+    case RECEIVE_REVIEWS_ERRORS:
       return Object.assign({}, state, { errors: action.errors });
     default:
       return state;
   }
 };
 
-export default bookingsReducer;
+export default reviewsReducer;
