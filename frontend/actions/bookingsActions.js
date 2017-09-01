@@ -1,7 +1,7 @@
 import * as BookingsUtil from '../util/BookingsUtil';
 
 export const RECEIVE_BOOKINGS = 'RECEIVE_BOOKINGS';
-export const RECEIVE_ERRORS = 'RECEIVE_ERRORS';
+export const RECEIVE_BOOKINGS_ERRORS = 'RECEIVE_BOOKINGS_ERRORS';
 
 export const receiveBookings = bookings => {
   return {
@@ -12,7 +12,7 @@ export const receiveBookings = bookings => {
 
 export const receiveErrors = errors => {
   return {
-      type: RECEIVE_ERRORS,
+      type: RECEIVE_BOOKINGS_ERRORS,
       errors
   };
 };

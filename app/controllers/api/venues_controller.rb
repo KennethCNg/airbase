@@ -15,7 +15,6 @@ class Api::VenuesController < ApplicationController
     else 
       @venues = search_params[:street].present? ? Venue.search_by_address(search_params[:street]) : Venue.all
       if search_params[:check_in].present? && search_params[:check_out].present?
-        debugger
         @venues = @venues.reject do |venue|
           b = Booking.new(
             venue_id: venue.id,

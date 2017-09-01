@@ -6,7 +6,7 @@ import { selectVenue } from '../../../selectors/venuesSelectors';
 import { selectBookings, selectBookingsErrors } from '../../../selectors/bookingsSelectors';
 import { selectGuestsDisplayed } from '../../../selectors/uiSelectors';
 import { currentUser } from '../../../selectors/sessionSelectors';
-import { fetchBookings, postBooking } from '../../../actions/bookingsActions';
+import { fetchBookings, postBooking, receiveErrors } from '../../../actions/bookingsActions';
 import { toggleSelectGuests, closeSelectGuests } from '../../../actions/uiActions';
 import Dropdown from '../../modals/Dropdown';
 import * as _ from 'lodash';
@@ -28,6 +28,7 @@ const mapDispatchToProps = dispatch => {
     postBooking: id => { dispatch(postBooking(id)); },
     toggleSelectGuests: () => { dispatch(toggleSelectGuests()); },
     closeSelectGuests: () => { dispatch(closeSelectGuests()); },
+    throwErrors: errors => { dispatch(receiveErrors(errors)); },
   };
 };
 
@@ -62,13 +63,19 @@ class VenueBooking extends React.Component {
   
   handleSubmit(e) {
     e.preventDefault();
-    const params = {
-      check_in: this.state.checkIn,
-      check_out: this.state.checkOut,
-      user_id: this.props.currentUser.id,
-      venue_id: this.id,
-    };
-    this.props.postBooking(params);
+    if (this.props.currentUser === null) {
+      this.props.throwErrors([
+        'Please log in!'
+      ]);
+    } else {
+      const params = {
+        check_in: this.state.checkIn,
+        check_out: this.state.checkOut,
+        user_id: this.props.currentUser.id,
+        venue_id: this.id,
+      };
+      this.props.postBooking(params);
+    }
   }
   
   selectGuestsClickHandler(e) {
