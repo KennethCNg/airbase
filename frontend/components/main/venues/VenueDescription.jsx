@@ -57,7 +57,7 @@ const VenueDescription = ({ venue }) => {
           </div>
           <div className='ven-desc-sec ven-desc-summary-table'>
           </div>
-          {/* <div className=''> TODO: reviews </div>   */}
+          <VenueReviews />
         </div>
         <div className='ven-desc-body-right'>
           <VenueBooking />
