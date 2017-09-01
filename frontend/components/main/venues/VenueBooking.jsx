@@ -143,13 +143,13 @@ class VenueBooking extends React.Component {
               <div className='button-wrapper'>
                 <button className='button ven-book-book' type='submit'>Book</button>
               </div>
-              <div className='button-wrapper'>
-                <Link className='view-other-listings-buttion' to='/homes'>
-                  <button className='button ven-book-view-other-listings'
-                    >View Other Listings
-                  </button>
-                </Link>
-              </div>
+              <Link to='/homes'>
+                <div className='button-wrapper'>
+                    <button className='button ven-book-view-other-listings'
+                      >View Other Listings
+                    </button>
+                </div>
+              </Link>
             </div>
           </form>
         </div>

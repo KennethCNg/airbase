@@ -1,5 +1,15 @@
 import React from 'react';
 import VenueCell from './VenueCell';
+import { connect } from 'react-redux';
+import { selectVenues, 
+  selectVenuePictureUrls } from '../../../selectors/venuesSelectors';
+
+const mapStateToProps = state => {
+  return {
+    venues: selectVenues(state),
+    venuePictureUrls: selectVenuePictureUrls(state), 
+  };
+};
 
 class VenueList extends React.Component {
   
@@ -8,6 +18,7 @@ class VenueList extends React.Component {
     return (
       venueIds.map( (id, idx) => { 
         return <VenueCell 
+          // onMouseOver={ () => }
           key={ idx }
           venueId={ id }
           venue={ venues[id] }
@@ -29,4 +40,4 @@ class VenueList extends React.Component {
 }
 
 
-export default VenueList;
+export default connect(mapStateToProps)(VenueList);

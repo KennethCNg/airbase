@@ -7,7 +7,10 @@ class Venue < ApplicationRecord
     :state,
     :country,
     :postal_code
-  ]
+  ],
+  :using => {
+    :tsearch => {:prefix => true}
+  }
   
   APARTMENT = 'apartment'.freeze
   CONDOMINIUM = 'condominium'.freeze
@@ -59,7 +62,7 @@ class Venue < ApplicationRecord
   has_many :bookings
   
   # returns activerecord relation
-  def self.search_by_params(params)
+  def self.filter_by_params(params)
     query = self
     query = query.where("name like ?", "%#{params[:name]}%") if params[:name]
     query = query.where("street like ?", "%#{params[:street]}%") if params[:street]
@@ -71,6 +74,14 @@ class Venue < ApplicationRecord
     query = query.where("price <= ?", "%#{params[:price]}%") if params[:price]
     return query
   end
+  
+  def self.search_by_params(params)
+    # query = self
+    # query = query.search_by_address(params) if params[:street]
+    # if params[:check_in] && 
+    # query = query.all.reject { |
+  end
+  
   
   def self.search_by_availability(params)
     

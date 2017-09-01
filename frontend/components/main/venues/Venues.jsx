@@ -18,10 +18,7 @@ class Venues extends React.Component {
   render() {
     return (
       <div id='venues'>
-        <VenueList 
-          venues={ this.props.venues }
-          venuePictureUrls ={ this.props.venuePictureUrls }
-        />
+        <VenueList />
         <GMap 
           // venueCoords={ this.props.venueCoords }
         />

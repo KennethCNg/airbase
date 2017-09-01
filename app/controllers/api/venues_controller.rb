@@ -10,11 +10,21 @@ class Api::VenuesController < ApplicationController
   end
   
   def index
-    if search_params.empty?
-      @venues = Venue.all.includes(:pictures).limit(24)
-    else
-      @venues = Venue.search_by_address(search_params).limit(24).includes(:pictures)
-      # @venues = Venue.search_by_params(search_params).includes(:pictures)
+    if search_params.reject{|_, v| v.blank?}.empty?
+      @venues = Venue.order("RANDOM()").limit(36).includes(:pictures)
+    else 
+      @venues = search_params[:street].present? ? Venue.search_by_address(search_params[:street]) : Venue.all
+      if search_params[:check_in].present? && search_params[:check_out].present?
+        debugger
+        @venues = @venues.reject do |venue|
+          b = Booking.new(
+            venue_id: venue.id,
+            check_in: search_params[:check_in],
+            check_out: search_params[:check_out]
+          )
+          venue.bookings.any? { |booking| booking.overlaps?(b) }
+        end
+      end
     end
     render :index
   end
@@ -65,14 +75,15 @@ class Api::VenuesController < ApplicationController
   
   def search_params
     params.permit(
-      :address,
       :name,
       :street,
       :city,
       :state,
       :postal_code,
       :room_type,
-      :price
+      :price,
+      :check_in,
+      :check_out
     )
   end
   

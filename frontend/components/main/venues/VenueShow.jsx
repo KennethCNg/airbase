@@ -26,7 +26,9 @@ class VenueShow extends React.Component {
       return (
         <div id='venue-show'>
           <VenueShowSecNav />
-          <VenueDescription venue={ this.props.venue } />
+          <VenueDescription 
+            venue={ this.props.venue }
+          />
         </div>
       );
     } else {

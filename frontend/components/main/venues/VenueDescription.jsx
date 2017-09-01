@@ -1,5 +1,6 @@
 import React from 'react';
 import VenueBooking from './VenueBooking';
+import { parseDate } from '../../../helpers/helpers';
 
 const VenueDescription = ({ venue }) => {
   
@@ -7,6 +8,8 @@ const VenueDescription = ({ venue }) => {
   const style = { 
     'backgroundImage': `url(${ venue.picture_url_large })`,
   };
+  const listingStart = parseDate(venue.listing_start);
+  const listingStop = parseDate(venue.listing_stop);
   
   return (
     <div id='venue-description'>
@@ -19,7 +22,7 @@ const VenueDescription = ({ venue }) => {
             <div className='ven-desc-title-name'>{ venue.name }</div>
             <div>
               { venue.city }, { venue.state }, { venue.country } 
-              Reviews Placeholder
+              <div className='availability'>{listingStart} ~ {listingStop}</div>
             </div>
           </div>
           <div className='ven-desc-sec ven-desc-summary-icons'>

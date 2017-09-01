@@ -3,6 +3,23 @@
   border-radius: 4px;
   border: 1px solid #DBDBDB;
   box-shadow: 0 1px 3px 0px rgba(0,0,0,0.08);
-  padding: 8px 16px;
   box-sizing: border-box;
 }
+
+.search-form-inner-wrapper {
+  display: flex;
+}
+
+.search-input-wrapper {
+  padding: 10px 16px;
+}
+
+.search-input-wrapper:not(:last-child) {
+  border-right: 1px solid #DBDBDB;
+}
+
+#search ::-webkit-input-placeholder {
+  font-weight: 300;
+  color: #c9c9c9;
+}
+
