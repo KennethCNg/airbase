@@ -161,7 +161,7 @@ class VenueBooking extends React.Component {
               </Link>
             </div>
           </form>
-          { !!this.props.currentUser && this.props.currentUserBookings.length > 0 &&
+          { !!this.props.currentUser && this.props.currentUserBookings.filter( b => b.venue_id.toString() === this.id ).length > 0 &&
             <div className='ven-book-bookings'>
               <div>Your bookings</div>
               {
