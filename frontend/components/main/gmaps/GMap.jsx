@@ -20,14 +20,15 @@ class GMap extends React.Component {
       center: CENTER,
       zoom: 2,
       styles: GMapStyles,
+      gestureHandling: 'cooperative',
     };
     this.map = new window.google.maps.Map(this.mapContainer, mapOptions);
     this.controller = new GMapController(this.map);
   }
   
   componentWillReceiveProps(nextProps) {
-    this.controller.renderMarkers(nextProps.coords);
-    this.controller.resizeBounds(nextProps.coords);
+    this.controller.renderMarkers(nextProps.coords, nextProps.venues);
+    this.controller.recenter(nextProps.coords);
   }
 
   render() {

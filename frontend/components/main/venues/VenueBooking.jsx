@@ -5,20 +5,22 @@ import { Link } from 'react-router-dom';
 import { selectVenue } from '../../../selectors/venuesSelectors';
 import { selectBookings, selectBookingsErrors } from '../../../selectors/bookingsSelectors';
 import { selectGuestsDisplayed } from '../../../selectors/uiSelectors';
-import { currentUser } from '../../../selectors/sessionSelectors';
+import { currentUser, currentUserBookings } from '../../../selectors/sessionSelectors';
 import { fetchBookings, postBooking, receiveErrors } from '../../../actions/bookingsActions';
 import { toggleSelectGuests, closeSelectGuests } from '../../../actions/uiActions';
+import { parseDate } from '../../../helpers/helpers';
 import Dropdown from '../../modals/Dropdown';
 import * as _ from 'lodash';
 
 const mapStateToProps = (state, ownProps) => {
   const id = ownProps.match.params.id;
   return {
-    venue: selectVenue(state, id),  
+    venue: selectVenue(state, id),
     bookings: selectBookings(state),
     selectGuestsDisplayed: selectGuestsDisplayed(state),
     errors: selectBookingsErrors(state),
     currentUser: currentUser(state),
+    currentUserBookings: currentUserBookings(state),
   };
 };
 
@@ -159,6 +161,21 @@ class VenueBooking extends React.Component {
               </Link>
             </div>
           </form>
+          { !!this.props.currentUser && this.props.currentUserBookings.length > 0 &&
+            <div className='ven-book-bookings'>
+              <div>Your bookings</div>
+              {
+                this.props.currentUserBookings.filter( b => b.venue_id.toString() === this.id ).map( booking => { 
+                  // debugger
+                    return (
+                      <div className='ven-book-bookings-book'>
+                        { parseDate(booking.check_in) } - { parseDate(booking.check_out) } 
+                      </div>
+                    );
+                } )
+              }
+            </div>
+          }
         </div>
       );
     } else {

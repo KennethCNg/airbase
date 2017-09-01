@@ -5,3 +5,9 @@ export const loggedIn = (state) => {
 export const currentUser = (state) => {
   return state.session.currentUser;
 };
+
+export const currentUserBookings = state => {
+  if (state.session.currentUser) {
+    return state.session.currentUser.bookings;
+  }
+};

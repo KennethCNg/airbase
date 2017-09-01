@@ -136,7 +136,7 @@ i.icon.icon-double-bed.icon-size:before {
 }
 
 #venue-booking {
-  background-color: rgb(187, 187, 187);
+  background-color: #fff;
 }
 
 #venue-booking .errors {
@@ -173,6 +173,7 @@ i.icon.icon-double-bed.icon-size:before {
   border: 1px solid #dce0e0;
   padding: 0 16px;
   padding-top: 16px;
+  margin-bottom: 4px;
 }
 
 .ven-book-form-inner label {
@@ -248,5 +249,17 @@ i.icon.icon-double-bed.icon-size:before {
 
 .ven-book-sec {
   margin-bottom: 16px;
+}
+
+.availability {
+  font-weight: 300;
+  margin-bottom: 6px;
+  font-size: 15px;
+}
+
+.ven-book-bookings {
+  background-color: #fff;
+  border: 1px solid #dce0e0;
+  border-top: 0;
 }
 

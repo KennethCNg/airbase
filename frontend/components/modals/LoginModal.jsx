@@ -78,7 +78,7 @@ class LoginModal extends React.Component {
             <div className='title-wrapper'>
               <span className="title modal-title">{ this.props.titleText }</span>
             </div>
-            { this.props.errors.length > 0 &&
+            { !!this.props.errors && this.props.errors.length > 0 &&
               <ModalErrors errors={ this.props.errors } />
             }
             <div>

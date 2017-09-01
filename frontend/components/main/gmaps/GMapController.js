@@ -1,9 +1,12 @@
+import * as _ from 'lodash';
+
 class GMapController {
   
   constructor(map) {
     this.map = map;
     this.addEventListeners();
     this.renderMarkers = this.renderMarkers.bind(this);
+    this.markers = [];
   }
   
   addEventListeners() {
@@ -15,18 +18,26 @@ class GMapController {
     console.log('tilesloaded!');
   }
   
-  renderMarkers(positions) {
+  renderMarkers(positions, venues) {
+    this.markers.map( m => m.setMap(null));
     const latLngs = this.posArrayToLatLngs(positions);
-    latLngs.forEach( pos => {
-      new window.google.maps.Marker({
+    latLngs.forEach( (pos, idx) => {
+      const marker = new window.google.maps.Marker({
         position: pos,
         map: this.map,
       });
+      this.markers.push(marker);
     });
   }
   
-  resizeBounds(positions) {
-    
+  recenter(positions) {
+    const size = positions.length;
+    const lats = positions.map( pos => pos[0] );
+    const lngs = positions.map( pos => pos[1] );
+    const avgLng = lngs.reduce((acc, el) => acc + el) / size;
+    const avgLat = lats.reduce((acc, el) => acc + el) / size;
+    console.log(avgLng, avgLat);
+    this.map.panTo({ lat: avgLat, lng: avgLng });
   }
   
   posArrayToLatLngs(positions) {

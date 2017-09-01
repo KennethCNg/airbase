@@ -1,8 +1,12 @@
+import * as _ from 'lodash';
 import { 
   RECEIVE_ERRORS, 
   RECEIVE_CURRENT_USER,
   CLEAR_ERRORS,
 } from '../actions/sessionActions';
+import { 
+  RECEIVE_NEW_BOOKING,
+} from '../actions/bookingsActions';
 
 const initialState = {
     currentUser: null,
@@ -17,6 +21,8 @@ const sessionReducer = (state = initialState, action) => {
       } else {
         return Object.assign({}, state, { currentUser: null });
       }
+    case RECEIVE_NEW_BOOKING:
+      return Object.assign({}, state, { currentUser: { bookings: [...state.currentUser.bookings, action.bookings] }} );
     case RECEIVE_ERRORS:
       return Object.assign({}, state, { errors: action.errors });
     case CLEAR_ERRORS:

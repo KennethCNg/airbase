@@ -2,10 +2,18 @@ import * as BookingsUtil from '../util/BookingsUtil';
 
 export const RECEIVE_BOOKINGS = 'RECEIVE_BOOKINGS';
 export const RECEIVE_BOOKINGS_ERRORS = 'RECEIVE_BOOKINGS_ERRORS';
+export const RECEIVE_NEW_BOOKING = 'RECEIVE_NEW_BOOKING';
 
 export const receiveBookings = bookings => {
   return {
     type: RECEIVE_BOOKINGS,
+    bookings,
+  };
+};
+
+export const receiveNewBooking = bookings => {
+  return {
+    type: RECEIVE_NEW_BOOKING,
     bookings,
   };
 };
@@ -31,6 +39,7 @@ export const postBooking = bookingParams => dispatch => {
     .then(
       res => {
         dispatch(receiveBookings(res.data));
+        dispatch(receiveNewBooking(res.data));
       },
       error => {
         dispatch(receiveErrors(error.response.data));

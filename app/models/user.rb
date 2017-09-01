@@ -12,6 +12,7 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6, allow_nil: true }
   
   has_many :venues, foreign_key: :host_id
+  has_many :bookings
   
   after_initialize :ensure_session_token
   attr_reader :password
