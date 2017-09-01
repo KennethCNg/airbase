@@ -275,8 +275,12 @@ button.ven-review-button {
 
 textarea {
   resize: none;
-  width: 100%;
   padding: 18px;
   border: 1px solid #dce0e0;
+}
+
+.review-body {
+  margin-bottom: 14px;
+  width: 94%;
 }
 

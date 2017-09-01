@@ -11,12 +11,13 @@ import * as _ from 'lodash';
 
 const mapStateToProps = (state, ownProps) => {
   const id = ownProps.match.params.id;
-  return {
+  const x = {
     venue: selectVenue(state, id),
     reviews: selectReviews(state),
     errors: selectReviewsErrors(state),
     currentUser: currentUser(state),
   };
+  return x;
 };
 
 const mapDispatchToProps = dispatch => {
@@ -72,20 +73,20 @@ class VenueReviews extends React.Component {
     return (
       <div id='venue-reviews'>
           <div className='ven-desc-about-main-header'>Reviews</div>
-          { !!this.props.reviews && this.props.reviews.length > 0 && this.props.reviews.map( review => { 
+          {/* { !!this.props.reviews && this.props.reviews.length > 0 && this.props.reviews.map( review => { 
             return <div className='ven-review'></div>;
-          } ) }
+          } ) } */}
           <form onSubmit={ this.handleSubmit } >
-            <textarea type='text' onChange={ this.handleChangeBody } value={this.state.body} />
+            <textarea className='review-body' type='text' onChange={ this.handleChangeBody } value={this.state.body} />
             <div className='button-wrapper'>
               <button className='ven-review-button button' type='submit'>Submit Review</button>
             </div>
           </form>
       </div>
-    );
-  } else {
-    return <div id='venue-reviews'></div>;
-  }
+      );
+    } else {
+      return <div id='venue-reviews'></div>;
+    }
   }
 }
 
