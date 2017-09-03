@@ -15,7 +15,6 @@ class GMapController {
   
   handleTilesLoaded() {
     // add rerender logic here.
-    console.log('tilesloaded!');
   }
   
   renderMarkers(positions, venues) {
@@ -36,7 +35,6 @@ class GMapController {
     const lngs = positions.map( pos => pos[1] );
     const avgLng = lngs.reduce((acc, el) => acc + el) / size;
     const avgLat = lats.reduce((acc, el) => acc + el) / size;
-    console.log(avgLng, avgLat);
     this.map.panTo({ lat: avgLat, lng: avgLng });
   }
   
