@@ -2,7 +2,7 @@
 
 Airbase is an Airbnb clone. This project serves as a learning experience for integrating technologies I've learnt over the past couple of months. Choosing to build a clone relieved myself from making design/aesthetic decisions, and instead enabled me to focus on development. If this project looks too much alike the actual site, it's because I allotted a significant amount of time to mimic Airbnb's styling. This gave me a deeper appreciation for the attention and time invested into creating good UI/UX.
 
-My project can be [viewed here](https://airbase-sksea.herokuapp.com/#/). Slow initial loads are caused by hosting on Heroku, but I might consider deploying to AWS in the future.
+My project can be [viewed here](https://airbase-sksea.herokuapp.com/#/).
 
 # Technologies
 
