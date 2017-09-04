@@ -48,13 +48,23 @@ export const fetchReviews = venueId => dispatch => {
 };
 
 export const postReview = reviewParams => dispatch => {
+  let userId;
   return ReviewsUtil.postReview(reviewParams)
     .then(
       res => {
+        userId = res.data.user_id;
         dispatch(receiveNewReview(res.data));
       },
       error => {
         dispatch(receiveErrors(error.response.data));
+      }
+    ).then(
+      () => { 
+        UsersUtil.fetchUsersByIds([userId]).then(
+          res => {
+            dispatch(receiveUsers(res.data));
+          }
+        );
       }
     );
 };
