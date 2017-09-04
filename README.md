@@ -10,7 +10,11 @@ Airbase has a React frontend, with state managed by Redux. React provides more t
 
 Airbase's backend is a Rails API with a Postgres DB. Rails was chosen mostly for being relatively simple to use. Fortunately, concepts like RESTful conventions and handling the request/response cycle will carry over to other web frameworks I learn in future. Lastly, using Postgres was good practice for using relational databases.
 
-# Integrating third-party javascript components
+# Dev notes
+
+In this section, I highlight some challenges presented to me over the course of this project, followed by my approach in solving the issue or any findings I took away.
+
+### Integrating third-party javascript components
 
 To clone Airbnb, there is no avoiding the large map taking up 34% of screen estate on the home listing page. I've always been fond of maps, so naturally I found integration with Google maps one the more interesting parts of this project. Showing a map is simple -- the challenge is getting it to play well with react components. More specifically, we want to avoid rendering the Map each time the state of its wrapping component changes (`GMap`, in this case). To get around this, it's possible to have Map exist outside of the component lifecycle by passing it as a `ref` into `GMap`. It feels a bit like inception. Map related logic can then be encapsulated in a new component, for instance `GMapController`.
 
@@ -39,7 +43,7 @@ class GMap extends React.Component {
 }
 ```
 
-# Database seeding
+### Database seeding
 
 Seeding data is important for both visualizing the application's frontend, as well as testing logic in the backend. Doing this manually is futile because it is time consuming and provides too narrow a representation of how our app may actually look and function.
 
@@ -127,9 +131,9 @@ module GoogleMapsHelper
 end
 ```
 
-# Managing state with redux and selectors
+### Managing state with redux and selectors
 
-As my project grew, I found components nested in the hierarchy needed pieces of state which their ancestor components did not care for. The pattern I found helpful for solving this is using selectors to mold a component's props into exactly a form that's clear and convenient to use. As a result, it's clear with a glance which parts of state this component has access to, as opposed to jumping around files to trace through props, or fiddling with the debugger. Another takeaway from the following snippet is that component structure is best kept as flat as possible, something I will keep in mind for my next React project.
+As my project grew, I found deeply nested components which needed pieces of state their ancestors did not care for. The pattern I found helpful for solving this is using selectors to mold a component's props into exactly a form that's clear and convenient to use. In the resulting component, it's clear with at a quick glance to `mapStateToProps` which slices of state that component has access to. This is much nicer than jumping through multiple to try and trace the flow of props, or even fiddling with the debugger.  Another takeaway from the following snippet is that component structure is best kept as flat as possible. Organization or components came be inferred from naming convention. Any more than one sublevel in `/components` results in an ugly trail of `../../..`, which makes reference other folders like selectors or actions awkward. This is something I will keep in mind for my next React project.
 
 `VenueBooking.jsx`
 ```js
@@ -149,4 +153,33 @@ const mapStateToProps = (state, ownProps) => {
     currentUserBookings: currentUserBookings(state),
   };
 };
+```
+
+### Thin controllers and keeping logic with the appropriate owner
+
+Checking a venue's availability for a user to place reservations prompts the question of where that logic should live. The first and most obvious place is in `BookingsController`, but here is already crowded with things like params and code to render responses, which are both different concerns than the actual query's business logic. The next stop would be to move it down to the `Venue` model, which leads to a cleaner controller. However, I realized a venue's availability only makes sense in the context of a new booking. We could get a reference of our current `venue` and try to pass in a new `booking` like `venue.is_valid?(booking)`, but that seems clunky. Ultimately, I settled on the solution below, which is place the logic in the `Booking` model. With coupling reduced between the two models, minimal changes need to be made to venues even if bookings is completely removed from this application.
+
+`booking.rb`
+```ruby
+class Booking < ApplicationRecord
+  validate :venue_available
+  validate :booking_duration_valid
+  
+  belongs_to :user
+  belongs_to :venue
+  has_one :host, through: :venue
+  
+  private
+  
+  def venue_available
+    venue_bookings = self.venue.bookings
+    venue_bookings.any? do |vb|
+      if vb.overlaps?(self)
+        errors.add(:check_in, 'time is unavailable')
+        break
+      end
+    end
+  end
+  
+end
 ```
