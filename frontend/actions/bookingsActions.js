@@ -11,10 +11,10 @@ export const receiveBookings = bookings => {
   };
 };
 
-export const receiveNewBooking = bookings => {
+export const receiveNewBooking = booking => {
   return {
     type: RECEIVE_NEW_BOOKING,
-    bookings,
+    booking,
   };
 };
 
@@ -38,7 +38,6 @@ export const postBooking = bookingParams => dispatch => {
   return BookingsUtil.postBooking(bookingParams)
     .then(
       res => {
-        dispatch(receiveBookings(res.data));
         dispatch(receiveNewBooking(res.data));
       },
       error => {

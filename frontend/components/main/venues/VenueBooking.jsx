@@ -67,7 +67,11 @@ class VenueBooking extends React.Component {
     e.preventDefault();
     if (this.props.currentUser === null) {
       this.props.throwErrors([
-        'Please log in!'
+        'Please log in'
+      ]);
+    } else if (this.bookingTimesEmpty()) {
+      this.props.throwErrors([
+        'Please pick a booking date'
       ]);
     } else {
       const params = {
@@ -85,6 +89,10 @@ class VenueBooking extends React.Component {
       guestCount: e.target.getAttribute('data-val'),
     });
     this.props.closeSelectGuests();
+  }
+  
+  bookingTimesEmpty() {
+    return this.state.checkIn === '' || this.state.checkOut === '';
   }
   
   render() {

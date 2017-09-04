@@ -22,7 +22,9 @@ const sessionReducer = (state = initialState, action) => {
         return Object.assign({}, state, { currentUser: null });
       }
     case RECEIVE_NEW_BOOKING:
-      return Object.assign({}, state, { currentUser: { bookings: [...state.currentUser.bookings, action.bookings] }} );
+      const currentUser = Object.assign({}, state.currentUser );
+      currentUser.bookings.push(action.booking);
+      return Object.assign({}, state, { currentUser });
     case RECEIVE_ERRORS:
       return Object.assign({}, state, { errors: action.errors });
     case CLEAR_ERRORS:
