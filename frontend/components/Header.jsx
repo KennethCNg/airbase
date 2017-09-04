@@ -1,7 +1,5 @@
 import React from 'react';
 import MainNav from './header/MainNav';
-// import Filter from './header/Filter';
-
 
 const Header = (props) => {
   

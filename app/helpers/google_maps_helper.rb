@@ -69,8 +69,7 @@ module GoogleMapsHelper
   end
   
   def parse_addr_comps(city_symbol, addr_comps)
-    # make sure this returns
-    # STREET, CITY, STATE, COUNTRY, POSTAL CODE
+    # return STREET, CITY, STATE, COUNTRY, POSTAL CODE
     if city_symbol.to_s.include?(NEW_YORK)
       if addr_comps.size < 8
         puts 'Fetched addr_comps incomplete, skipping'

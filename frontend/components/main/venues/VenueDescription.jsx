@@ -6,7 +6,6 @@ import { parseDate } from '../../../helpers/helpers';
 
 const VenueDescription = ({ venue }) => {
   
-  // pseudo selector before with the code as content
   const style = { 
     'backgroundImage': `url(${ venue.picture_url_large })`,
   };

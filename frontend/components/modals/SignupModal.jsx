@@ -10,7 +10,6 @@ const initialState = {
   lastname: '',
 };
 
-// TODO: change this to login modal entirely, and make SignupModal a separate thing.
 class SignupModal extends React.Component {
   
   constructor(props) {
@@ -68,16 +67,6 @@ class SignupModal extends React.Component {
                 <img onClick={ this.handleCloseModal } src={ window.staticImages.x } />
               </button>
             </div>
-            {/* <div className='signup-modal-g-fb-links'>
-              Sign up with Facebook or Google
-            </div> */}
-            {/* <div className='divider-wrapper'>
-              <span className='divider-fill'></span>
-              <span className='divider-content'>
-                or
-              </span>
-              <span className='divider-fill'></span>
-            </div> */}
             <div className='title-wrapper'>
               <span className="title modal-title">{ this.props.titleText }</span>
             </div>
@@ -113,7 +102,6 @@ class SignupModal extends React.Component {
                       onChange={ this.handleChange('lastname') }/>
                   </div>
                   <div className='input-inner-icon'>
-                    {/* <FA name='' size='2x' /> */}
                   </div>
                 </div>
                 <div className='input-wrapper'>
@@ -126,20 +114,6 @@ class SignupModal extends React.Component {
                     <FA name='lock' size='2x' />
                   </div>
                 </div>
-                {/* <div>
-                  <span>Birthday</span>
-                </div>
-                <div>
-                  <select>
-                    <option disabled value>Month</option>
-                  </select>
-                  <select>
-                    <option disabled value>Day</option>
-                  </select>
-                  <select>
-                    <option disabled value>Year</option>
-                  </select>
-                </div> */}
                 <div className='button-wrapper'>
                   <button className='modal-button submit-button' type="submit">{ this.props.buttonText }</button>
                 </div>

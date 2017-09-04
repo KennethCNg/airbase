@@ -21,8 +21,6 @@ const mapDispatchToProps = (dispatch) => {
 const MainNavMenu = (props) => {
   return (
     <div id='main-nav-menu'>
-      {/* Become a Host */}
-      {/* Help */}
       { !props.loggedIn && 
         <button 
           className='main-nav-menu-button' 
@@ -38,7 +36,6 @@ const MainNavMenu = (props) => {
           className='main-nav-menu-button' 
           onClick={ props.logout }>Log Out</button> 
       }
-      {/* Profile Picture */}
     </div>
   );
 };

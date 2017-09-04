@@ -17,7 +17,6 @@ class VenueShow extends React.Component {
   }
   
   componentWillReceiveProps(nextProps) {
-    //TODO: need to fetch here if venue not exist or match id different than current id
   }
   
   render() {

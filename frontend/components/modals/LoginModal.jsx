@@ -13,7 +13,6 @@ const demoUser = {
   password: 'password',
 };
 
-// TODO: change this to login modal entirely, and make SignupModal a separate thing.
 class LoginModal extends React.Component {
   
   constructor(props) {
@@ -68,9 +67,6 @@ class LoginModal extends React.Component {
         <div onClick={ this.handleCloseModal } className='modal-wrapper'>
           <div id='login-modal' className='modal'>
             <div id='modal-close'>
-              {/* TODO:
-                Temporary. Loaded in root.html.erb.
-                Find a better way to load assets. */}
               <button>
                 <img onClick={ this.handleCloseModal } src={ window.staticImages.x } />
               </button>
@@ -109,25 +105,6 @@ class LoginModal extends React.Component {
                 <div id='forgot-password'>
                   <span>Forgot Password?</span>
                 </div>
-                {/* <div className='divider-wrapper'>
-                  <span className='divider-fill'></span>
-                  <span className='divider-content'>
-                    or continue with
-                  </span>
-                  <span className='divider-fill'></span>
-                </div> */}
-                {/* <div className='omniauth-wrapper'>
-                  <div className='omniauth-button-wrapper'>
-                    <button className='modal-button omniauth-button' type="submit">
-                      <img src={ window.staticImages.modal_fb } />Facebook
-                    </button>
-                  </div>
-                  <div className='omniauth-button-wrapper'>
-                    <button className='modal-button omniauth-button' type="submit">
-                      <img src={ window.staticImages.modal_g } />Google
-                    </button>
-                  </div>
-                </div> */}
                 <div className='divider-wrapper' id='footer-divider'>
                   <span className='divider-fill'></span>
                 </div>

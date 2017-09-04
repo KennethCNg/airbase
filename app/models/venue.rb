@@ -48,9 +48,6 @@ class Venue < ApplicationRecord
   validates :name, presence: true
   validates :street, presence: true
   validates :city, presence: true
-  # validates :state, presence: true
-  # validates :country, presence: true
-  # validates :postal_code, presence: true
   validates :listing_start, presence: true
   validates :listing_stop, presence: true
   validates :price, presence: true
@@ -73,18 +70,6 @@ class Venue < ApplicationRecord
     query = query.where("room_type = ?", "%#{params[:room_type]}%") if params[:room_type]
     query = query.where("price <= ?", "%#{params[:price]}%") if params[:price]
     return query
-  end
-  
-  def self.search_by_params(params)
-    # query = self
-    # query = query.search_by_address(params) if params[:street]
-    # if params[:check_in] && 
-    # query = query.all.reject { |
-  end
-  
-  
-  def self.search_by_availability(params)
-    
   end
     
 end

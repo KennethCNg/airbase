@@ -18,7 +18,6 @@ class VenueList extends React.Component {
     return (
       venueIds.map( (id, idx) => { 
         return <VenueCell 
-          // onMouseOver={ () => }
           key={ idx }
           venueId={ id }
           venue={ venues[id] }
