@@ -56,8 +56,6 @@ const VenueDescription = ({ venue }) => {
             <div className='ven-desc-about-header'>Other things to note</div>
             <span>{ venue.description_other_notes }</span>
           </div>
-          {/* <div className='ven-desc-sec ven-desc-summary-table'>
-          </div> */}
           <VenueReviews />
         </div>
         <div className='ven-desc-body-right'>

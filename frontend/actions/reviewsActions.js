@@ -1,4 +1,6 @@
 import * as ReviewsUtil from '../util/ReviewsUtil';
+import * as UsersUtil from '../util/UsersUtil';
+import { receiveUsers } from './usersActions';
 
 export const RECEIVE_REVIEWS = 'RECEIVE_REVIEWS';
 export const RECEIVE_REVIEWS_ERRORS = 'RECEIVE_REVIEWS_ERRORS';
@@ -11,10 +13,10 @@ export const receiveReviews = reviews => {
   };
 };
 
-export const receiveNewReviews = reviews => {
+export const receiveNewReview = review => {
   return {
     type: RECEIVE_NEW_REVIEW,
-    reviews,
+    review,
   };
 };
 
@@ -26,10 +28,21 @@ export const receiveErrors = errors => {
 };
 
 export const fetchReviews = venueId => dispatch => {
+  let reviewUserIds;
   return ReviewsUtil.fetchReviews(venueId)
     .then(
       res => {
-        dispatch(receiveReviews(res.data));
+        const reviews = res.data;
+        reviewUserIds = Object.values(reviews).map( review => review.user_id );
+        dispatch(receiveReviews(reviews));
+      }
+    ).then(
+      () => { 
+        UsersUtil.fetchUsersByIds(reviewUserIds).then(
+          res => {
+            dispatch(receiveUsers(res.data));
+          }
+        );
       }
     );
 };
@@ -38,8 +51,7 @@ export const postReview = reviewParams => dispatch => {
   return ReviewsUtil.postReview(reviewParams)
     .then(
       res => {
-        dispatch(receiveReviews(res.data));
-        dispatch(receiveNewReviews(res.data));
+        dispatch(receiveNewReview(res.data));
       },
       error => {
         dispatch(receiveErrors(error.response.data));
