@@ -264,7 +264,14 @@ i.icon.icon-double-bed.icon-size:before {
 }
 
 .ven-review {
-  
+  border-top: 1px solid rgb(219, 219, 219);
+  padding: 24px 0;
+  font-weight: 300;
+}
+
+span.ven-rev-user {
+  font-weight: 400;
+  font-size: 18px;
 }
 
 button.ven-review-button {
