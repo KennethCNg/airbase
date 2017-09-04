@@ -89,7 +89,7 @@ end
 **Home show page populated with data fetched from google**
 ![home-show](https://raw.githubusercontent.com/sksea/i/master/airbase-prod-readme/homes-show.png)
 
-From project, I also got a taste of the importance of sanitizing data. When I tried to build addresses from responses, I realized that the Google Places API returned addresses in arrays of varying lengths. This pushed me to handle each locale differently.
+From this project, I also got a taste for the need to sanitize data. When I tried to build addresses from responses, I realized that the Google Places API returned addresses in arrays of varying lengths. This pushed me to handle each locale differently.
 
 `google_maps_helper.rb`
 ```ruby
@@ -133,7 +133,7 @@ end
 
 ### Managing state with redux and selectors
 
-As my project grew, I found deeply nested components which needed pieces of state their ancestors did not care for. The pattern I found helpful for solving this is using selectors to mold a component's props into exactly a form that's clear and convenient to use. In the resulting component, it's clear with at a quick glance to `mapStateToProps` which slices of state that component has access to. This is much nicer than jumping through multiple to try and trace the flow of props, or even fiddling with the debugger.  Another takeaway from the following snippet is that component structure is best kept as flat as possible. Organization or components came be inferred from naming convention. Any more than one sublevel in `/components` results in an ugly trail of `../../..`, which makes reference other folders like selectors or actions awkward. This is something I will keep in mind for my next React project.
+As my project grew, I found deeply nested components which needed pieces of state their ancestors did not care for. The pattern I found helpful for solving this is using selectors to mold a component's props into the exact form that's clear and convenient to use. In the resulting component, it's clear with at a quick glance to `mapStateToProps` which slices of state that component has access to. This is much nicer than jumping through multiple to try and trace the flow of props, or even fiddling with the debugger.  Another takeaway from the following snippet is that component structure is best kept as flat as possible. Organization or components came be inferred from naming convention. Any more than one sublevel in `/components` results in an ugly trail of `../../..`, which makes reference other folders like selectors or actions awkward. This is something I will keep in mind for my next React project.
 
 `VenueBooking.jsx`
 ```js
