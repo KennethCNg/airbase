@@ -17,7 +17,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 const WHITE_LISTED_CHARS = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '/'];
-window.WHITE_LISTED_CHARS = WHITE_LISTED_CHARS;
 const initialState = {
   address: '',
   checkIn: '',
@@ -57,7 +56,6 @@ class Search extends React.Component {
   
   handleSubmit(e) {
     e.preventDefault();
-    // this.props.fetchVenues(this.state);
     this.props.fetchVenues({
       street: this.state.address,
       check_in: this.state.checkIn,

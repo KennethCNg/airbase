@@ -4,6 +4,19 @@ Airbase is an Airbnb clone. This project serves as a learning experience for int
 
 My project can be [viewed here](https://airbase-sksea.herokuapp.com/#/).
 
+# Setup and Dev Commands
+Server (dev runs on port 3000)
+```
+bundle install
+rails s
+```
+
+Frontend
+```
+npm install
+npm start
+```
+
 # Technologies
 
 Airbase has a React frontend, with state managed by Redux. React provides more than a means of code reuse, it also implements a Virtual DOM which allows for efficient DOM manipulation, re-rendering only the right elements at the right time, all the while exposing a `component lifecycle` which we can hook into and use to run code at predictable moments. As the app grows, data may need to flow through many layers of components before arriving at its destination. Redux enables us to keep state contained in a central `store` from which components can pick and choose the `slices` of state that concerns them. This avoids the need to thread state through components.

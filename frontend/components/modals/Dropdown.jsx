@@ -5,7 +5,6 @@ class Dropdown extends React.Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
-    window.ReactDOM = ReactDOM;
   }
   
   componentDidMount() {
