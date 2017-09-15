@@ -10,10 +10,6 @@ class Venues extends React.Component {
       venues: props.venues,
     };
   }
-  
-  componentDidMount() {
-    this.props.fetchVenues();
-  }
 
   render() {
     return (

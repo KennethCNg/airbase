@@ -12,10 +12,4 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchVenues: id => { dispatch(fetchVenues(id)); }
-  };
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(Venues);
+export default connect(mapStateToProps)(Venues);
