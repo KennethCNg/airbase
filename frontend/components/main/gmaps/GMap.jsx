@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { selectVenues, selectVenueCoordinates } 
   from '../../../selectors/venuesSelectors';
+import { fetchVenues } from '../../../actions/venuesActions';
 import GMapStyles from './GMapStyles';
 import GMapController from './GMapController';
 
@@ -9,6 +10,14 @@ const mapStateToProps = state => {
   return {
     venues: selectVenues(state),
     coords: selectVenueCoordinates(state),
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchVenues: params => {
+      dispatch(fetchVenues(params));
+    }
   };
 };
 
@@ -24,11 +33,12 @@ class GMap extends React.Component {
     };
     this.map = new window.google.maps.Map(this.mapContainer, mapOptions);
     this.controller = new GMapController(this.map);
+    // enable controller to dispatch fetchVenues action.
+    this.controller.fetchVenues = this.props.fetchVenues;
   }
   
   componentWillReceiveProps(nextProps) {
     this.controller.renderMarkers(nextProps.coords, nextProps.venues);
-    this.controller.recenter(nextProps.coords);
   }
 
   render() {
@@ -44,4 +54,4 @@ class GMap extends React.Component {
 
 }
 
-export default connect(mapStateToProps)(GMap);
+export default connect(mapStateToProps, mapDispatchToProps)(GMap);

@@ -10,10 +10,17 @@ class Api::VenuesController < ApplicationController
   end
   
   def index
-    if search_params.reject{|_, v| v.blank?}.empty?
+    if search_params_empty
       @venues = Venue.order("RANDOM()").limit(36).includes(:pictures)
-    else 
-      @venues = search_params[:street].present? ? Venue.search_by_address(search_params[:street]) : Venue.all
+    elsif should_search_by_coords
+      @venues = Venue
+        .where('lat > ?', search_params[:lat_min])
+        .where('lat < ?', search_params[:lat_max])
+        .where('lng > ?', search_params[:lng_min])
+        .where('lng < ?', search_params[:lng_max])
+    elsif should_search_by_address
+      # check this out later, not sure how it's even working.
+      debugger
       if search_params[:check_in].present? && search_params[:check_out].present?
         @venues = @venues.reject do |venue|
           b = Booking.new(
@@ -34,6 +41,18 @@ class Api::VenuesController < ApplicationController
   end
   
   private
+  
+  def search_params_empty
+    search_params.reject{|_, v| v.blank?}.empty?
+  end
+
+  def should_search_by_coords
+    [ :lat_max, :lat_min, :lng_max, :lng_min ].all? { |key| search_params[key].present? }
+  end
+
+  def should_search_by_address
+    search_params[:street].present?
+  end
   
   def venue_params
     params.require(:venue).permit(
@@ -82,7 +101,11 @@ class Api::VenuesController < ApplicationController
       :room_type,
       :price,
       :check_in,
-      :check_out
+      :check_out,
+      :lat_max,
+      :lat_min,
+      :lng_max,
+      :lng_min
     )
   end
   

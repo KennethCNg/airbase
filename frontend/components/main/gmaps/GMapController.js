@@ -4,17 +4,27 @@ class GMapController {
   
   constructor(map) {
     this.map = map;
-    this.addEventListeners();
-    this.renderMarkers = this.renderMarkers.bind(this);
     this.markers = [];
+    
+    this.renderMarkers = this.renderMarkers.bind(this);
+    this.fetchVenuesInBounds = this.fetchVenuesInBounds.bind(this);
+    
+    this.addEventListeners();
   }
   
   addEventListeners() {
-    this.map.addListener('tilesloaded', this.handleTilesLoaded);
+    this.map.addListener('idle', this.fetchVenuesInBounds);
   }
   
-  handleTilesLoaded() {
-    // add rerender logic here.
+  fetchVenuesInBounds() {
+    const bounds = this.map.getBounds();
+    const coords = {
+      lng_max: bounds.getNorthEast().lng(),
+      lng_min: bounds.getSouthWest().lng(),
+      lat_max: bounds.getNorthEast().lat(),
+      lat_min: bounds.getSouthWest().lat(),
+    };
+    this.fetchVenues(coords);
   }
   
   renderMarkers(positions, venues) {
