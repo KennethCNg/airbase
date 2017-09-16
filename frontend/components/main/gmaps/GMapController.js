@@ -1,3 +1,5 @@
+// import GMapMarkerOverlay from './GMapMarkerOverlay';
+
 import * as _ from 'lodash';
 
 class GMapController {
@@ -8,6 +10,7 @@ class GMapController {
     
     this.renderMarkers = this.renderMarkers.bind(this);
     this.fetchVenuesInBounds = this.fetchVenuesInBounds.bind(this);
+    // this.overlay = new GMapMarkerOverlay(this.map.getBounds());
     
     this.addEventListeners();
   }
@@ -31,7 +34,7 @@ class GMapController {
     this.markers.map( m => m.setMap(null));
     const latLngs = this.posArrayToLatLngs(positions);
     latLngs.forEach( (pos, idx) => {
-      const marker = new window.google.maps.Marker({
+      const marker = new google.maps.Marker({
         position: pos,
         map: this.map,
       });

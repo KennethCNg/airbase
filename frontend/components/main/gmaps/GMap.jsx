@@ -31,7 +31,7 @@ class GMap extends React.Component {
       styles: GMapStyles,
       gestureHandling: 'cooperative',
     };
-    this.map = new window.google.maps.Map(this.mapContainer, mapOptions);
+    this.map = new google.maps.Map(this.mapContainer, mapOptions);
     this.controller = new GMapController(this.map);
     // enable controller to dispatch fetchVenues action.
     this.controller.fetchVenues = this.props.fetchVenues;

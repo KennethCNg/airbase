@@ -34,10 +34,6 @@ class Search extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
   
-  componentDidMount() {
-    
-  }
-  
   handleAddressChange(e) {
     this.setState({
       address: e.target.value,
@@ -57,7 +53,7 @@ class Search extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     this.props.fetchVenues({
-      street: this.state.address,
+      address: this.state.address,
       check_in: this.state.checkIn,
       check_out: this.state.checkOut,  
     });

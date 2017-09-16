@@ -21,7 +21,7 @@ class VenueList extends React.Component {
           key={ idx }
           venueId={ id }
           venue={ venues[id] }
-          pictureUrl={ this.props.venuePictureUrls[idx] }
+          pictureUrl={ this.props.venuePictureUrls[idx] || '' }
         />;
       } )
     );
