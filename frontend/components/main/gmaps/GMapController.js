@@ -5,6 +5,7 @@ class GMapController {
   constructor(map) {
     this.map = map;
     this.markers = [];
+    this.eventListeners = [];
     
     this.renderMarkers = this.renderMarkers.bind(this);
     this.fetchVenuesInBounds = this.fetchVenuesInBounds.bind(this);
@@ -13,7 +14,14 @@ class GMapController {
   }
   
   addEventListeners() {
-    this.map.addListener('idle', this.fetchVenuesInBounds);
+    const listener = this.map.addListener('idle', this.fetchVenuesInBounds);
+    this.eventListeners.push(listener);
+  }
+
+  removeEventListeners() {
+    this.eventListeners.forEach( listener => {
+      google.maps.event.removeListener(listener);
+    });
   }
   
   fetchVenuesInBounds() {

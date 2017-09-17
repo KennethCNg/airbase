@@ -41,6 +41,10 @@ class GMap extends React.Component {
     this.controller.renderMarkers(nextProps.coords, nextProps.venues);
   }
 
+  componentWillUnmount() {
+    this.controller.removeEventListeners();
+  }
+
   render() {
     return (
       // https://facebook.github.io/react/docs/refs-and-the-dom.html#adding-a-ref-to-a-dom-element
