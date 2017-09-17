@@ -150,10 +150,10 @@ As my project grew, I found deeply nested components which needed pieces of stat
 
 `VenueBooking.jsx`
 ```js
-import { selectVenue } from '../../../selectors/venuesSelectors';
-import { selectBookings, selectBookingsErrors } from '../../../selectors/bookingsSelectors';
-import { selectGuestsDisplayed } from '../../../selectors/uiSelectors';
-import { currentUser, currentUserBookings } from '../../../selectors/sessionSelectors';
+import { selectVenue } from '../../selectors/venuesSelectors';
+import { selectBookings, selectBookingsErrors } from '../../selectors/bookingsSelectors';
+import { selectGuestsDisplayed } from '../../selectors/uiSelectors';
+import { currentUser, currentUserBookings } from '../../selectors/sessionSelectors';
 
 const mapStateToProps = (state, ownProps) => {
   const id = ownProps.match.params.id;

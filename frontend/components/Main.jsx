@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route } from 'react-router-dom';
-import VenuesContainer from './main/venues/VenuesContainer';
-import VenueShowContainer from './main/venues/VenueShowContainer';
+import VenuesContainer from './venues/VenuesContainer';
+import VenueShowContainer from './venues/VenueShowContainer';
 
 
 const Main = (props) => {    

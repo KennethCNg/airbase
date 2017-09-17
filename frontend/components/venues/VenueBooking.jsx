@@ -2,14 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
-import { selectVenue } from '../../../selectors/venuesSelectors';
-import { selectBookings, selectBookingsErrors } from '../../../selectors/bookingsSelectors';
-import { selectGuestsDisplayed } from '../../../selectors/uiSelectors';
-import { currentUser, currentUserBookings } from '../../../selectors/sessionSelectors';
-import { fetchBookings, postBooking, receiveErrors } from '../../../actions/bookingsActions';
-import { toggleSelectGuests, closeSelectGuests } from '../../../actions/uiActions';
-import { parseDate } from '../../../helpers/helpers';
-import Dropdown from '../../modals/Dropdown';
+import { selectVenue } from '../../selectors/venuesSelectors';
+import { selectBookings, selectBookingsErrors } from '../../selectors/bookingsSelectors';
+import { selectGuestsDisplayed } from '../../selectors/uiSelectors';
+import { currentUser, currentUserBookings } from '../../selectors/sessionSelectors';
+import { fetchBookings, postBooking, receiveErrors } from '../../actions/bookingsActions';
+import { toggleSelectGuests, closeSelectGuests } from '../../actions/uiActions';
+import { parseDate } from '../../helpers/helpers';
+import Dropdown from '../modals/Dropdown';
+import DatePicker from '../modals/DatePicker';
 import * as _ from 'lodash';
 
 const mapStateToProps = (state, ownProps) => {
@@ -43,6 +44,7 @@ class VenueBooking extends React.Component {
     this.id = this.props.match.params.id;
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleDateChange = this.handleDateChange.bind(this);
+    this.handleDatePickerSelect = this.handleDatePickerSelect.bind(this);
     this.selectGuestsClickHandler = this.selectGuestsClickHandler.bind(this);
     this.state = {
       guestCount: '1',
@@ -59,6 +61,14 @@ class VenueBooking extends React.Component {
     return e => {
       if (e.target.value.split('').every( char => WHITE_LISTED_CHARS.includes(char) )) {
         this.setState(Object.assign({}, this.state, { [field]: e.target.value } ));
+      }
+    };
+  }
+  
+  handleDatePickerSelect(field) {
+    return date => {
+      if (parseDate(date).split('').every( char => WHITE_LISTED_CHARS.includes(char) )) {
+        this.setState(Object.assign({}, this.state, { [field]: parseDate(date) } ));
       }
     };
   }
@@ -109,24 +119,22 @@ class VenueBooking extends React.Component {
               <div className='ven-book-sec ven-book-date-wrapper'>
                 <div className='ven-book-date-group'>
                   <label>Check In</label>
-                  <input 
+                  <DatePicker
                     className='ven-book-check-in' 
                     name='booking[check_in]'
-                    type='text' 
-                    value={ this.state.checkIn }
+                    onSelect={ this.handleDatePickerSelect('checkIn') }
                     onChange={ this.handleDateChange('checkIn') }
-                    placeholder='mm/dd/yyyy'
+                    value={ this.state.checkIn }
                   />
                 </div>
                 <div className='ven-book-date-group'>
                   <label>Check Out</label>
-                  <input 
+                  <DatePicker
                     className='ven-book-check-out' 
                     name='booking[check_out]' 
-                    type='text' 
-                    value={ this.state.checkOut }
+                    onSelect={ this.handleDatePickerSelect('checkOut') }
                     onChange={ this.handleDateChange('checkOut') }
-                    placeholder='mm/dd/yyyy'
+                    value={ this.state.checkOut }
                   />
                 </div>
               </div>

@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { selectVenues, selectVenueCoordinates } 
-  from '../../../selectors/venuesSelectors';
-import { fetchVenues } from '../../../actions/venuesActions';
+  from '../../selectors/venuesSelectors';
+import { fetchVenues } from '../../actions/venuesActions';
 import GMapStyles from './GMapStyles';
 import GMapController from './GMapController';
 
@@ -39,6 +39,10 @@ class GMap extends React.Component {
   
   componentWillReceiveProps(nextProps) {
     this.controller.renderMarkers(nextProps.coords, nextProps.venues);
+  }
+
+  componentWillUnmount() {
+    this.controller.removeEventListeners();
   }
 
   render() {
