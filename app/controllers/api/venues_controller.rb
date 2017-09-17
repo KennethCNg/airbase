@@ -11,10 +11,16 @@ class Api::VenuesController < ApplicationController
   
   def index
     if search_params_empty
-      @venues = Venue.order("RANDOM()").includes(:pictures)
+      @venues = Venue.includes(:pictures)
     elsif should_search_by_coords
       # Searching by coords is used by GMaps
-      @venues = Venue.filter_by_coords(search_params)
+      # coords must be provided in groups of 4
+      coords = search_params[:coords].split(',')
+      if coords.length % 4 == 0 
+        @venues = Venue.filter_by_coords(coords)
+      else
+        render json: 'Invalid bounds input', status: 422
+      end
     else
       # Searching by fields
       @venues = Venue.all
@@ -37,7 +43,7 @@ class Api::VenuesController < ApplicationController
       #   end
       # end
     end
-    @venues = @venues.limit(36)
+    @venues = @venues.order("RANDOM()").limit(36)
     render :index
   end
   
@@ -53,7 +59,7 @@ class Api::VenuesController < ApplicationController
   end
 
   def should_search_by_coords
-    [ :lat_max, :lat_min, :lng_max, :lng_min ].all? { |key| search_params[key].present? }
+    search_params[:coords].present?
   end
 
   def should_filter_by_address
@@ -113,10 +119,7 @@ class Api::VenuesController < ApplicationController
       :price,
       :check_in,
       :check_out,
-      :lat_max,
-      :lat_min,
-      :lng_max,
-      :lng_min
+      :coords
     )
   end
   

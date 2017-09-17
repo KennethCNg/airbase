@@ -1,5 +1,3 @@
-// import GMapMarkerOverlay from './GMapMarkerOverlay';
-
 import * as _ from 'lodash';
 
 class GMapController {
@@ -10,7 +8,6 @@ class GMapController {
     
     this.renderMarkers = this.renderMarkers.bind(this);
     this.fetchVenuesInBounds = this.fetchVenuesInBounds.bind(this);
-    // this.overlay = new GMapMarkerOverlay(this.map.getBounds());
     
     this.addEventListeners();
   }
@@ -20,14 +17,11 @@ class GMapController {
   }
   
   fetchVenuesInBounds() {
-    const bounds = this.map.getBounds();
-    const coords = {
-      lng_max: bounds.getNorthEast().lng(),
-      lng_min: bounds.getSouthWest().lng(),
-      lat_max: bounds.getNorthEast().lat(),
-      lat_min: bounds.getSouthWest().lat(),
+    // pass bounds as arrays of [top, right, bottom, left]
+    const params = {
+      coords: calculateBounds(this.map.getBounds()),
     };
-    this.fetchVenues(coords);
+    this.fetchVenues(params);
   }
   
   renderMarkers(positions, venues) {
@@ -60,3 +54,20 @@ class GMapController {
 }
 
 export default GMapController;
+
+function calculateBounds(bounds) {
+  const lngMax = bounds.getNorthEast().lng();
+  const lngMin = bounds.getSouthWest().lng();
+  const latMax = bounds.getNorthEast().lat();
+  const latMin = bounds.getSouthWest().lat();
+  if (lngMax > lngMin) {
+    return [ latMax, lngMax, latMin, lngMin ];
+  } else {
+    return [
+      // account for crossing the International Date Line
+      // provide bounds in two segments
+      latMax, 180, latMin, lngMin, 
+      latMax, lngMax, latMin, -180
+    ];
+  }
+}

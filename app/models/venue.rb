@@ -72,12 +72,21 @@ class Venue < ApplicationRecord
     return query
   end
 
-  def self.filter_by_coords(params)
-    self
-      .where('lat > ?', params[:lat_min])
-      .where('lat < ?', params[:lat_max])
-      .where('lng > ?', params[:lng_min])
-      .where('lng < ?', params[:lng_max])
+  def self.filter_by_coords(coords)
+    filtered = nil
+    i = 0
+    # build up query with bounds provided in groups of 4.
+    while i < coords.length
+      bounds_group = self
+        .where('lat < ?', coords[i])
+        .where('lng < ?', coords[i+1])
+        .where('lat > ?', coords[i+2])
+        .where('lng > ?', coords[i+3])
+      # debugger
+      filtered = filtered.nil? ? bounds_group : filtered.or(bounds_group)
+      i += 4
+    end
+    filtered
   end
 
   def self.filter_by_availability(params)

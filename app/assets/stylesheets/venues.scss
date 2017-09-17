@@ -27,7 +27,8 @@
   max-height: 80%;
   min-height: 220px;
   background-position: 25% 50%;
-  background-size: cover;  
+  background-size: cover;
+  margin-bottom: 8px;
 }
 
 .venue-cell-sub {
@@ -86,7 +87,7 @@
 }
 
 .ven-desc-title {
-  padding-bottom: 20px;
+  padding: 20px 0;
 }
 
 .ven-desc-title-name {
