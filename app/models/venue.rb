@@ -1,6 +1,6 @@
 class Venue < ApplicationRecord
   include PgSearch
-  pg_search_scope :search_by_address, against: [
+  pg_search_scope :filter_by_address, against: [
     :name, 
     :street,
     :city,
@@ -70,6 +70,29 @@ class Venue < ApplicationRecord
     query = query.where("room_type = ?", "%#{params[:room_type]}%") if params[:room_type]
     query = query.where("price <= ?", "%#{params[:price]}%") if params[:price]
     return query
+  end
+
+  def self.filter_by_coords(coords)
+    filtered = nil
+    i = 0
+    # build up query with bounds provided in groups of 4.
+    while i < coords.length
+      bounds_group = self
+        .where('lat < ?', coords[i])
+        .where('lng < ?', coords[i+1])
+        .where('lat > ?', coords[i+2])
+        .where('lng > ?', coords[i+3])
+      # debugger
+      filtered = filtered.nil? ? bounds_group : filtered.or(bounds_group)
+      i += 4
+    end
+    filtered
+  end
+
+  def self.filter_by_availability(params)
+    self
+      .where('listing_start < ?', params[:check_in])
+      .where('listing_stop > ?', params[:check_out])
   end
     
 end

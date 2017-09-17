@@ -11,27 +11,39 @@ class Api::VenuesController < ApplicationController
   
   def index
     if search_params_empty
-      @venues = Venue.order("RANDOM()").limit(36).includes(:pictures)
+      @venues = Venue.includes(:pictures)
     elsif should_search_by_coords
-      @venues = Venue
-        .where('lat > ?', search_params[:lat_min])
-        .where('lat < ?', search_params[:lat_max])
-        .where('lng > ?', search_params[:lng_min])
-        .where('lng < ?', search_params[:lng_max])
-    elsif should_search_by_address
-      # check this out later, not sure how it's even working.
-      debugger
-      if search_params[:check_in].present? && search_params[:check_out].present?
-        @venues = @venues.reject do |venue|
-          b = Booking.new(
-            venue_id: venue.id,
-            check_in: search_params[:check_in],
-            check_out: search_params[:check_out]
-          )
-          venue.bookings.any? { |booking| booking.overlaps?(b) }
-        end
+      # Searching by coords is used by GMaps
+      # coords must be provided in groups of 4
+      coords = search_params[:coords].split(',')
+      if coords.length % 4 == 0 
+        @venues = Venue.filter_by_coords(coords)
+      else
+        render json: 'Invalid bounds input', status: 422
       end
+    else
+      # Searching by fields
+      @venues = Venue.all
+      if should_filter_by_address
+        @venues = @venues.filter_by_address(search_params[:address])
+      end
+      if should_filter_by_availability
+        # @venues = @venues.filter_by_availability(search_params) 
+      end
+      # this logic was for the show page, need to handle that too...
+      # then maybe i should move it into the show route.
+      # if search_params[:check_in].present? && search_params[:check_out].present?
+      #   @venues = @venues.reject do |venue|
+      #     b = Booking.new(
+      #       venue_id: venue.id,
+      #       check_in: search_params[:check_in],
+      #       check_out: search_params[:check_out]
+      #     )
+      #     venue.bookings.any? { |booking| booking.overlaps?(b) }
+      #   end
+      # end
     end
+    @venues = @venues.order("RANDOM()").limit(36)
     render :index
   end
   
@@ -47,11 +59,15 @@ class Api::VenuesController < ApplicationController
   end
 
   def should_search_by_coords
-    [ :lat_max, :lat_min, :lng_max, :lng_min ].all? { |key| search_params[key].present? }
+    search_params[:coords].present?
   end
 
-  def should_search_by_address
-    search_params[:street].present?
+  def should_filter_by_address
+    search_params[:address].present?
+  end
+
+  def should_filter_by_availability
+    false
   end
   
   def venue_params
@@ -93,6 +109,7 @@ class Api::VenuesController < ApplicationController
   
   def search_params
     params.permit(
+      :address,
       :name,
       :street,
       :city,
@@ -102,10 +119,7 @@ class Api::VenuesController < ApplicationController
       :price,
       :check_in,
       :check_out,
-      :lat_max,
-      :lat_min,
-      :lng_max,
-      :lng_min
+      :coords
     )
   end
   

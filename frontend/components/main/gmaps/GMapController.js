@@ -17,21 +17,18 @@ class GMapController {
   }
   
   fetchVenuesInBounds() {
-    const bounds = this.map.getBounds();
-    const coords = {
-      lng_max: bounds.getNorthEast().lng(),
-      lng_min: bounds.getSouthWest().lng(),
-      lat_max: bounds.getNorthEast().lat(),
-      lat_min: bounds.getSouthWest().lat(),
+    // pass bounds as arrays of [top, right, bottom, left]
+    const params = {
+      coords: calculateBounds(this.map.getBounds()),
     };
-    this.fetchVenues(coords);
+    this.fetchVenues(params);
   }
   
   renderMarkers(positions, venues) {
     this.markers.map( m => m.setMap(null));
     const latLngs = this.posArrayToLatLngs(positions);
     latLngs.forEach( (pos, idx) => {
-      const marker = new window.google.maps.Marker({
+      const marker = new google.maps.Marker({
         position: pos,
         map: this.map,
       });
@@ -57,3 +54,20 @@ class GMapController {
 }
 
 export default GMapController;
+
+function calculateBounds(bounds) {
+  const lngMax = bounds.getNorthEast().lng();
+  const lngMin = bounds.getSouthWest().lng();
+  const latMax = bounds.getNorthEast().lat();
+  const latMin = bounds.getSouthWest().lat();
+  if (lngMax > lngMin) {
+    return [ latMax, lngMax, latMin, lngMin ];
+  } else {
+    return [
+      // account for crossing the International Date Line
+      // provide bounds in two segments
+      latMax, 180, latMin, lngMin, 
+      latMax, lngMax, latMin, -180
+    ];
+  }
+}
