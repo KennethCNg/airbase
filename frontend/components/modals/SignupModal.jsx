@@ -59,7 +59,7 @@ class SignupModal extends React.Component {
       return (
         <div onClick={ this.handleCloseModal } className='modal-wrapper'>
           <div id='signup-modal' className='modal'>
-            <div id='modal-close'>
+            <div id='modal-close-btn'>
               {/* TODO:
                 Temporary. Loaded in application.html.erb.
                 Find a better way to load assets. */}
