@@ -10,24 +10,31 @@ class Api::VenuesController < ApplicationController
   end
   
   def index
-    if search_params_empty
-      @venues = Venue.includes(:pictures)
-    elsif should_search_by_coords
-      # Searching by coords is used by GMaps
-      # coords must be provided in groups of 4
+    # Search by ids
+    if params[:id].present?
+      @venues = Venue.where(id: params[:id])
+    
+    # Show random 
+    elsif search_params_empty
+      @venues = Venue.all
+
+    # Searching by coords (used by GMaps)
+    # coords must be provided in groups of 4
+    elsif search_params[:coords].present?
       coords = search_params[:coords].split(',')
       if coords.length % 4 == 0 
         @venues = Venue.filter_by_coords(coords)
       else
         render json: 'Invalid bounds input', status: 422
       end
+
+    # Searching by fields
     else
-      # Searching by fields
       @venues = Venue.all
-      if should_filter_by_address
+      if search_params[:address].present?
         @venues = @venues.filter_by_address(search_params[:address])
       end
-      if should_filter_by_availability
+      if false # should_filter_by_availability
         # @venues = @venues.filter_by_availability(search_params) 
       end
       # this logic was for the show page, need to handle that too...
@@ -43,7 +50,7 @@ class Api::VenuesController < ApplicationController
       #   end
       # end
     end
-    @venues = @venues.order("RANDOM()").limit(36)
+    @venues = @venues.order("RANDOM()").limit(36).includes(:pictures)
     render :index
   end
   
@@ -56,18 +63,6 @@ class Api::VenuesController < ApplicationController
   
   def search_params_empty
     search_params.reject{|_, v| v.blank?}.empty?
-  end
-
-  def should_search_by_coords
-    search_params[:coords].present?
-  end
-
-  def should_filter_by_address
-    search_params[:address].present?
-  end
-
-  def should_filter_by_availability
-    false
   end
   
   def venue_params
@@ -119,7 +114,7 @@ class Api::VenuesController < ApplicationController
       :price,
       :check_in,
       :check_out,
-      :coords
+      :coords,
     )
   end
   
