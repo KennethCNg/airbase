@@ -1,5 +1,12 @@
 import axios from 'axios';
 
+export const fetchUserBookings = userId => {
+  return axios({
+    method: 'GET',
+    url: `/api/users/${userId}/bookings`,
+  });
+};
+
 export const fetchBookings = venueId => {
   return axios({
     method: 'GET',

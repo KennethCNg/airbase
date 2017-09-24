@@ -1,0 +1,44 @@
+.bl-wrapper {
+  display: flex;
+  justify-content: center;
+  padding-top: 100px;
+}
+
+.bookings-list {
+  width: 70%;
+  border: 1px solid #dce0e0;
+  box-sizing: border-box;
+  
+  .bl-title {
+    background-color: #EDEFED;
+    padding: 20px 15px;
+    border-bottom: 1px solid #dce0e0;
+    box-sizing: border-box;
+    font-size: 20px;
+  }
+
+  .bl-th {
+    display: flex;
+    font-weight: 700;
+    font-size: 14px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #dce0e0;
+
+    div {
+      width: 25%;
+    }
+  }
+
+  .bl-table {
+    padding: 25px;
+  }
+
+  .booking {
+    display: flex;
+
+    .b-status {
+      font-weight: 700;
+    }
+    
+  }
+}
