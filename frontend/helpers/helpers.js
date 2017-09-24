@@ -28,7 +28,7 @@ export const readableDateRange = (t1, t2) => {
       `${ d1.date() } – ${ d2.date() }, ` + 
       `${ d1.year() }`;
   } else {
-    return `${ d1.getMonth() } ${ d1.date() }–` +
+    return `${ d1.getMonth() } ${ d1.date() } – ` +
       `${ d2.getMonth() } ${ d2.date() }, ` +
       `${ d1.year() }`;
   }

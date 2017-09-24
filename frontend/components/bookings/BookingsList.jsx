@@ -102,7 +102,9 @@ function BookingDatesLocation({ checkIn, checkOut, venue }) {
       <div className='dates-location'>
         <div>{ readableDateRange(checkIn, checkOut) }</div>
         <div>{ venue.name }</div>
-        <div>{ `${street}, ${city}, ${state} ${postal_code}` }</div>
+        <div>{ 
+          `${ street }, ${ city }, ${ state || '' } ${ postal_code || '' }` 
+        }</div>
       </div>
     );
   } else {
