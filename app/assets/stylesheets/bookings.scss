@@ -23,9 +23,18 @@
     font-size: 14px;
     padding-bottom: 5px;
     border-bottom: 1px solid #dce0e0;
+    margin-bottom: 20px;
 
     div {
       width: 25%;
+    }
+
+    .status {
+      width: 10%;
+    }
+
+    .dates-location {
+      width: 30%;
     }
   }
 
@@ -35,9 +44,17 @@
 
   .booking {
     display: flex;
+    font-size: 14px;
+    margin-bottom: 15px;
 
-    .b-status {
+    .status {
       font-weight: 700;
+      color: #60B135;
+      width: 10%;
+    }
+
+    .dates-location {
+      width: 30%;
     }
     
   }
