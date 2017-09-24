@@ -2,7 +2,7 @@ import React from 'react';
 import VenueBooking from './VenueBooking';
 import VenueReviews from './VenueReviews';
 
-import { parseDate } from '../../../helpers/helpers';
+import { parseDate } from '../../helpers/helpers';
 
 const VenueDescription = ({ venue }) => {
   

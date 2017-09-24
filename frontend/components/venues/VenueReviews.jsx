@@ -1,14 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import { selectVenue } from '../../../selectors/venuesSelectors';
-import { selectReviews, selectReviewsErrors } from '../../../selectors/reviewsSelectors';
-import { selectBookings, selectBookingsErrors } from '../../../selectors/bookingsSelectors';
-import { currentUser, currentUserBookings } from '../../../selectors/sessionSelectors';
-import { selectUsers } from '../../../selectors/usersSelectors';
-import { fetchReviews, postReview, receiveErrors } from '../../../actions/reviewsActions';
-import { fetchUsersByIds } from '../../../actions/usersActions';
-import { parseDate } from '../../../helpers/helpers';
+import { selectVenue } from '../../selectors/venuesSelectors';
+import { selectReviews, selectReviewsErrors } from '../../selectors/reviewsSelectors';
+import { selectBookings, selectBookingsErrors } from '../../selectors/bookingsSelectors';
+import { currentUser, currentUserBookings } from '../../selectors/sessionSelectors';
+import { selectUsers } from '../../selectors/usersSelectors';
+import { fetchReviews, postReview, receiveErrors } from '../../actions/reviewsActions';
+import { fetchUsersByIds } from '../../actions/usersActions';
+import { parseDate } from '../../helpers/helpers';
 import * as _ from 'lodash';
 
 const mapStateToProps = (state, ownProps) => {

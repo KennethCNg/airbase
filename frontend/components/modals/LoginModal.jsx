@@ -66,7 +66,7 @@ class LoginModal extends React.Component {
       return (
         <div onClick={ this.handleCloseModal } className='modal-wrapper'>
           <div id='login-modal' className='modal'>
-            <div id='modal-close'>
+            <div id='modal-close-btn'>
               <button>
                 <img onClick={ this.handleCloseModal } src={ window.staticImages.x } />
               </button>

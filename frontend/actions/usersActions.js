@@ -8,3 +8,12 @@ export const receiveUsers = users => {
     users
   };
 };
+
+export const fetchUsersByIds = userIds => dispatch => {
+  return UsersUtil.fetchUsersByIds(userIds)
+  .then(
+    res => {
+      dispatch(receiveUsers(res.data));
+    }
+  );
+};

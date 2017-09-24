@@ -2,15 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { Link } from 'react-router-dom';
-import { selectVenue } from '../../../selectors/venuesSelectors';
-import { selectBookings, selectBookingsErrors } from '../../../selectors/bookingsSelectors';
-import { selectGuestsDisplayed } from '../../../selectors/uiSelectors';
-import { currentUser, currentUserBookings } from '../../../selectors/sessionSelectors';
-import { fetchBookings, postBooking, receiveErrors } from '../../../actions/bookingsActions';
-import { toggleSelectGuests, closeSelectGuests } from '../../../actions/uiActions';
-import { parseDate } from '../../../helpers/helpers';
-import Dropdown from '../../modals/Dropdown';
-import DatePicker from '../../modals/DatePicker';
+import { selectVenue } from '../../selectors/venuesSelectors';
+import { selectBookings, selectBookingsErrors } from '../../selectors/bookingsSelectors';
+import { selectGuestsDisplayed } from '../../selectors/uiSelectors';
+import { currentUser, currentUserBookings } from '../../selectors/sessionSelectors';
+import { fetchBookings, postBooking, receiveErrors } from '../../actions/bookingsActions';
+import { toggleSelectGuests, closeSelectGuests } from '../../actions/uiActions';
+import { parseDate } from '../../helpers/helpers';
+import Dropdown from '../modals/Dropdown';
+import DatePicker from '../modals/DatePicker';
 import * as _ from 'lodash';
 
 const mapStateToProps = (state, ownProps) => {

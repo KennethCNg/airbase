@@ -2,7 +2,11 @@ class Api::BookingsController < ApplicationController
   
   def index
     # for searching bookings by venue only.
-    @bookings = Booking.where(venue_id: params[:venue_id])
+    if params[:user_id].present?
+      @bookings = Booking.where(user_id: params[:user_id])
+    elsif params[:venue_id].present?
+      @bookings = Booking.where(venue_id: params[:venue_id])
+    end
     render :index
   end
   

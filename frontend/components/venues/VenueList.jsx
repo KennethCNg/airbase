@@ -2,7 +2,7 @@ import React from 'react';
 import VenueCell from './VenueCell';
 import { connect } from 'react-redux';
 import { selectVenues, 
-  selectVenuePictureUrls } from '../../../selectors/venuesSelectors';
+  selectVenuePictureUrls } from '../../selectors/venuesSelectors';
 
 const mapStateToProps = state => {
   return {
