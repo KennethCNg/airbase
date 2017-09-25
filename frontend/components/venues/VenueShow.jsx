@@ -16,9 +16,6 @@ class VenueShow extends React.Component {
     }
   }
   
-  componentWillReceiveProps(nextProps) {
-  }
-  
   render() {
     if (this.props.venue) {
       return (

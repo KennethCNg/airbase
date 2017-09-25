@@ -38,18 +38,20 @@ class BookingsList extends React.Component {
       return ( <div></div> );
     } else {
       return (
-        <div className='bl-wrapper'>
-            <div className='bookings-list'>
+        <div id='bl-wrapper'>
+            <div id='bookings-list'>
               <BookingsListTitle/>
               <BookingListTable>
                 <BookingsListTH/>
                 { Object.values(bookings).map( booking => {
                   const venue = venues[booking.venue_id];
+                  // Avoid rendering if new venues have not been fetched
+                  if (!venue) return;
                   const host = users[venue.host_id];
-                  return <Booking key={ booking.id }
-                  {...booking}
-                  venue={ venue }
-                  host={ host } />;
+                  return <Booking key={ booking.id } {...booking}
+                    venue={ venue }
+                    host={ host } 
+                  />;
                 })}
               </BookingListTable>
             </div>
@@ -90,10 +92,8 @@ function BookingListTable(props) {
 
 function Booking(props) {
   const {
-    check_in: checkIn,
-    check_out: checkOut,
-    venue,
-    host,
+    check_in: checkIn, check_out: checkOut,
+    venue, host, id,
   } = props;
   const profilePicture = {
     backgroundImage: `url(${host.profile_picture})`,
@@ -101,7 +101,7 @@ function Booking(props) {
   return (
     <div className='booking'>
       <div className='status'>Accepted</div>     
-      <BookingDatesLocation 
+      <BookingDatesLocation key={`bdl-${ id }`}
         checkIn={ checkIn } checkOut={ checkOut }  
         venue={ venue } />
       <div className='host'>
