@@ -13,6 +13,7 @@ class User < ApplicationRecord
   
   has_many :venues, foreign_key: :host_id
   has_many :bookings
+  has_many :pictures, as: :imageable, dependent: :destroy
   
   after_initialize :ensure_session_token
   attr_reader :password

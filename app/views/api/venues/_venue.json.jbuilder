@@ -1,5 +1,6 @@
 json.ignore_nil!
 json.extract!( venue,
+  :id,
   :host_id,
   :accommodates,
   :bathrooms,

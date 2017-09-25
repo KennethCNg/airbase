@@ -1,5 +1,6 @@
 class SeedHelper
   extend GoogleMapsHelper
+  extend UsersSeedsHelper
 end
 
 # Create Users
@@ -9,15 +10,20 @@ USER_PASSWORD = 'password'
 now_i = Time.now.to_i
 r = Random.new(now_i)
 
-5.times do
-  name = Faker::Name.unique.name.split
+users = SeedHelper.fetch_users()
+users.each do |usr|
   user = User.new(
-    firstname: name[0],
-    lastname: name[1],
+    firstname: usr['name']['first'],
+    lastname: usr['name']['last'],
     email: Faker::Internet.unique.email,
     password: USER_PASSWORD
   )
   user.save!
+  pic = Picture.new(
+    image: URI.parse(usr['picture']['large']),
+    imageable: user
+  )
+  pic.save!
 end
 
 demoUser = User.new(

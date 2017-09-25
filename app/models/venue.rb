@@ -82,7 +82,6 @@ class Venue < ApplicationRecord
         .where('lng < ?', coords[i+1])
         .where('lat > ?', coords[i+2])
         .where('lng > ?', coords[i+3])
-      # debugger
       filtered = filtered.nil? ? bounds_group : filtered.or(bounds_group)
       i += 4
     end
