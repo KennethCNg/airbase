@@ -29,7 +29,11 @@ In this section, I highlight some challenges presented to me over the course of 
 
 ### Integrating third-party javascript components
 
-To clone Airbnb, there is no avoiding the large map taking up 34% of screen estate on the home listing page. I've always been fond of maps, so naturally I found integration with Google maps one the more interesting parts of this project. Showing a map is simple -- the challenge is getting it to play well with react components. More specifically, we want to avoid rendering the Map each time the state of its wrapping component changes (`GMap`, in this case). To get around this, it's possible to have Map exist outside of the component lifecycle by passing it as a `ref` into `GMap`. It feels a bit like inception. Map related logic can then be encapsulated in a new component, for instance `GMapController`.
+To clone Airbnb, there is no avoiding the large map taking up 34% of screen estate on the home listing page. I've always been fond of maps, so naturally I found integration with Google maps one the more interesting parts of this project.
+
+EDIT: I previously misunderstood the purpose of React's `ref` attribute for integrating third-party libraries.
+
+We use React's `ref` attribute to correctly load Google maps. The DOM element needed to load the map does not exist until our React component mounts. The callback provided to `ref` is called on component mount, and gives us a reference to the underlying DOM element, which is ultimately provided to `google.maps.Map(...)`in `componentDidMount()`.
 
 `gmap.jsx`
 ```js
@@ -45,7 +49,9 @@ class GMap extends React.Component {
 
   render() {
     return (
-      // reference div `map-container` as `this.mapContainer`
+      // https://reactjs.org/docs/refs-and-the-dom.html#adding-a-ref-to-a-dom-element
+      // This is important for loading Google Maps correctly. See README for
+      // a more detailed explaination.
       <div id='map-wrapper'>
         <div id='map-container' 
           ref={ domElement => { this.mapContainer = domElement; } } >

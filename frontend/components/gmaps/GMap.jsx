@@ -47,8 +47,9 @@ class GMap extends React.Component {
 
   render() {
     return (
-      // https://facebook.github.io/react/docs/refs-and-the-dom.html#adding-a-ref-to-a-dom-element
-      // allows component to reference this div as this.mapContainer
+      // https://reactjs.org/docs/refs-and-the-dom.html#adding-a-ref-to-a-dom-element
+      // This is important for loading Google Maps correctly. See README for
+      // a more detailed explaination.
       <div id='map-wrapper'>
         <div id='map-container' ref={ domEl => { this.mapContainer = domEl; } }>
         </div>
