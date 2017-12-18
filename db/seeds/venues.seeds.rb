@@ -1,10 +1,3 @@
-class SeedHelper
-  extend GoogleMapsHelper
-  extend UsersSeedsHelper
-end
-
-# Create Users
-
 # Create Venues
 Venue.destroy_all
 
@@ -83,4 +76,3 @@ cities.each do |city|
   
 end
 puts "Seeding completed"
-
