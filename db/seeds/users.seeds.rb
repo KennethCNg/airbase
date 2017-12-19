@@ -14,7 +14,7 @@ end
 def create_users
   User.destroy_all
 
-  USER_PASSWORD = 'password'
+  password = 'password'
   now_i = Time.now.to_i
   r = Random.new(now_i)
 
@@ -24,7 +24,7 @@ def create_users
       firstname: usr['name']['first'],
       lastname: usr['name']['last'],
       email: Faker::Internet.unique.email,
-      password: USER_PASSWORD
+      password: password
     )
     user.save!
     pic = Picture.new(
@@ -38,7 +38,7 @@ def create_users
     firstname: 'guest',
     lastname: 'user',
     email: 'd@d.com',
-    password: USER_PASSWORD
+    password: password
   )
   demoUser.save!
 end
