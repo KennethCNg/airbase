@@ -119,7 +119,7 @@ VENUE_GUEST_ACCESS = [
 
   "This apartment is the second floor apartment in the house. It is totally independent and not shared with anyone.",
 
-  "Guests will have privacy in their fully dedicated to airbnb apartment",
+  "Guests will have privacy in their fully dedicated to airbase apartment",
 
   "You can use everything in the apartment, as long as you use it with care, and don't take it with you."
 
@@ -127,7 +127,7 @@ VENUE_GUEST_ACCESS = [
 
 VENUE_GUEST_INTERACTIONS = [
 
-  "We will send you the lock code through email. You will not need to meet anyone to get the key, but will use the security code to open the lock. During your stay, you can always contact us through airbnb.com message. We do provide phone # for immediate and emergency contact.",
+  "We will send you the lock code through email. You will not need to meet anyone to get the key, but will use the security code to open the lock. During your stay, you can always contact us through airbase.com message. We do provide phone # for immediate and emergency contact.",
 
   "We also live in the building, in separate apartments. We are always available by cell, text, email etc and whenever necessary in person!",
 
