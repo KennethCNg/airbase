@@ -1,10 +1,35 @@
 # Airbase
 
-Airbase is an Airbnb clone. This project serves as a learning experience for integrating technologies I've learnt over the past couple of months. Choosing to build a clone relieved myself from making design/aesthetic decisions, and instead enabled me to focus on development. If this project looks too much alike the actual site, it's because I allotted a significant amount of time to mimic Airbnb's styling. This gave me a deeper appreciation for the attention and time invested into creating good UI/UX.
+Airbase is a full-stack clone of Airbnb's web application. This project is a learning experience for integrating technologies I've learnt over the past couple of months. On a high level, Airbase is a Rails API connected to a PostgreSQL DB, serving data to a React & Redux frontend. This application is hosted on Heroku and static data is served from AWS. Venues are obtained from the Google Places API and integrated into Google Maps.
+
+Building a clone relieved myself of making design decisions, freeing up more time for developing features. The styles were obtained through inspecting with chrome dev tools, and are written from scratch in SCSS.
 
 My project can be [viewed here](https://airbase-sksea.herokuapp.com/#/).
 
 # Setup and Dev Commands
+This project requires the local development environment to contain: 
+- **ruby** (v. 2.3+)
+- **node** (v 8.6)
+- **rails** (5.0+)
+- **postgres** (v 9.6).
+- and the Bundler gem
+
+## Setup
+
+Run the following commands in a terminal after pulling down the repository.
+
+```
+bundle install
+npm install
+
+bundle exec rake db:create
+bundle exec rake db:seed
+```
+
+## Development
+
+The following commands need to be run in separate terminals, or with foreman (requires adding a Procfile).
+
 Server (dev runs on port 3000)
 ```
 bundle install
