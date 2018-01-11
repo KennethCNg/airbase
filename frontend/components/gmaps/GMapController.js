@@ -25,9 +25,10 @@ class GMapController {
   }
   
   fetchVenuesInBounds() {
-    // pass bounds as arrays of [top, right, bottom, left]
+    const mapBounds = this.map.getBounds();
     const params = {
-      coords: calculateBounds(this.map.getBounds()),
+      ne: getNorthEastCorner(mapBounds),
+      sw: getSouthWestCorner(mapBounds)
     };
     this.fetchVenues(params);
   }
@@ -63,19 +64,12 @@ class GMapController {
 
 export default GMapController;
 
-function calculateBounds(bounds) {
-  const lngMax = bounds.getNorthEast().lng();
-  const lngMin = bounds.getSouthWest().lng();
-  const latMax = bounds.getNorthEast().lat();
-  const latMin = bounds.getSouthWest().lat();
-  if (lngMax > lngMin) {
-    return [ latMax, lngMax, latMin, lngMin ];
-  } else {
-    return [
-      // account for crossing the International Date Line
-      // provide bounds in two segments
-      latMax, 180, latMin, lngMin, 
-      latMax, lngMax, latMin, -180
-    ];
-  }
+function getNorthEastCorner(mapBounds) {
+  const ne = mapBounds.getNorthEast();
+  return [ne.lat(), ne.lng()];
+}
+
+function getSouthWestCorner(mapBounds) {
+  const sw = mapBounds.getSouthWest();
+  return [sw.lat(), sw.lng()];  
 }

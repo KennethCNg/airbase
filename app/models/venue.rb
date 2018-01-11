@@ -72,20 +72,33 @@ class Venue < ApplicationRecord
     return query
   end
 
-  def self.filter_by_coords(coords)
-    filtered = nil
-    i = 0
-    # build up query with bounds provided in groups of 4.
-    while i < coords.length
-      bounds_group = self
-        .where('lat < ?', coords[i])
-        .where('lng < ?', coords[i+1])
-        .where('lat > ?', coords[i+2])
-        .where('lng > ?', coords[i+3])
-      filtered = filtered.nil? ? bounds_group : filtered.or(bounds_group)
-      i += 4
+  def self.filter_by_coords(sw, ne)
+    # coords are provided as [lat, lng]
+    sw_lat, sw_lng = sw.split(',').map(&:to_f)
+    ne_lat, ne_lng = ne.split(',').map(&:to_f)
+
+    if (sw_lng < ne_lng)
+      return self
+                .where('lat < ?', ne_lat)
+                .where('lng < ?', ne_lng)
+                .where('lat > ?', sw_lat)
+                .where('lng > ?', sw_lng)
+    else
+      # https://developers.google.com/maps/documentation/javascript/reference#LatLng
+      # Handle Crossing International Date Line
+      right_of_idl = self
+                      .where('lat < ?', ne_lat)
+                      .where('lng < ?', ne_lng)
+                      .where('lat > ?', sw_lat)
+                      .where('lng > ?', -180)
+      left_of_idl = self
+                      .where('lat < ?', ne_lat)
+                      .where('lng < ?', 180)
+                      .where('lat > ?', sw_lat)
+                      .where('lng > ?', sw_lng)
+                      
+      return left_of_idl.or(right_of_idl)
     end
-    filtered
   end
 
   def self.filter_by_availability(params)
